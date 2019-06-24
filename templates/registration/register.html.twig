@@ -1,0 +1,219 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+   
+   <header>
+    <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg pi-140">
+            <a class="navbar-brand" href="#"><img alt="" src="{{ asset('images/logo.svg') }}"></a>
+            <button aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation" class="navbar-toggler" data-target="#navbarSupportedContent" data-toggle="collapse" type="button">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+                    <li>
+                        <a href="#">How it works</a>
+                    </li>
+                    <li>
+                        <a href="#">Pricing</a>
+                    </li>
+                    <li>
+                        <a href="#">Blog</a>
+                    </li>
+                    <li class="active">
+                        <a href="#">Contact Us</a>
+                    </li>
+                </ul>
+                <div class="link_login">
+                    <a href="/login">Login</a>
+                    <a class="signup" href="/register">Sign Up</a>
+                </div>
+            </div>
+        </nav>
+    </div>
+</header>
+<!--Header End-->
+<!--Section Inner Main Start-->
+
+<section class="content-main">
+    <div class="container-fluid">
+        <div class="pi-140">
+            <h3 class="title">Register</h3>
+            <div class="form-inner ">
+
+                {{ form_start(registrationForm, {'method': 'post', 'attr': {'class': 'cst-form'}}) }}
+
+                <div class="form-bx1">
+                    <div class="col">
+                        <div class="form-group">
+                            <div class="input_bx ">
+                                {{ form_row(registrationForm.firstname, {'attr': {'class': 'form-control', 'placeholder': 'John'}}) }}
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input_bx ">
+
+                                {{ form_row(registrationForm.lastname, {'attr': {'class': 'form-control', 'placeholder': 'Doe'}}) }}
+                                
+
+                            </div>
+
+                        </div>
+
+                        <div class="form-group">
+                            <div class="input_bx ">
+
+                                {{ form_row(registrationForm.email, {'attr': {'class': 'form-control', 'placeholder': 'example@example.com'}}) }}
+                                
+
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+
+                            <div class="input_bx ">
+                                {{ form_row(registrationForm.plainPassword.first, {'attr': {'class': 'form-control', 'placeholder': '●●●●●●●'}}) }}
+                                
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <div class="input_cg">
+                                <div class="input_bx ">
+                                    {{ form_row(registrationForm.plainPassword.second, {'attr': {'class': 'form-control', 'placeholder': '●●●●●●●'}}) }}
+                                    
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col">
+                        <div class="form-group">
+                            <label for="">Preferred Industry</label>
+                            <div class="input_cg">
+                                <div class="input_bx ">
+                                    <select class="form-control" id="" name="">
+                                        <option value="">Select</option>
+                                    </select>
+                                    <i class="t-f"><img alt="" src="{{ asset('images/select.svg') }}"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="">Job Title</label>
+                            <div class="input_cg">
+                                <div class="input_bx ">
+                                    <input class="form-control" placeholder="Financial Analyst" type="text">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="text-center pt-115">
+                    <button type="submit"  class="btn btn-form">Register</button>
+                </div>
+                
+{{ form_end(registrationForm) }}
+            </div>
+        </div>
+    </div>
+</section>
+
+<!--Section Inner Main End-->
+<!--Footer Start-->
+<footer>
+    <div class="footer">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="sub-w">
+                        <p>Subscribe to Altogethr via Email</p>
+                        <p>Get job search tips and advice. We promise we won’t spam you.</p>
+                        <form action="">
+                            <div class="input-group ">
+                                <input aria-describedby="basic-addon2" aria-label="Recipient's username" class="form-control" placeholder="Recipient's username" type="text">
+                                <div class="input-group-append">
+                                    <button class="btn btn-form" typ="submit">SUBSCRIBE</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="col-md-9">
+                    <div class="footer-qlinks">
+                        <ul class="footer-link">
+                            <li>
+                                <a href="mailto:INFO@ALTOGETHR.COM">INFO@ALTOGETHR.COM</a>
+                            </li>
+                        </ul>
+                        <ul class="footer-link">
+                            <li>
+                                <a href="#">CONTACT US</a>
+                            </li>
+                            <li>
+                                <a href="#">PRICING</a>
+                            </li>
+                            <li>
+                                <a href="#">HOW DOES IT WORK</a>
+                            </li>
+                            <li>
+                                <a href="#">FAQ</a>
+                            </li>
+                        </ul>
+                        <ul class="footer-link">
+                            <li>
+                                <a href="#">ABOUT ALTOGETHR</a>
+                            </li>
+                            <li>
+                                <a href="#">PRIVACY POLICY</a>
+                            </li>
+                            <li>
+                                <a href="#">
+                                    TERMS & CONDITIONS</a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-social">
+        <div class="container-fluid">
+            <div class="foter-l">
+                <a href="#"><img alt="" src="{{ asset('images/logo.svg') }}"></a>
+                <ul class="footer-social">
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#">
+                            <i class="fas fa-globe-africa"></i>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+ 
+{% endblock %}

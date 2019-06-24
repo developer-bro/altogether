@@ -1,0 +1,99 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+<div class="account-info">
+<div class="wrapper"> 
+  <!-- Sidebar  -->
+  <nav class="sidebar">
+    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
+    <ul class="list-unstyled components">
+      <li><a href="/dashboard">My Dashboard</a></li>
+      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Job search</a>
+        <ul class="collapse list-unstyled " id="pageSubmenu">
+          <li> <a href="/jobsitestosearch">Job Sites to Search</a> </li>
+          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
+          <li><a href="/joblisting">Job Listing</a></li>
+          <li><a href="/savedsearches">Saved Searches</a></li>
+        </ul>
+      </li>
+      <li class="active"><a href="/documents">My documents</a></li>
+      <li><a href="/mytask">My Tasks</a></li>
+      <li>
+                        <a href="/logout">LogOut</a>
+                    </li>
+    </ul>
+  </nav>
+  
+  <!-- Page Content  -->
+  <div class="content">
+    <nav class="dashboard-nav navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
+          <ul class="sidetop ml-auto">
+            <li class="active"> <a href="#">HELP</a> </li>
+            <li> <a href="/accountinfo">SETTINGS</a> </li>
+        <li>
+                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+
+                                    </a>
+                        
+                                </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="wrapper-account">
+      <div class="container-fluid">
+        <div class="row no-gutters  mt-91">
+          <div class="col-md-6">
+            <div class="cards">
+              <div class="card_header">
+                <h3><img src="images/folder.svg" alt="">CV</h3>
+                <a href="#"><img src="images/dots-line.svg" alt=""></a> </div>
+              <div class="card_body">
+                <div class="ch-bx">
+                  <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox"
+                                            checked="">
+                  <label for="checkbox-1" class="checkbox-style-3-label"> My latest CV.pdf </label>
+                </div>
+                <div class="ch-bx">
+                  <input id="checkbox-2" class="checkbox-style" name="checkbox-10"
+                                            type="checkbox">
+                  <label for="checkbox-2" class="checkbox-style-3-label"> CV.pdf </label>
+                </div>
+                <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt=""></a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="row no-gutters ">
+          <div class="col-md-6">
+            <div class="cards">
+              <div class="card_header">
+                <h3><img src="images/folder.svg" alt="">Cover letter</h3>
+                <a href="#"><img src="images/dots-line.svg" alt=""></a> </div>
+              <div class="card_body">
+                <div class="ch-bx">
+                  <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox"
+                                            checked="">
+                  <label for="checkbox-3" class="checkbox-style-3-label"> My latest Cover letter.pdf </label>
+                </div>
+                <div class="ch-bx">
+                  <input id="checkbox-2" class="checkbox-style" name="checkbox-10"
+                                            type="checkbox">
+                  <label for="checkbox-2" class="checkbox-style-3-label"> Cover letter.pdf </label>
+                </div>
+                <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt=""></a> </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+{% endblock %}

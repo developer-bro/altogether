@@ -1,0 +1,168 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+<div>
+<!--Header Start-->
+<header>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg pi-140"> <a class="navbar-brand" href="#"><img src="images/logo.svg" alt=""></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse"
+                        data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                        aria-label="Toggle navigation"> <i class="fas fa-bars"></i> </button>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">How it works</a></li>
+          <li><a href="#">Pricing</a></li>
+          <li><a href="#">Blog</a></li>
+          <li class="active"><a href="#">Contact Us</a></li>
+        </ul>
+        <div class="link_login"> <a href="/login">Login</a> <a href="/register" class="signup">Sign Up</a> </div>
+      </div>
+    </nav>
+  </div>
+</header>
+<!--Header End--> 
+<!--Section Inner Main Start-->
+<section class="content-main payment-form">
+  <div class="container-fluid">
+    <div class="pi-140">
+      <h3 class="title">Payment</h3>
+      <div class="payment-card">
+        <div class="icon-holder"> <img src="images/card.svg" alt=""> </div>
+        <p>You have selected the <b>“Monthly” </b>Plan. You will be billed <b> $24.99</b> per month until
+          you cancel. You can cancel at any time by emailing us at cancelsubscription@altogethr.com</p>
+        <form action="" class="row cst-form">
+          <div class="col-md-6">
+            <h3 class="heading3">Billing Info</h3>
+            <div class="form-card">
+              <div class="form-group">
+                <label for="">FULL NAME</label>
+                <input type="text" class="form-control" placeholder="John Doe">
+              </div>
+              <div class="form-group">
+                <label for="">FULL NAME</label>
+                <input type="text" class="form-control" placeholder="John Doe">
+              </div>
+              <div class="form-row">
+                <div class="form-group col-sm-6">
+                  <label for="">City</label>
+                  <input type="text" class="form-control" placeholder="Roseville">
+                </div>
+                <div class="form-group col-sm-6">
+                  <label for="">ZIP CODE</label>
+                  <input type="text" class="form-control" placeholder="95673">
+                </div>
+              </div>
+              <div class="form-group ">
+                <label for="">COUNTRY</label>
+                <div class="relative">
+                  <select name="" id="" class="form-control">
+                    <option value="">United States</option>
+                  </select>
+                  <i class="t-f"><img src="images/select.svg" alt=""></i> </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <h3 class="heading3">Credit Card Info</h3>
+            <div class="form-card">
+              <div class="form-row align-items-end">
+                <div class="form-group col-md-8">
+                  <label for="">CARD NUMBER</label>
+                  <input type="text" class="form-control" placeholder="1234 5678 3456 2456">
+                </div>
+                <div class="form-group  col-md-4">
+                  <div class="card-inpt"> <img src="images/visa.svg" alt=""> </div>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="">CARDHOLDER NAMEE</label>
+                <input type="text" class="form-control" placeholder="John Doe">
+              </div>
+              <div class="form-group ">
+                <label for="">EXPIRE DATE</label>
+                <div class="relative">
+                  <select name="" id="" class="form-control">
+                    <option value="">05 / 21</option>
+                  </select>
+                  <i class="t-f"><img src="images/select.svg" alt=""></i> </div>
+              </div>
+              <div class="form-row ">
+                <div class="form-group col-md-6">
+                  <label for="">CVV</label>
+                  <input type="text" class="form-control" placeholder="123">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="text-center w-100 mt-44">
+            <button typ="submit" class="btn btn-form">FINISH</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+<!--Section Inner Main End--> 
+<!--Footer Start-->
+<footer>
+  <div class="footer">
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-3">
+          <div class="sub-w">
+            <p>Subscribe to Altogethr via Email</p>
+            <p>Get job search tips and advice. We promise we won’t spam you.</p>
+            <form action="">
+              <div class="input-group ">
+                <input type="text" class="form-control" placeholder="Recipient's username"
+                                            aria-label="Recipient's username" aria-describedby="basic-addon2">
+                <div class="input-group-append">
+                  <button typ="submit" class="btn btn-form">SUBSCRIBE</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+        <div class="col-md-9">
+          <div class="footer-qlinks">
+            <ul class="footer-link">
+              <li><a href="mailto:INFO@ALTOGETHR.COM">INFO@ALTOGETHR.COM</a></li>
+            </ul>
+            <ul class="footer-link">
+              <li><a href="#">CONTACT US</a></li>
+              <li><a href="#">PRICING</a></li>
+              <li><a href="#">HOW DOES IT WORK</a></li>
+              <li><a href="#">FAQ</a></li>
+            </ul>
+            <ul class="footer-link">
+              <li><a href="#">ABOUT ALTOGETHR</a></li>
+              <li><a href="#">PRIVACY POLICY</a></li>
+              <li><a href="#"> TERMS & CONDITIONS</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer-social">
+    <div class="container-fluid">
+      <div class="foter-l"> <a href="#"><img src="images/logo.svg" alt=""></a>
+        <ul class="footer-social">
+          <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+          <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+          <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+          <li><a href="#"><i class="fas fa-globe-africa"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+<!--Footer End--> 
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<script src="js/jquery-3.2.1.slim.min.js"></script> 
+<script src="js/popper.min.js"></script> 
+<script src="js/bootstrap.min.js"></script>
+</div>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+        {% block body %}
+<div class="job-listing">
+<div class="wrapper"> 
+  <!-- Sidebar  -->
+  <nav class="sidebar">
+    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
+       <ul class="list-unstyled components">
+      <li><a href="/dashboard">My Dashboard</a></li>
+      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
+        <ul class="collapse list-unstyled show" id="pageSubmenu">
+          <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
+          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
+          <li><a href="/joblisting">Job Listing</a></li>
+          <li  class="active"><a href="/savedsearches">Saved Searches</a></li>
+        </ul>
+      </li>
+      <li><a href="/documents">My documents</a></li>
+      <li><a href="/mytask">My Tasks</a></li>
+      <li>
+                        <a href="/logout">LogOut</a>
+                    </li>
+    </ul>
+  </nav>
+  
+  <!-- Page Content  -->
+  <div class="content">
+    <nav class="dashboard-nav navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
+          <ul class="sidetop ml-auto">
+            <li class="active"> <a href="#">HELP</a> </li>
+            <li> <a href="/accountinfo">SETTINGS</a> </li>
+          <li>
+                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+
+                                    </a>
+                        
+                                </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <ul class="links_search">
+      <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
+      <li><a href="/savedandappliedjobs">Saved/Applied Jobs</a></li>
+      <li><a href="/joblisting">Job Listing</a></li>
+      <li class="active"><a href="/savedsearches">Saved Searches</a></li>
+    </ul>
+    <div class="search-saved">
+      <div class="card_title">
+        <h3>Saved searches</h3>
+      </div>
+      <div class="card-search">
+        <div class="media">
+          <div >
+            <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
+            <label for="checkbox-1" class="checkbox-style-3-label"> Financial Analyst, NYC </label>
+          </div>
+          <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="#"><img src="images/recycle.svg" alt=""></a> </div>
+        </div>
+        <div class="media">
+          <div >
+            <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" >
+            <label for="checkbox-2" class="checkbox-style-3-label"> Financial Analyst, Philadelphia </label>
+          </div>
+          <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="#"><img src="images/recycle.svg" alt=""></a> </div>
+        </div>
+        <div class="media">
+          <div >
+            <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
+            <label for="checkbox-3" class="checkbox-style-3-label"> VP, Finance, NYC </label>
+          </div>
+          <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="#"><img src="images/recycle.svg" alt=""></a> </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}

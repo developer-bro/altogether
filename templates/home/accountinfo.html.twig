@@ -1,0 +1,179 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <div class="account-info">
+        <div
+            class="wrapper">
+            <!-- Sidebar  -->
+            <nav class="sidebar">
+                <button class="btn close-btn sidebarCollapse">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="sidebar-header text-center">
+                    <img alt="" src="images/logo.svg">
+                </div>
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="/dashboard">My Dashboard</a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <ul class="collapse list-unstyled " id="pageSubmenu">
+                            <li>
+                                <a href="/jobsitestosearch">Job Sites to Search</a>
+                            </li>
+                            <li>
+                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                            </li>
+                            <li>
+                                <a href="/joblisting">Job Listing</a>
+                            </li>
+                            <li>
+                                <a href="/savedsearches">Saved Searches</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/documents">My documents</a>
+                    </li>
+                    <li>
+                        <a href="/mytask">My Tasks</a>
+                    </li>
+                    <li>
+                        <a href="/logout">LogOut</a>
+                    </li>
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div class="content">
+                <nav class="dashboard-nav navbar-expand-lg">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-info sidebarCollapse">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <ul class="sidetop ml-auto">
+                                <li class="active">
+                                    <a href="#">HELP</a>
+                                </li>
+                                <li>
+                                    <a href="/accountinfo">SETTINGS</a>
+                                </li>
+                                <li class="nav-item dropdown">
+                                    <a href="#" ><img alt="" src="images/avatar.png">
+
+                                    </a>
+
+                                
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <ul class="breadcrumb">
+                    <li>
+                        <a href="#">Settings</a>
+                    </li>
+                    <li>Account Info</li>
+                </ul>
+                <ul class="links_search">
+                    <li class="active">
+                        <a href="#">Account Info</a>
+                    </li>
+                    <li>
+                        <a href="/subscription">Subscription</a>
+                    </li>
+                    <li>
+                        <a href="#">Invoices</a>
+                    </li>
+                </ul>
+                <div class="wrapper-account">
+                    <div class="container-fluid">
+                       
+                       {{ form_start(Form, {'method': 'post', 'action': path('accountinfo'), 'attr': {'class': 'cst-form2'}}) }}
+                       <div class="row form-group align-items-center">
+                       
+                                {{ form_label(Form.firstname, 'First Name', {
+    'label_attr': {'class': 'col-sm-3'}
+}, disab) }}
+                                
+                                <div class="col-sm-7 ">
+                                    {{ form_widget(Form.firstname, {'attr': {'class': 'form-control', 'disabled': true, 'autofocus':'autofocus'}}) }}
+                                </div>
+</div>
+                                <div class="row form-group align-items-center">
+                                
+                                {{ form_label(Form.lastname, 'Last Name', {
+    'label_attr': {'class': 'col-sm-3'}
+}) }}
+                                
+                                <div class="col-sm-7 ">
+                                    {{ form_widget(Form.lastname, {'attr': {'class': 'form-control', 'disabled': true}}) }}
+                                </div>
+    
+                            </div>
+                             <div class="row form-group align-items-center">
+                                
+                                {{ form_label(Form.email, 'Email', {
+    'label_attr': {'class': 'col-sm-3'}
+}) }}
+                                
+                                <div class="col-sm-7 ">
+                                     {{ form_widget(Form.email, {'attr': {'class': 'form-control', 'disabled': true}}) }}
+                                </div>
+    
+                            </div>
+
+                             <div class="row form-group align-items-center">
+                                
+                                {{ form_label(Form.plainPassword, 'Password', {
+    'label_attr': {'class': 'col-sm-3'}
+}) }}
+                                
+                                <div class="col-sm-7 ">
+                                    {{ form_widget(Form.plainPassword, {'attr': {'class': 'form-control', 'placeholder': '●●●●●●●', 'disabled': true}}) }}
+                                </div>
+    
+                            </div>
+
+                             <div class="row form-group align-items-center">
+                                
+                                {{ form_label(Form.dob, 'Birthday', {
+    'label_attr': {'class': 'col-sm-3'}
+}) }}
+                                
+                                <div class="col-sm-7 ">
+                                    {{ form_widget(Form.dob, {'attr': {'class': 'form-control', 'disabled': true}}) }}
+                                </div>
+    
+                            </div>
+        
+        
+
+       
+    
+
+
+                            <div class="col-sm-12" align="center">
+ <div class="text-center pt-115">
+                                    <button class="btn btn-form " id="update" style=" color: #ffffff;  display: none;"> UPDATE</a></button>
+                                </div>                                </div>
+                                {{ form_end(Form) }}
+                                <div style="max-width:794px; padding-top:0px;">
+<div class="col-sm-12" align="center" style="padding-top:0px;">
+ <div class="text-center pt-115" style="padding-top:0px;">
+                                <button class="btn btn-form" id="edit"  style="color: #ffffff;">EDIT</a></button>
+                                </div>     </div>                           </div>
+                                
+                                <br>
+                         <br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

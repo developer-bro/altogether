@@ -1,0 +1,75 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+<div class="account-info">
+<div class="wrapper"> 
+  <!-- Sidebar  -->
+  <nav class="sidebar">
+    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
+    <ul class="list-unstyled components">
+      <li><a href="/dashboard">My Dashboard</a></li>
+      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Job search</a>
+        <ul class="collapse list-unstyled " id="pageSubmenu">
+          <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
+          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
+          <li><a href="/joblisting">Job Listing</a></li>
+          <li><a href="/savedsearches">Saved Searches</a></li>
+        </ul>
+      </li>
+      <li><a href="/documents">My documents</a></li>
+      <li><a href="/mytask">My Tasks</a></li>
+      <li>
+                        <a href="/logout">LogOut</a>
+                    </li>
+    </ul>
+  </nav>
+  
+  <!-- Page Content  -->
+  <div class="content">
+    <nav class="dashboard-nav navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
+          <ul class="sidetop ml-auto">
+            <li class="active"> <a href="#">HELP</a> </li>
+            <li> <a href="/accountinfo">SETTINGS</a> </li>
+            <li>
+                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+
+                                    </a>
+                        
+                                </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <ul class="breadcrumb">
+      <li><a href="#">Settings</a></li>
+      <li>subscription</li>
+    </ul>
+    <ul class="links_search">
+      <li ><a href="/accountinfo">Account Info</a></li>
+      <li class="active"><a href="#">Subscription</a></li>
+      <li><a href="#">Invoices</a></li>
+    </ul>
+    <div class="wrapper-account">
+      <div class="container-fluid">
+        <div class="row no-gutters pkg-card mt-91">
+          <div class="col-xl-8">
+            <div class="pkg-main">
+              <h4>Package <span>Lorem Ipsum</span></h4>
+              <h4>Valid until <span>30 May 19</span></h4>
+            </div>
+          </div>
+          <div class="col-xl-4">
+            <div class="pkg-action"> <a href="#" class="c-1">Change package</a> <a href="#"  class="c-2">Cancel package</a> </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+{% endblock %}

@@ -1,0 +1,128 @@
+{% extends 'base.html.twig' %}
+        {% block body %}
+<div class="job-listing">
+<div class="wrapper"> 
+  <!-- Sidebar  -->
+  <nav class="sidebar">
+    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
+    <ul class="list-unstyled components">
+      <li><a href="/dashboard">My Dashboard</a></li>
+      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
+        <ul class="collapse list-unstyled show" id="pageSubmenu">
+          <li> <a href="/jobsitestosearch">Job Sites to Search</a> </li>
+          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
+          <li class="active"><a href="/joblisting">Job Listing</a></li>
+          <li><a href="/savedsearches">Saved Searches</a></li>
+        </ul>
+      </li>
+      <li ><a href="/documents">My documents</a></li>
+      <li><a href="/mytask">My Tasks</a></li>
+      <li>
+                        <a href="/logout">LogOut</a>
+                    </li>
+    </ul>
+  </nav>
+  
+  <!-- Page Content  -->
+  <div class="content">
+    <nav class="dashboard-nav navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
+          <ul class="sidetop ml-auto">
+            <li class="active"> <a href="#">HELP</a> </li>
+            <li> <a href="/accountinfo">SETTINGS</a> </li>
+            <li>
+                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+
+                                    </a>
+                        
+                                </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <ul class="links_search">
+      <li ><a href="/jobsitestosearch">Job Sites to Search</a></li>
+      <li><a href="/savedandappliedjobs">Saved/Applied Jobs</a></li>
+      <li class="active"><a href="#">Job Listing</a></li>
+      <li><a href="/savedsearchs">Saved Searches</a></li>
+    </ul>
+    <ul class="dashboard-review">
+      <li>
+        <div class="c1">
+          <div class="counter done"> 8-May </div>
+          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+        <h3>Applied</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter done"> 20-May </div>
+          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+        <h3>Initial Follow-up</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter"> 03-Jun </div>
+          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+        <h3>Interview Prep</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter"> 4-Jun </div>
+          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+        <h3>Interviews</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter"> . </div>
+          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+        <h3>Thank You Letter</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter"> . </div>
+          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+        <h3>Follow-up</h3>
+      </li>
+    </ul>
+    <div class="filter-card">
+      <div class="media">
+        <div class="icon-filter"> <img src="images/check-c.svg" alt=""> </div>
+        <div class="media-body">
+          <div class="auth_w">
+            <div class="author-dt">
+              <h3>Financial Analyst</h3>
+              <p>Merrill Lynch</p>
+              <ul>
+                <li><img src="images/pin.svg" alt=""> <span> New York, NY</span></li>
+                <li><img src="images/factory.svg" alt=""> <span>Finance</span></li>
+                <li><img src="images/goal.svg" alt=""> <span> Entry level</span></li>
+              </ul>
+            </div>
+            <div class="sav-link"> 6 hours ago </div>
+          </div>
+          <p>You will establish a shared vision, creating stories and setting a world class creative direction. 
+            You will inspire the teams around you, leading by example and becoming a role model for your 
+            fellow designers. </p>
+        </div>
+      </div>
+      <div class="steps-filter"> <span>Next Steps</span>
+        <div class="media-body">
+          <div >
+            <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
+            <label for="checkbox-1" class="checkbox-style-3-label"> Interview prep. </label>
+          </div>
+          <div >
+            <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
+            <label for="checkbox-2" class="checkbox-style-3-label"> Send note to someone who can provide a referral. </label>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}
