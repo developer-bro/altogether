@@ -32,10 +32,13 @@ class RegistrationController extends AbstractController
             );
 
             $user->setEmailReqistrationToken($token);
+            $user->setEnabled(FALSE);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);
             $entityManager->flush();
+
+
 
 
             $email = $form->get('email')->getData();

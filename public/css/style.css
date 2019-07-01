@@ -21,11 +21,49 @@
 	font-weight: normal;
 	font-style: normal;
 }
+
 body {
 	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 16px;
 	line-height: normal;
 }
+
+#account_edit_form_dob{
+
+	background: #d1eafc;
+		border: 1px solid #BCE0FD;
+		border-radius: 63px;
+		height: 63px;
+	}
+	
+	#account_edit_form_dob_month{
+	margin-top: 12px;
+		background: none;
+		border: none;
+		color: green;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+	
+	#account_edit_form_dob_day{
+	margin-top: 12px;
+		background: none;
+		border: none;
+		color: green;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+	
+	#account_edit_form_dob_year{
+	margin-top: 12px;
+		background: none;
+		border: none;
+		color: green;
+		padding-right: 10px;
+		padding-left: 10px;
+	}
+
+	
 a.active, a:focus, button:focus, button.active {
 	outline: none;
 }

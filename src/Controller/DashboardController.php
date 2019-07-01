@@ -20,6 +20,9 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\JobsRepository;
+use App\Entity\User;
+use App\Entity\Jobs;
 
 
 class DashboardController extends AbstractController
@@ -29,9 +32,12 @@ class DashboardController extends AbstractController
      *
      * 
      */
-    public function index(): Response
+    public function index(Request $request, JobsRepository $jobs): Response
     {
-        return $this->render('home/dashboard.html.twig');
+
+        $user = $this->getUser();
+        $latestJobs = $jobs->findLatest($user);
+        return $this->render('home/dashboard.html.twig', ['jobs' => $latestJobs]);
     }
 
 }

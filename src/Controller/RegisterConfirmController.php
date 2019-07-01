@@ -43,8 +43,10 @@ class RegisterConfirmController extends AbstractController
             return $this->redirectToRoute('app_register');
         }
                     $email = $user->getEmail();
+                    
 
                     $user->setEmailReqistrationToken(null);
+                    $user->setEnabled(TRUE);
                     $entityManager->persist($user);
                     $entityManager->flush();
         

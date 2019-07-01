@@ -1,188 +1,270 @@
 {% extends 'base.html.twig' %}
-        {% block body %}
-<div class="saved-jobs">
-<div class="wrapper"> 
-  <!-- Sidebar  -->
-  <nav class="sidebar">
-    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
-    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
-    <ul class="list-unstyled components">
-      <li><a href="dashboard">My Dashboard</a></li>
-      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
-        <ul class="collapse list-unstyled show" id="pageSubmenu">
-          <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
-          <li class="active"><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-          <li><a href="/joblisting">Job Listing</a></li>
-          <li><a href="/savedsearches">Saved Searches</a></li>
-        </ul>
-      </li>
-      <li><a href="/documents">My documents</a></li>
-      <li><a href="/mytask">My Tasks</a></li>
-      <li>
+{% block body %}
+    <div class="saved-jobs">
+        <div
+            class="wrapper">
+            <!-- Sidebar  -->
+            <nav class="sidebar">
+                <button class="btn close-btn sidebarCollapse">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="sidebar-header text-center">
+                    <img alt="" src="images/logo.svg">
+                </div>
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="dashboard">My Dashboard</a>
+                    </li>
+                    <li>
+                        <a aria-expanded="true" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <ul class="collapse list-unstyled show" id="pageSubmenu">
+                            <li>
+                                <a href="/jobsitestosearch">Job Sites to Search</a>
+                            </li>
+                            <li class="active">
+                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                            </li>
+                            <li>
+                                <a href="/joblisting">Job Listing</a>
+                            </li>
+                            <li>
+                                <a href="/savedsearches">Saved Searches</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/documents">My documents</a>
+                    </li>
+                    <li>
+                        <a href="/mytask">My Tasks</a>
+                    </li>
+                    <li>
                         <a href="/logout">LogOut</a>
                     </li>
-    </ul>
-  </nav>
-  
-  <!-- Page Content  -->
-  <div class="content">
-    <nav class="dashboard-nav navbar-expand-lg">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center">
-          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
-          <ul class="sidetop ml-auto">
-            <li class="active"> <a href="#">HELP</a> </li>
-            <li> <a href="/accountinfo">SETTINGS</a> </li>
-            <li>
-                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div class="content">
+                <nav class="dashboard-nav navbar-expand-lg">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-info sidebarCollapse">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <ul class="sidetop ml-auto">
+                                <li class="active">
+                                    <a href="#">HELP</a>
+                                </li>
+                                <li>
+                                    <a href="/accountinfo">SETTINGS</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
 
                                     </a>
-                        
-                                </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <ul class="links_search">
-      <li><a href="/job">Job Sites to Search</a></li>
-      <li class="active"><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-      <li><a href="/joblisting">Job Listing</a></li>
-      <li><a href="/savedsearches">Saved Searches</a></li>
-    </ul>
-    <div class="serch-wrapper ">
-      <form action="" class="s-link ">
-        <div class="row align-items-center no-gutters">
-          <div class="col-xl-2">
-            <label for="">Add new Job</label>
-          </div>
-          <div class="col-xl-8">
-            <input type="text" class="form-control" placeholder="www.linkedin.com/job/merrilllynch/010">
-          </div>
-          <div class="col-xl-2">
-            <div class="relative">
-              <select name="" id="" class="form-control">
-                <option value="">Saved</option>
-              </select>
-              <i class="t-f r-0"><img src="images/select.svg" alt=""></i> </div>
-          </div>
-        </div>
-        <div class="text-center"> <a href="" class="btn btn-search"  data-toggle="modal" data-target="#add-jobs">Add Job </a> </div>
-      </form>
-      <ul class="filter">
-        <li>
-          <h3>Filters:</h3>
-        </li>
-        <li>
-          <div class="check">
-            <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
-            <label for="checkbox-1" class="checkbox-style-3-label"> Saved </label>
-          </div>
-        </li>
-        <li>
-          <div class="check">
-            <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
-            <label for="checkbox-2" class="checkbox-style-3-label"> Applied </label>
-          </div>
-        </li>
-      </ul>
-      <div class="filter-card">
-        <div class="media">
-          <div class="icon-filter"> <img src="images/fav2.svg" alt=""> </div>
-          <div class="media-body">
-            <div class="auth_w">
-              <div class="author-dt">
-                <h3>Financial Analyst</h3>
-                <p>Merrill Lynch</p>
-                <ul>
-                  <li><img src="images/pin.svg" alt=""> <span> New York, NY</span></li>
-                </ul>
-              </div>
-              <div class="sav-link"> <span>SAVED:</span> 6 hours ago </div>
-            </div>
-            <p>You will establish a shared vision, creating stories and setting a world class creative direction. 
-              You will inspire the teams around you, leading by example and becoming a role model for your 
-              fellow designers. </p>
-            <div class="footer-card"> <a href="#" class="clr-c">NEXT STEP</a> <a href="#">APPLY</a> </div>
-          </div>
-        </div>
-        <div class="media">
-          <div class="icon-filter"> <img src="images/check-c.svg" alt=""> </div>
-          <div class="media-body">
-            <div class="auth_w">
-              <div class="author-dt">
-                <h3>Financial Analyst</h3>
-                <p>Merrill Lynch</p>
-                <ul>
-                  <li><img src="images/pin.svg" alt=""> <span> New York, NY</span></li>
-                </ul>
-              </div>
-              <div class="sav-link"> <span>SAVED:</span> 6 hours ago </div>
-            </div>
-            <p>You will establish a shared vision, creating stories and setting a world class creative direction. 
-              You will inspire the teams around you, leading by example and becoming a role model for your 
-              fellow designers. </p>
-            <div class="footer-card"> <a href="#" class="clr-c">NEXT STEP</a> <a href="#">APPLY</a> </div>
-          </div>
-        </div>
-      </div>
-    </div>
-    <!-- Modal --> 
-    <!-- Modal -->
-    <div class="modal fade" id="add-jobs" tabindex="-1" role="dialog" aria-labelledby="add-jobs"
- aria-hidden="true">
-      <div class="modal-dialog modal-dialog-centered" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h4> ADD JOB</h4>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true"><img src="images/close2.svg" alt=""></span> </button>
-          </div>
-          <div class="modal-body">
-            <div class="form-row">
-              <div class="col-md-2">
-                <h4>Title</h4>
-              </div>
-              <div class="col-md-10">
-                <input type="text" class="form-control b3" placeholder="Financial Analyst">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-2">
-                <h4>@</h4>
-              </div>
-              <div class="col-md-10">
-                <input type="text" class="form-control b4" placeholder="Merrill Lynch">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-2">
-                <h4>Location:</h4>
-              </div>
-              <div class="col-md-10">
-                <input type="text" class="form-control b7" placeholder="New York">
-              </div>
-            </div>
-            <div class="form-row">
-              <div class="col-md-2">
-                <h4>Status:</h4>
-              </div>
-              <div class="col-md-10">
-                <div class="relative status">
-                  <select name="" id="" class="form-control ">
-                    <option value="">Status</option>
-                  </select>
-                  <i class="t-f r-0"><img src="images/select.svg" alt=""></i> </div>
-              </div>
-            </div>
-          </div>
-          <div class="modal-footer justify-content-center">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-            <button type="button" class="btn btn-primary">Save </button>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
 
-</div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <ul class="links_search">
+                    <li>
+                        <a href="/jobsitestosearch">Job Sites to Search</a>
+                    </li>
+                    <li class="active">
+                        <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                    </li>
+                    <li>
+                        <a href="/joblisting">Job Listing</a>
+                    </li>
+                    <li>
+                        <a href="/savedsearches">Saved Searches</a>
+                    </li>
+                </ul>
+                <div class="serch-wrapper ">
+                    <form action="/savedappliedaction" class="s-link ">
+                        <div class="row align-items-center no-gutters">
+                            <div class="col-xl-2">
+                                <label for="">Add new Job</label>
+                            </div>
+                            <div class="col-xl-8">
+                                <input class="form-control" id="emailId" placeholder="www.linkedin.com/job/merrilllynch/010" type="text">
+                            </div>
+                            <div class="col-xl-2">
+                                <div class="relative">
+                                    <select class="form-control" id="" name="">
+                                        <option value="">Saved</option>
+                                    </select>
+                                    <i class="t-f r-0"><img alt="" src="images/select.svg"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <button class="btn btn-search" data-target="#add-jobs" data-toggle="modal" id="submitBtn">Add Job
+                            </button>
+                        </div>
+                    </form>
+                    <br>
+                    <br>
+                    {{ form_start(form) }}
+
+                    {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.comapnyName, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.location, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form.uri, {'attr': {'class': 'form-control'}}) }}
+                    {{ form_row(form._token) }}
+                    <div class="text-center">
+                        <button class="btn btn-search">Save Job
+                        </button>
+                    </div>
+                    {{ form_end(form, {'render_rest': false}) }}
+                    <br>
+                    <br>
+                    <ul class="filter">
+                        <li>
+                            <h3>Filters:</h3>
+                        </li>
+                        <li>
+                            <div class="check">
+                                <input checked="" class="checkbox-style" id="checkbox-1" name="checkbox-10" type="checkbox">
+                                <label class="checkbox-style-3-label" for="checkbox-1">
+                                    Saved
+                                </label>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="check">
+                                <input checked="" class="checkbox-style" id="checkbox-2" name="checkbox-10" type="checkbox">
+                                <label class="checkbox-style-3-label" for="checkbox-2">
+                                    Applied
+                                </label>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="filter-card">
+                        <div class="media">
+                            <div class="icon-filter">
+                                
+                            </div>
+                            {% for job in jobs %}
+                                <div class="media-body">
+                                    <div class="auth_w">
+                                        <div class="author-dt">
+                                            <h3>{{ job.title }}</h3>
+                                            <p>{{ job.comapnyName }}</p>
+                                            <ul>
+                                                <li><img alt="" src="images/pin.svg">
+                                                    <span>
+                                                        {{ job.location }}</span>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="sav-link">
+                                            <span>SAVED:</span>
+                                            {{ job.dateSaved|ago }}</div>
+                                    </div>
+                                    <p>{{ job.description|truncate(250) }}
+                                    </p>
+                                    <div class="footer-card">
+                                        <a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>
+                                    </div>
+
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- Modal -->
+                <!-- Modal -->
+                <div aria-hidden="true" aria-labelledby="add-jobs" class="modal fade" id="add-jobs" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-dialog-centered" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4>
+                                    ADD JOB</h4>
+                                <button aria-label="Close" class="close" data-dismiss="modal" type="button">
+                                    <span aria-hidden="true"><img alt="" src="images/close2.svg"></span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-row">
+                                    <div class="col-md-2">
+                                        <h4>Title</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input class="form-control b3" id="title" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-2">
+                                        <h4>@</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input class="form-control b4" placeholder="Merrill Lynch" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-2">
+                                        <h4>Location:</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <input class="form-control b7" placeholder="New York" type="text">
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="col-md-2">
+                                        <h4>Status:</h4>
+                                    </div>
+                                    <div class="col-md-10">
+                                        <div class="relative status">
+                                            <select class="form-control " id="" name="">
+                                                <option value="">Status</option>
+                                            </select>
+                                            <i class="t-f r-0"><img alt="" src="images/select.svg"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer justify-content-center">
+                                <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
+                                <button class="btn btn-primary" type="button">Save
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        $("#submitBtn").click("submit", function (e) {
+            e.preventDefault();
+            var email = $("#emailId").val();
+            $.ajax({
+                url: "{{ path('scrapedataindex') }}",
+                type: 'POST',
+                data: {
+                    email: email
+                },
+                success: function (res) {
+                    $("#jobs_save_description").html(res.description);
+                    $("#jobs_save_title").html(res.title);
+                    $("#jobs_save_comapnyName").html(res.company);
+                    $("#jobs_save_location").html(res.location);
+                    $("#jobs_save_uri").html(res.uri);
+                    console.log(res.location);
+                    console.log(res.uri);
+
+
+                }
+            });
+        });
+    </script>
 {% endblock %}

@@ -12,7 +12,7 @@ use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Validator\Constraints\Email;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
+use Symfony\Component\Form\Extension\Core\Type\BirthdayType;
 
 class AccountEditFormType extends AbstractType
 {
@@ -38,10 +38,10 @@ class AccountEditFormType extends AbstractType
                     ]),
                 ],
             ])
-            ->add('dob', DateType::class, [
-                'widget' => 'single_text',
+            ->add('dob', BirthdayType::class, [
+                'widget' => 'choice',
                 // this is actually the default format for single_text
-                'format' => 'dd MMMM yyyy',
+             
             ])
         ;
     }
