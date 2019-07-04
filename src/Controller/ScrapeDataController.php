@@ -20,7 +20,9 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-Use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Goutte\Client;
+use GuzzleHttp\Client as GuzzleClient;
 
 
 class ScrapeDataController extends AbstractController
@@ -35,9 +37,15 @@ class ScrapeDataController extends AbstractController
 
         $email = $request->request->get('email');
 
-        $client = \Symfony\Component\Panther\Client::createChromeClient();
+        $client = new Client();
+
+        $guzzleClient = new GuzzleClient(array(
+            'timeout' => 60,
+        ));
+        $client->setClient($guzzleClient);
+
         $crawler = $client->request('GET', $email);
-        $client->waitFor('.topcard__flavor-row', 5000); 
+        
         $title = $crawler->filter('.topcard__title')->text();
         $description = $crawler->filter('.description')->text(); 
         $company = $crawler->filter('.topcard__flavor-row span')->first()->text(); 

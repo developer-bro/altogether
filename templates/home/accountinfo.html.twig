@@ -60,11 +60,11 @@
                                     <a href="/accountinfo">SETTINGS</a>
                                 </li>
                                 <li class="nav-item dropdown">
-                                    <a href="#" ><img alt="" src="images/avatar.png">
+                                    <a href="#"><img alt="" src="images/avatar.png">
 
                                     </a>
 
-                                
+
                                 </li>
                             </ul>
                         </div>
@@ -89,91 +89,86 @@
                 </ul>
                 <div class="wrapper-account">
                     <div class="container-fluid">
-                       
-                       {{ form_start(Form, {'method': 'post', 'action': path('accountinfo'), 'attr': {'class': 'cst-form2'}}) }}
-                       <div class="row form-group align-items-center">
-                       
-                                {{ form_label(Form.firstname, 'First Name', {
+
+                        {{ form_start(Form, {'method': 'post', 'action': path('accountinfo'), 'attr': {'class': 'cst-form2'}}) }}
+                        <div class="row form-group align-items-center">
+
+                            {{ form_label(Form.firstname, 'First Name', {
     'label_attr': {'class': 'col-sm-3'}
 }, disab) }}
-                                
-                                <div class="col-sm-7 ">
-                                    {{ form_widget(Form.firstname, {'attr': {'class': 'form-control', 'disabled': true, 'autofocus':'autofocus'}}) }}
-                                </div>
-</div>
-                                <div class="row form-group align-items-center">
-                                
-                                {{ form_label(Form.lastname, 'Last Name', {
+
+                            <div class="col-sm-7 ">
+                                {{ form_widget(Form.firstname, {'attr': {'class': 'form-control', 'disabled': true, 'autofocus':'autofocus'}}) }}
+                            </div>
+                        </div>
+                        <div class="row form-group align-items-center">
+
+                            {{ form_label(Form.lastname, 'Last Name', {
     'label_attr': {'class': 'col-sm-3'}
 }) }}
-                                
-                                <div class="col-sm-7 ">
-                                    {{ form_widget(Form.lastname, {'attr': {'class': 'form-control', 'disabled': true}}) }}
-                                </div>
-    
+
+                            <div class="col-sm-7 ">
+                                {{ form_widget(Form.lastname, {'attr': {'class': 'form-control', 'disabled': true}}) }}
                             </div>
-                             <div class="row form-group align-items-center">
-                                
-                                {{ form_label(Form.email, 'Email', {
+
+                        </div>
+                        <div class="row form-group align-items-center">
+
+                            {{ form_label(Form.email, 'Email', {
     'label_attr': {'class': 'col-sm-3'}
 }) }}
-                                
-                                <div class="col-sm-7 ">
-                                     {{ form_widget(Form.email, {'attr': {'class': 'form-control', 'disabled': true}}) }}
-                                </div>
-    
+
+                            <div class="col-sm-7 ">
+                                {{ form_widget(Form.email, {'attr': {'class': 'form-control', 'disabled': true}}) }}
                             </div>
 
-                             <div class="row form-group align-items-center">
-                                
-                                {{ form_label(Form.plainPassword, 'Password', {
+                        </div>
+
+                        <div class="row form-group align-items-center">
+
+                            {{ form_label(Form.plainPassword, 'Password', {
     'label_attr': {'class': 'col-sm-3'}
 }) }}
-                                
-                                <div class="col-sm-7 ">
-                                    {{ form_widget(Form.plainPassword, {'attr': {'class': 'form-control', 'placeholder': '●●●●●●●', 'disabled': true}}) }}
-                                </div>
-    
+
+                            <div class="col-sm-7 ">
+                                {{ form_widget(Form.plainPassword, {'attr': {'class': 'form-control', 'placeholder': '●●●●●●●', 'disabled': true}}) }}
                             </div>
 
-                             <div class="row form-group align-items-center">
-                                
-                                {{ form_label(Form.dob, 'Birthday', {
+                        </div>
+
+                        <div class="row form-group align-items-center">
+
+                            {{ form_label(Form.dob, 'Birthday', {
     'label_attr': {'class': 'col-sm-3'}
 }) }}
-                                
-                                <div class="col-sm-7 ">
-                                    {{ form_widget(Form.dob, {'attr': {'class': 'form-control', 'disabled': true}}) }}
-                                </div>
-    
+
+                            <div class="col-sm-7 ">
+                                {{ form_widget(Form.dob, {'attr': {'class': 'form-control', 'disabled': true}}) }}
                             </div>
-        
-        
 
-       
-    
+                        </div>
 
 
-                            <div class="col-sm-12" align="center">
- <div class="text-center pt-115">
-                                    <button class="btn btn-form " id="update" style=" color: #ffffff;  display: none;"> UPDATE</a></button>
-                                </div>                                </div>
-                                {{ form_end(Form) }}
-                                <div style="max-width:794px; padding-top:0px;">
-<div class="col-sm-12" align="center" style="padding-top:0px;">
- <div class="text-center pt-115" style="padding-top:0px;">
-                                <button class="btn btn-form" id="edit"  style="color: #ffffff;">EDIT</a></button>
-                                </div>     </div>                           </div>
-                                
-                                <br>
-                         <br>
+                        <div align="center" class="col-sm-12">
+                            <div class="text-center pt-115">
+                                <button class="btn btn-form " id="update" style=" color: #ffffff;  display: none;">
+                                    UPDATE</a>
+                            </button>
+                        </div>
+                    </div>
+                    {{ form_end(Form) }}
+                    <div style="max-width:794px; padding-top:0px;">
+                        <div align="center" class="col-sm-12" style="padding-top:0px;">
+                            <div class="text-center pt-115" style="padding-top:0px;">
+                                <button class="btn btn-form" id="edit" style="color: #ffffff;">EDIT</a>
+                            </button>
+                        </div>
                     </div>
                 </div>
+
+                <br>
+                <br>
             </div>
         </div>
     </div>
-</div>
-
-
-
-{% endblock %}
+</div></div></div>{% endblock %}

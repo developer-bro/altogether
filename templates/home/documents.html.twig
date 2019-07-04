@@ -43,6 +43,10 @@
         </div>
       </div>
     </nav>
+
+   
+
+    
     <div class="wrapper-account">
       <div class="container-fluid">
         <div class="row no-gutters  mt-91">
@@ -52,18 +56,20 @@
                 <h3><img src="images/folder.svg" alt="">CV</h3>
                 <a href="#"><img src="images/dots-line.svg" alt=""></a> </div>
               <div class="card_body">
+              {% for files in uploadedFiles %}
                 <div class="ch-bx">
+                  
                   <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox"
                                             checked="">
-                  <label for="checkbox-1" class="checkbox-style-3-label"> My latest CV.pdf </label>
+                  <label for="checkbox-1" class="checkbox-style-3-label"> {{ files.name }} </label>
                 </div>
-                <div class="ch-bx">
-                  <input id="checkbox-2" class="checkbox-style" name="checkbox-10"
-                                            type="checkbox">
-                  <label for="checkbox-2" class="checkbox-style-3-label"> CV.pdf </label>
-                </div>
-                <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt=""></a> </div>
+                {% endfor %}
+                {{ form_start(form) }}
+                <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt="">{{ form_widget(form.name, {'attr': {'class': 'checkbox-style'}}) }}</a> </div>
+               {{ form_widget(form.submit) }}
+               {{ form_end(form) }}
               </div>
+              
             </div>
           </div>
         </div>

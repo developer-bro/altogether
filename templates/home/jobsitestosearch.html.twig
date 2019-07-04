@@ -55,7 +55,7 @@
           <div class="keyword-input">
             <label for="">Job description</label>
             <div class="relative">
-              <input type="text" class="form-control" placeholder="Job title, keywords">
+              <input type="text" class="form-control" placeholder="Job title, keywords" id="jobName">
               <i class="search-icon"> <img src="images/search.svg" alt=""></i> </div>
           </div>
         </div>
@@ -63,33 +63,33 @@
           <div class="des-input ml-auto">
             <label for="">Location</label>
             <div class="relative">
-              <input type="text" class="form-control" placeholder="City, state or ZIP code">
+              <input type="text" class="form-control" placeholder="City, state or ZIP code" id="locationName">
               <i class="search-icon"><img src="images/maps-and-flags.svg" alt=""></i> </div>
           </div>
         </div>
       </div>
       <div class="text-center">
-        <button type="submit" class="btn btn-search">Run Search <img src="images/search2.svg" alt=""> </button>
+        <button type="submit" id="submitBtn" class="btn btn-search">Run Search <img src="images/search2.svg" alt=""> </button>
       </div>
     </form>
     <div class="serch-wrapper">
       <div class="media">
         <div class="check">
-          <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
+          <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox"  >
           <label for="checkbox-1" class="checkbox-style-3-label"> <img src="images/linkedin.svg" alt=""> <span>LinkedIn</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
         <a href="#">Edit</a> </div>
       <div class="media">
         <div class="check">
-          <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
+          <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox"  >
           <label for="checkbox-2" class="checkbox-style-3-label"> <img src="images/indeed.svg" alt=""> <span>Indeed</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
         <a href="#">Edit</a> </div>
       <div class="media">
         <div class="check">
-          <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox">
+          <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox" >
           <label for="checkbox-3" class="checkbox-style-3-label"> <img src="images/monster.svg" alt=""> <span>Monster</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
@@ -99,4 +99,25 @@
 </div>
 
 </div>
+
+<script>
+$("#submitBtn").click("submit", function (e) {
+    e.preventDefault();
+    var jobName = $("#jobName").val();
+    var locationName = $("#locationName").val();
+    
+  window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
+  window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
+  window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+    
+   
+
+  
+    
+    
+});
+
+</script>
+
+  
 {% endblock %}

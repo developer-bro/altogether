@@ -79,9 +79,15 @@ class User implements UserInterface
      */
     private $jobs;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Upload", mappedBy="user")
+     */
+    private $uploads;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
+        $this->uploads = new ArrayCollection();
     }
     
 
@@ -279,6 +285,37 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($job->getUser() === $this) {
                 $job->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Upload[]
+     */
+    public function getUploads(): Collection
+    {
+        return $this->uploads;
+    }
+
+    public function addUpload(Upload $upload): self
+    {
+        if (!$this->uploads->contains($upload)) {
+            $this->uploads[] = $upload;
+            $upload->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUpload(Upload $upload): self
+    {
+        if ($this->uploads->contains($upload)) {
+            $this->uploads->removeElement($upload);
+            // set the owning side to null (unless already changed)
+            if ($upload->getUser() === $this) {
+                $upload->setUser(null);
             }
         }
 
