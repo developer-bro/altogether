@@ -23,6 +23,8 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Repository\JobsRepository;
 use App\Entity\User;
 use App\Entity\Jobs;
+use App\Repository\TaskRepository;
+use App\Entity\Task;
 
 
 class DashboardController extends AbstractController
@@ -32,12 +34,22 @@ class DashboardController extends AbstractController
      *
      * 
      */
-    public function index(Request $request, JobsRepository $jobs): Response
+    public function index(Request $request, JobsRepository $jobs, TaskRepository $tasks): Response
     {
 
         $user = $this->getUser();
         $latestJobs = $jobs->findLatest($user);
-        return $this->render('home/dashboard.html.twig', ['jobs' => $latestJobs]);
+        $latestTasks = $tasks->findLatest($user);
+        $appliedjobs = $jobs->findApplied($user);
+        $followupjobs = $jobs->findFollowup($user);
+        $interviewjobs = $jobs->findInterview($user);
+        $postinterviewjobs = $jobs->findPostInterview($user);
+        $savedjobscount= count($latestJobs);
+        $appliedjobscount= count($appliedjobs);
+        $followupjobscount= count($followupjobs);
+        $interviewjobscount= count($interviewjobs);
+        $postinterviewjobscount= count($postinterviewjobs);
+        return $this->render('home/dashboard.html.twig', ['jobs' => $latestJobs, 'tasks' => $latestTasks, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
     }
 
 }

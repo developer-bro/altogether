@@ -55,27 +55,15 @@
         <h3>Saved searches</h3>
       </div>
       <div class="card-search">
+      {% for search in searches %}
         <div class="media">
           <div >
             <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
-            <label for="checkbox-1" class="checkbox-style-3-label"> Financial Analyst, NYC </label>
+            <label for="checkbox-1" class="checkbox-style-3-label"> {{ search.jobName }}, {{ search.location }} </label>
           </div>
           <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="#"><img src="images/recycle.svg" alt=""></a> </div>
         </div>
-        <div class="media">
-          <div >
-            <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" >
-            <label for="checkbox-2" class="checkbox-style-3-label"> Financial Analyst, Philadelphia </label>
-          </div>
-          <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="#"><img src="images/recycle.svg" alt=""></a> </div>
-        </div>
-        <div class="media">
-          <div >
-            <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
-            <label for="checkbox-3" class="checkbox-style-3-label"> VP, Finance, NYC </label>
-          </div>
-          <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="#"><img src="images/recycle.svg" alt=""></a> </div>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </div>

@@ -105,10 +105,28 @@ $("#submitBtn").click("submit", function (e) {
     e.preventDefault();
     var jobName = $("#jobName").val();
     var locationName = $("#locationName").val();
+    var email = [jobName, locationName];
+  
     
   window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
   window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
   window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+
+   $.ajax({
+                url: "{{ path('savedjobsearches') }}",
+                type: 'POST',
+                data: {
+                    email: email
+                },
+                success: function (res) {
+                  
+                    console.log(res.jobName);
+                    console.log(res.locationName);
+                    
+
+
+                }
+            });
     
    
 

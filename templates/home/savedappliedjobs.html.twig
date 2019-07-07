@@ -151,6 +151,7 @@
                             </div>
                             {% for job in jobs %}
                                 <div class="media-body">
+                                <a href="{{ path('joblistingshow', { id: job.id }) }}">
                                     <div class="auth_w">
                                         <div class="author-dt">
                                             <h3>{{ job.title }}</h3>
@@ -168,9 +169,23 @@
                                     </div>
                                     <p>{{ job.description|truncate(250) }}
                                     </p>
+                                    </a>
                                     <div class="footer-card">
                                         <a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>
                                     </div>
+                                    <div class="dropdown">
+    <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Change Status
+    <span class="caret"></span></button>
+    <ul class="dropdown-menu">
+      <li><a href="{{ path('appliedaction', { id: job.id }) }}">Apply</a></li>
+      <li><a href="{{ path('followupaction', { id: job.id }) }}">Follow Up</a></li>
+      <li><a href="{{ path('interviewaction', { id: job.id }) }}">Interview</a></li>
+      <li><a href="{{ path('postinterviewaction', { id: job.id }) }}">Post Interview Follow Up</a></li>
+    </ul>
+  </div>
+                                    <div>
+                                            <hr style="height:2px;border:none;color:#333;background-color:#333;" width="100px">
+                                            </div>
 
                                 {% endfor %}
                             </div>
@@ -260,7 +275,7 @@
                     $("#jobs_save_location").html(res.location);
                     $("#jobs_save_uri").html(res.uri);
                     console.log(res.location);
-                    console.log(res.uri);
+                    
 
 
                 }

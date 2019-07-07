@@ -84,10 +84,22 @@ class User implements UserInterface
      */
     private $uploads;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Task", mappedBy="user")
+     */
+    private $tasks;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\SavedJobSearches", mappedBy="user")
+     */
+    private $savedJobSearches;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
         $this->uploads = new ArrayCollection();
+        $this->tasks = new ArrayCollection();
+        $this->savedJobSearches = new ArrayCollection();
     }
     
 
@@ -316,6 +328,68 @@ class User implements UserInterface
             // set the owning side to null (unless already changed)
             if ($upload->getUser() === $this) {
                 $upload->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Task[]
+     */
+    public function getTasks(): Collection
+    {
+        return $this->tasks;
+    }
+
+    public function addTask(Task $task): self
+    {
+        if (!$this->tasks->contains($task)) {
+            $this->tasks[] = $task;
+            $task->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeTask(Task $task): self
+    {
+        if ($this->tasks->contains($task)) {
+            $this->tasks->removeElement($task);
+            // set the owning side to null (unless already changed)
+            if ($task->getUser() === $this) {
+                $task->setUser(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|SavedJobSearches[]
+     */
+    public function getSavedJobSearches(): Collection
+    {
+        return $this->savedJobSearches;
+    }
+
+    public function addSavedJobSearch(SavedJobSearches $savedJobSearch): self
+    {
+        if (!$this->savedJobSearches->contains($savedJobSearch)) {
+            $this->savedJobSearches[] = $savedJobSearch;
+            $savedJobSearch->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSavedJobSearch(SavedJobSearches $savedJobSearch): self
+    {
+        if ($this->savedJobSearches->contains($savedJobSearch)) {
+            $this->savedJobSearches->removeElement($savedJobSearch);
+            // set the owning side to null (unless already changed)
+            if ($savedJobSearch->getUser() === $this) {
+                $savedJobSearch->setUser(null);
             }
         }
 

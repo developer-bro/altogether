@@ -20,18 +20,70 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\User;
+use App\Entity\Task;
+use App\Repository\TaskRepository;
+use App\Form\TaskType;
+use App\Repository\JobsRepository;
+use App\Entity\Jobs;
 
 
 class MyTaskController extends AbstractController
 {
     /**
-     * @Route("/mytask", methods={"GET"}, name="index")
+     * @Route("/mytask", methods={"GET", "POST"}, name="mytask")
      *
      * 
      */
-    public function index(): Response
+    public function index(Request $request, TaskRepository $task, JobsRepository $jobs): Response
     {
-        return $this->render('home/mytask.html.twig');
+
+        
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+        $latestJobs = $jobs->findLatest($user);
+
+ 
+        $appliedjobs = $jobs->findApplied($user);
+        $followupjobs = $jobs->findFollowup($user);
+        $interviewjobs = $jobs->findInterview($user);
+        $postinterviewjobs = $jobs->findPostInterview($user);
+        $savedjobscount= count($latestJobs);
+        $appliedjobscount= count($appliedjobs);
+        $followupjobscount= count($followupjobs);
+        $interviewjobscount= count($interviewjobs);
+        $postinterviewjobscount= count($postinterviewjobs);
+
+        $tasks = $task->findLatest($user);
+        $form = $this->createForm(TaskType::class);
+
+        $form->handleRequest($request);
+        if ($form->isSubmitted() && $form->isValid()) {
+        
+
+        $name = $form->get('name')->getData();
+        $fromName = $form->get('fromName')->getData();
+        $toName = $form->get('toName')->getData();
+        $dueDate = $form->get('dueDate')->getData();
+        $notes = $form->get('notes')->getData();
+        $task = new Task();
+        $task->setName($name);
+        $task->setFromName($fromName);
+        $task->setToName($toName);
+        $task->setDueDate($dueDate);
+        $task->setNotes($notes);
+        $task->setUser($user);
+
+        $entityManager->persist($task);
+            $entityManager->persist($user);
+            $entityManager->flush();
+            return $this->redirectToRoute('mytask');
     }
+
+        return $this->render('home/mytask.html.twig', [
+            'form' => $form->createView(), 'tasks' => $tasks, 'jobs' => $latestJobs, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
+    }
+
+
 
 }

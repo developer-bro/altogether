@@ -5,7 +5,7 @@
   <!-- Sidebar  -->
   <nav class="sidebar">
     <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
-    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
+    <div class="sidebar-header text-center"> <img src="{{ asset('images/logo.svg') }}" alt=""> </div>
     <ul class="list-unstyled components">
       <li><a href="/dashboard">My Dashboard</a></li>
       <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
@@ -34,7 +34,7 @@
             <li class="active"> <a href="#">HELP</a> </li>
             <li> <a href="/accountinfo">SETTINGS</a> </li>
             <li>
-                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+                                    <a  href="#" id="navbardrop"><img alt="" src="{{ asset('images/avatar.png') }}">
 
                                     </a>
                         
@@ -52,60 +52,58 @@
     <ul class="dashboard-review">
       <li>
         <div class="c1">
-          <div class="counter done"> 8-May </div>
-          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+          <div class="counter done"> {{ job.dateApplied|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Applied</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter done"> 20-May </div>
-          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+          <div class="counter done"> {{ job.dateInitialFollowUp|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Initial Follow-up</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> 03-Jun </div>
-          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+          <div class="counter"> {{ job.dateInterviewPrep|date('d-m') }}</div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Interview Prep</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> 4-Jun </div>
-          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+          <div class="counter"> {{ job.dateInterview|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Interviews</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> . </div>
-          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+          <div class="counter"> {{ job.dateThankYouLetter|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Thank You Letter</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> . </div>
-          <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+          <div class="counter"> {{ job.dateFollowUp|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Follow-up</h3>
       </li>
     </ul>
     <div class="filter-card">
       <div class="media">
-        <div class="icon-filter"> <img src="images/check-c.svg" alt=""> </div>
+        <div class="icon-filter"> <img src="{{ asset('images/check-c.svg') }}" alt=""> </div>
         <div class="media-body">
           <div class="auth_w">
             <div class="author-dt">
-              <h3>Financial Analyst</h3>
-              <p>Merrill Lynch</p>
+              <h3>{{ job.title }}</h3>
+              <p>{{ job.comapnyName }}/p>
               <ul>
-                <li><img src="images/pin.svg" alt=""> <span> New York, NY</span></li>
-                <li><img src="images/factory.svg" alt=""> <span>Finance</span></li>
-                <li><img src="images/goal.svg" alt=""> <span> Entry level</span></li>
+                <li><img src="{{ asset('images/pin.svg') }}" alt=""> <span> {{ job.location }}</span></li>
+                <li><img src="{{ asset('images/factory.svg') }}" alt=""> <span>Finance</span></li>
+                <li><img src="{{ asset('images/goal.svg') }}" alt=""> <span> Entry level</span></li>
               </ul>
             </div>
-            <div class="sav-link"> 6 hours ago </div>
+            <div class="sav-link"> {{ job.dateSaved|ago }} </div>
           </div>
-          <p>You will establish a shared vision, creating stories and setting a world class creative direction. 
-            You will inspire the teams around you, leading by example and becoming a role model for your 
-            fellow designers. </p>
+          <p>{{ job.description }} </p>
         </div>
       </div>
       <div class="steps-filter"> <span>Next Steps</span>

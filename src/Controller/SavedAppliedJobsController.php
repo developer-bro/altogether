@@ -71,17 +71,165 @@ class SavedAppliedJobsController extends AbstractController
         ]);
     }
 
+
+     /**
+     * @Route("/joblisting/{id}", methods={"GET"}, name="joblistingshow")
+     *
+     */
+    public function jobShow($id, Request $request, JobsRepository $jobs): Response
+    {
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+        return $this->render('home/joblisting.html.twig', ['job' => $job]);
+    }
+
+
     /**
-     * @Route("/savedappliedaction", methods={"GET", "POST"}, name="savedappliedaction")
+     * @Route("/appliedaction/{id}", methods={"GET", "POST"}, name="appliedaction")
      *
      * 
      */
-    public function savedindex(Request $request): Response
+    public function appliedaction(Request $request, JobsRepository $jobs, $id): Response
     {
 
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+      
+        $job->setIsApplied(TRUE);
+        $job->setIsFollowUp(FALSE);
+        $job->setIsInterview(FALSE);
+        $job->setIsPostInterviewFollowUp(FALSE);
+
+        $job->setDateApplied(new \DateTime());
         
-        return $this->render('home/savedappliedjobs.html.twig');
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('dashboard');
+
+
+        
+        
     }
+
+    /**
+     * @Route("/followupaction/{id}", methods={"GET", "POST"}, name="followupaction")
+     *
+     * 
+     */
+    public function followupaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+      
+        $job->setIsApplied(FALSE);
+        $job->setIsFollowUp(TRUE);
+        $job->setIsInterview(FALSE);
+        $job->setIsPostInterviewFollowUp(FALSE);
+        $jobs->setDateInitialFollowUp(new \DateTime());
+
+      
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('dashboard');
+        
+        
+    }
+
+    /**
+     * @Route("/interviewaction/{id}", methods={"GET", "POST"}, name="interviewaction")
+     *
+     * 
+     */
+    public function interviewaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+      
+        $job->setIsApplied(FALSE);
+        $job->setIsFollowUp(FALSE);
+        $job->setIsInterview(TRUE);
+        $job->setIsPostInterviewFollowUp(FALSE);
+        $jobs->setDateInterview(new \DateTime());
+
+       
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('dashboard');
+
+
+        
+        
+    }
+
+    /**
+     * @Route("/postinterviewaction/{id}", methods={"GET", "POST"}, name="postinterviewaction")
+     *
+     * 
+     */
+    public function postinterviewaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+      
+        $job->setIsApplied(FALSE);
+        $job->setIsFollowUp(FALSE);
+        $job->setIsInterview(FALSE);
+        $job->setIsPostInterviewFollowUp(TRUE);
+
+        $jobs->setDateFollowUp(new \DateTime());
+
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('dashboard');
+
+
+        
+        
+    }
+
+
 
 
 }

@@ -70,4 +70,68 @@ class JobsRepository extends ServiceEntityRepository
             
             return $query->execute();
     }
+
+    public function findApplied($user)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	SELECT j, u
+                	FROM App\Entity\Jobs j JOIN j.User u
+                	WHERE u.id = :user AND j.isApplied = 1
+                	ORDER BY j.id DESC
+            		')
+                ->setParameter('user', $user)
+            ;
+            
+            return $query->execute();
+    }
+
+    public function findFollowup($user)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	SELECT j, u
+                	FROM App\Entity\Jobs j JOIN j.User u
+                	WHERE u.id = :user AND j.isFollowUp = 1
+                	ORDER BY j.id DESC
+            		')
+                ->setParameter('user', $user)
+            ;
+            
+            return $query->execute();
+    }
+
+    public function findInterview($user)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	SELECT j, u
+                	FROM App\Entity\Jobs j JOIN j.User u
+                	WHERE u.id = :user AND j.isInterview = 1
+                	ORDER BY j.id DESC
+            		')
+                ->setParameter('user', $user)
+            ;
+            
+            return $query->execute();
+    }
+
+    public function findPostInterview($user)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	SELECT j, u
+                	FROM App\Entity\Jobs j JOIN j.User u
+                	WHERE u.id = :user AND j.isPostInterviewFollowUp = 1
+                	ORDER BY j.id DESC
+            		')
+                ->setParameter('user', $user)
+            ;
+            
+            return $query->execute();
+    }
 }

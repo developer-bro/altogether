@@ -20,25 +20,48 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+Use Symfony\Component\HttpFoundation\JsonResponse;
 use App\Entity\SavedJobSearches;
 use App\Entity\User;
 use App\Repository\SavedJobSearchesRepository;
 
 
-class SavedSearchesController extends AbstractController
+
+class SavedJobSearchesController extends AbstractController
 {
     /**
-     * @Route("/savedsearches", methods={"GET"}, name="savedsearches")
+     * @Route("/savedjobsearches", methods={"GET", "POST"}, name="savedjobsearches")
      *
      * 
      */
-    public function index(Request $request, SavedJobSearchesRepository $jobsearches): Response
+    public function index(Request $request): Response
     {
+
+        $email = $request->request->get('email');
+        $jobName = $email[0];
+        $location = $email[1];
         $user = $this->getUser();
-        $savedjobsearches = $jobsearches->findLatest($user);
-        return $this->render('home/savedsearches.html.twig', [
-            'searches' => $savedjobsearches,
-        ]);
+        
+        $saved = new SavedJobSearches();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $saved->setUser($user);
+        $saved->setJobName($jobName);
+        $saved->setLocation($location);
+            $entityManager->persist($saved);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+        
+       
+       
+
+        $content = ["jobName" => $jobName, "location" => $location];
+
+        
+
+        return new JsonResponse($content);
     }
+
 
 }

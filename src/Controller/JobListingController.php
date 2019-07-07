@@ -20,6 +20,9 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Repository\JobsRepository;
+use App\Entity\User;
+use App\Entity\Jobs;
 
 
 class JobListingController extends AbstractController
@@ -29,9 +32,13 @@ class JobListingController extends AbstractController
      *
      * 
      */
-    public function index(): Response
+    public function index(Request $request, JobsRepository $jobs): Response
     {
-        return $this->render('home/joblisting.html.twig');
+
+        $user = $this->getUser();
+        $latestJobs = $jobs->findLatest($user);
+        $latestjob = $latestJobs[0];
+        return $this->render('home/joblisting.html.twig', ['job' => $latestjob]);
     }
 
 }

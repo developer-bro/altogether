@@ -20,9 +20,8 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\HttpFoundation\JsonResponse;
-use Goutte\Client;
-use GuzzleHttp\Client as GuzzleClient;
+Use Symfony\Component\HttpFoundation\JsonResponse;
+
 
 
 class ScrapeDataController extends AbstractController
@@ -37,26 +36,50 @@ class ScrapeDataController extends AbstractController
 
         $email = $request->request->get('email');
 
-        $client = new Client();
-
-        $guzzleClient = new GuzzleClient(array(
-            'timeout' => 60,
-        ));
-        $client->setClient($guzzleClient);
-
+        $client = \Symfony\Component\Panther\Client::createChromeClient();
         $crawler = $client->request('GET', $email);
-        
+
+if (preg_match("/linkedin/", $email))
+{
+    
         $title = $crawler->filter('.topcard__title')->text();
         $description = $crawler->filter('.description')->text(); 
         $company = $crawler->filter('.topcard__flavor-row span')->first()->text(); 
         
         $location = $crawler->filter('.topcard__flavor.topcard__flavor--bullet')->text();  
-        $link = $crawler->selectLink('Apply')->link();  
-        $uri = $link->getUri();
        
+        
+        $uri = $email;
+}
+	
+elseif(preg_match("/monster/", $email))
+{
+	
+        $title = $crawler->filter('.title')->text();
+        $description = $crawler->filter('#JobDescription')->text(); 
+        $company = $crawler->filter('.subtitle')->text(); 
+        
+        $location = $crawler->filter('.subtitle')->text();  
+       
+        
+        $uri = $email;
+}
+else
+{
 
+    $title = $crawler->filter('#vjs-jobtitle')->text();
+    $description = $crawler->filter('#vjs-desc')->text(); 
+    $company = $crawler->filter('#vjs-cn')->text(); 
+    
+    $location = $crawler->filter('#vjs-loc')->text();  
+   
+    
+    $uri = $email;
+}
+
+        
+       
         $content = ['title' => $title, 'description' => $description, 'company' => $company, 'location' => $location, 'uri' => $uri];
-
         
 
         return new JsonResponse($content);
