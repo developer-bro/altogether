@@ -6,6 +6,7 @@ use App\Entity\Task;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 
 class TaskType extends AbstractType
 {
@@ -15,7 +16,11 @@ class TaskType extends AbstractType
             ->add('name')
             ->add('fromName')
             ->add('toName')
-            ->add('dueDate')
+            ->add('dueDate', DateType::class, [
+                'widget' => 'choice',
+                // this is actually the default format for single_text
+             
+            ])
             ->add('notes')
         ;
     }

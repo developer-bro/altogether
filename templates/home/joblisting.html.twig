@@ -52,37 +52,37 @@
     <ul class="dashboard-review">
       <li>
         <div class="c1">
-          <div class="counter done"> {{ job.dateApplied|date('d-m') }} </div>
+          <div class="counter done"> {{ job.dateApplied ? job.dateApplied|date('d-m') }} </div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Applied</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter done"> {{ job.dateInitialFollowUp|date('d-m') }} </div>
+          <div class="counter done"> {{ job.dateInitialFollowUp ? job.dateInitialFollowUp|date('d-m')  }} </div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Initial Follow-up</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> {{ job.dateInterviewPrep|date('d-m') }}</div>
+          <div class="counter"> {{ job.dateInterviewPrep ? job.dateInterviewPrep|date('d-m') }}</div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Interview Prep</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> {{ job.dateInterview|date('d-m') }} </div>
+          <div class="counter"> {{ job.dateInterview ? job.dateInterview|date('d-m') }} </div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Interviews</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> {{ job.dateThankYouLetter|date('d-m') }} </div>
+          <div class="counter"> {{ job.dateThankYouLetter ? job.dateThankYouLetter|date('d-m') }} </div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Thank You Letter</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter"> {{ job.dateFollowUp|date('d-m') }} </div>
+          <div class="counter"> {{ job.dateFollowUp ? job.dateFollowUp|date('d-m') }} </div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Follow-up</h3>
       </li>
@@ -94,12 +94,10 @@
           <div class="auth_w">
             <div class="author-dt">
               <h3>{{ job.title }}</h3>
-              <p>{{ job.comapnyName }}/p>
+              <p>{{ job.comapnyName }}</p>
               <ul>
                 <li><img src="{{ asset('images/pin.svg') }}" alt=""> <span> {{ job.location }}</span></li>
-                <li><img src="{{ asset('images/factory.svg') }}" alt=""> <span>Finance</span></li>
-                <li><img src="{{ asset('images/goal.svg') }}" alt=""> <span> Entry level</span></li>
-              </ul>
+              
             </div>
             <div class="sav-link"> {{ job.dateSaved|ago }} </div>
           </div>

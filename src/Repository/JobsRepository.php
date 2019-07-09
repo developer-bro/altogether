@@ -71,6 +71,22 @@ class JobsRepository extends ServiceEntityRepository
             return $query->execute();
     }
 
+    public function findSaved($user)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	SELECT j, u
+                	FROM App\Entity\Jobs j JOIN j.User u
+                	WHERE u.id = :user AND j.isSaved = 1
+                	ORDER BY j.id DESC
+            		')
+                ->setParameter('user', $user)
+            ;
+            
+            return $query->execute();
+    }
+
     public function findApplied($user)
     {
 

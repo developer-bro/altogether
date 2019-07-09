@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190705081743 extends AbstractMigration
+final class Version20190709150146 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20190705081743 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE saved_job_searches ADD user_id INT NOT NULL');
-        $this->addSql('ALTER TABLE saved_job_searches ADD CONSTRAINT FK_8AF982C4A76ED395 FOREIGN KEY (user_id) REFERENCES user (id)');
-        $this->addSql('CREATE INDEX IDX_8AF982C4A76ED395 ON saved_job_searches (user_id)');
+        $this->addSql('ALTER TABLE task ADD task_status VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +30,6 @@ final class Version20190705081743 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE saved_job_searches DROP FOREIGN KEY FK_8AF982C4A76ED395');
-        $this->addSql('DROP INDEX IDX_8AF982C4A76ED395 ON saved_job_searches');
-        $this->addSql('ALTER TABLE saved_job_searches DROP user_id');
+        $this->addSql('ALTER TABLE task DROP task_status');
     }
 }

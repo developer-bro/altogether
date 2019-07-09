@@ -1,276 +1,194 @@
 {% extends 'base.html.twig' %}
 {% block body %}
-    <div class="account-info">
-        <div
-            class="wrapper">
-            <!-- Sidebar  -->
-            <nav class="sidebar">
-                <button class="btn close-btn sidebarCollapse">
-                    <i class="fas fa-times"></i>
-                </button>
-                <div class="sidebar-header text-center">
-                    <img alt="" src="images/logo.svg">
-                </div>
-                <ul class="list-unstyled components">
-                    <li>
-                        <a href="/dashboard">My Dashboard</a>
-                    </li>
-                    <li>
-                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu">Job search</a>
-                        <ul class="collapse list-unstyled " id="pageSubmenu">
-                            <li>
-                                <a href="/jobsitestosearch">Job Sites to Search</a>
-                            </li>
-                            <li>
-                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
-                            </li>
-                            <li>
-                                <a href="/joblisting">Job Listing</a>
-                            </li>
-                            <li>
-                                <a href="/savedsearches">Saved Searches</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="/documents">My documents</a>
-                    </li>
-                    <li class="active">
-                        <a href="/mytask">My Tasks</a>
-                    </li>
-                    <li>
+
+<div class="account-info">
+<div class="wrapper"> 
+  <!-- Sidebar  -->
+  <nav class="sidebar">
+    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
+    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
+    <ul class="list-unstyled components">
+      <li><a href="/dashboard">My Dashboard</a></li>
+      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Job search</a>
+        <ul class="collapse list-unstyled " id="pageSubmenu">
+          <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
+          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
+          <li><a href="/joblisting">Job Listing</a></li>
+          <li><a href="/savedsearches">Saved Searches</a></li>
+        </ul>
+      </li>
+      <li><a href="/documents">My documents</a></li>
+      <li class="active"><a href="/mytask">My Tasks</a></li>
+      <li>
                         <a href="/logout">LogOut</a>
                     </li>
-                </ul>
-            </nav>
-
-            <!-- Page Content  -->
-            <div class="content">
-                <nav class="dashboard-nav navbar-expand-lg">
-                    <div class="container-fluid">
-                        <div class="d-flex align-items-center">
-                            <button class="btn btn-info sidebarCollapse">
-                                <i class="fas fa-bars"></i>
-                            </button>
-                            <ul class="sidetop ml-auto">
-                                <li class="active">
-                                    <a href="#">HELP</a>
-                                </li>
-                                <li>
-                                    <a href="/accountinfo">SETTINGS</a>
-                                </li>
-                                <li>
-                                    <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
-
-                                    </a>
-
-                                </li>
-                            </ul>
-                        </div>
+    </ul>
+  </nav>
+  
+  <!-- Page Content  -->
+  <div class="content">
+    <nav class="dashboard-nav navbar-expand-lg">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center">
+          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
+          <ul class="sidetop ml-auto">
+            <li class="active"> <a href="#">HELP</a> </li>
+            <li> <a href="#">SETTINGS</a> </li>
+            <li>
+              <div class="avtar"><img src="images/avatar.png" alt=""></div>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <ul class="links_search">
+      <li class="active"><a href="#">My task</a></li>
+    </ul>
+    <div class="wrapper-account task-bx">
+      <div class="container-fluid">
+        <div class="row">
+          <div class="col-xl-9">
+            <div class="pt-20">
+              <h3 class="caption">Stage</h3>
+              <ul class="dashboard-review">
+                <li>
+                  <div class="c1">
+                    <div class="counter">{{ savedjobscount }}</div>
+                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+                  <h3>Saved Jobs</h3>
+                </li>
+                <li>
+                  <div class="c1">
+                    <div class="counter">{{ appliedjobscount }}</div>
+                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+                  <h3>Applied</h3>
+                </li>
+                <li>
+                  <div class="c1">
+                    <div class="counter">{{ followupjobscount }}</div>
+                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+                  <h3>Follow-up</h3>
+                </li>
+                <li>
+                  <div class="c1">
+                    <div class="counter">{{ interviewjobscount }}</div>
+                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+                  <h3>Interviews</h3>
+                </li>
+                <li>
+                  <div class="c1">
+                    <div class="counter">{{ postinterviewjobscount }}</div>
+                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
+                  <h3>Follow-up</h3>
+                </li>
+              </ul>
+              <div class="filter-card">{% for task in tasks %}
+                <div class="media">
+                  <div class="icon-filter">
+                    <input id="checkbox-1" class="checkbox-style" name="checkbox-10"
+                                                type="checkbox" checked="">
+                    <label for="checkbox-1" class="checkbox-style-3-label"> </label>
+                  </div>
+                  
+                  <div class="media-body">
+                    <div class="auth_w">
+                      <div class="author-dt">
+                        <h3>{{ task.name }}</h3>
+                        <ul>
+                          <li><img src="images/pin.svg" alt=""> <span> {{ task.job.location }}</span> </li>
+                          <li><img src="images/factory.svg" alt=""> <span>{{ task.job.title }}</span> </li>
+                        </ul>
+                      </div>
+                      <div class="sav-link"> <span>DUE:</span> {{ task.dueDate|ago }}</div>
                     </div>
-                </nav>
-                <ul class="links_search">
-                    <li class="active">
-                        <a href="#">My task</a>
-                    </li>
-                </ul>
-                <div class="wrapper-account task-bx">
-                    <div class="container-fluid">
-                        <div class="row">
-                            <div class="col-xl-9">
-                                <div class="pt-20">
-                                    <h3 class="caption">Stage</h3>
-                                    <ul class="dashboard-review">
-                                        <li>
-                                            <div class="c1">
-                                                <div class="counter">
-                                                    {{ savedjobscount }}
-                                                </div>
-                                                <span class="img-dots">
-                                                    <img alt="" src="images/dots.svg">
-                                                </span>
-                                            </div>
-                                            <h3>Saved Jobs</h3>
-                                        </li>
-                                        <li>
-                                            <div class="c1">
-                                                <div class="counter">
-                                                    {{ appliedjobscount }}
-                                                </div>
-                                                <span class="img-dots">
-                                                    <img alt="" src="images/dots.svg">
-                                                </span>
-                                            </div>
-                                            <h3>Applied</h3>
-                                        </li>
-                                        <li>
-                                            <div class="c1">
-                                                <div class="counter">
-                                                    {{ followupjobscount }}
-                                                </div>
-                                                <span class="img-dots">
-                                                    <img alt="" src="images/dots.svg">
-                                                </span>
-                                            </div>
-                                            <h3>Follow-up</h3>
-                                        </li>
-                                        <li>
-                                            <div class="c1">
-                                                <div class="counter">
-                                                    {{ interviewjobscount }}
-                                                </div>
-                                                <span class="img-dots">
-                                                    <img alt="" src="images/dots.svg">
-                                                </span>
-                                            </div>
-                                            <h3>Interviews</h3>
-                                        </li>
-                                        <li>
-                                            <div class="c1">
-                                                <div class="counter">
-                                                    {{ postinterviewjobscount }}
-                                                </div>
-                                                <span class="img-dots">
-                                                    <img alt="" src="images/dots.svg">
-                                                </span>
-                                            </div>
-                                            <h3>Follow-up</h3>
-                                        </li>
-                                    </ul>
-                                    <div class="filter-card">
-
-                                        <div class="media">
-                                            <div class="icon-filter">
-                                                <input class="checkbox-style" id="checkbox-1" name="checkbox-10" type="checkbox">
-                                                <label class="checkbox-style-3-label" for="checkbox-1"></label>
-                                            </div>
-                                            {% for task in tasks %}
-                                                <div class="media-body">
-                                                
-                                                    <div class="auth_w">
-                                                        <div class="author-dt">
-                                                            <h3>{{ task.name }}</h3>
-                                                            <ul>
-                                                                <li><img alt="" src="images/pin.svg">
-                                                                    <span>
-                                                                        New York, NY</span>
-                                                                </li>
-                                                                <li><img alt="" src="images/factory.svg">
-                                                                    <span>Finance</span>
-                                                                </li>
-                                                                <li><img alt="" src="images/goal.svg">
-                                                                    <span>
-                                                                        Entry level</span>
-                                                                </li>
-                                                            </ul>
-                                                        </div>
-                                                        <div class="sav-link">
-                                                            <span>DUE:</span>
-                                                            {{ task.dueDate|ago }}
-                                                        </div>
-                                                    </div>
-                                                    <p>
-                                                        <strong>Notes:</strong>
-                                                        {{ task.notes }}
-                                                    </p>
-                                                    <div class="ft-cx d-flex justify-content-between align-items-center">
-                                                        <div class="footer-card">
-                                                            <a class="clr-c" href="#">NEXT STEP</a>
-                                                            <a href="#">APPLY</a>
-                                                        </div>
-                                                        <a class="btn btn-primary" href="#">Mark as Complete</a>
-                                                    </div>
-{% endfor %}
-                                                </div>
-                                                </div>
-                                            </div>
-
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        </div>
-                        <div class="col-xl-3">
-                            <div class="right-content">
-                                <div class="card-calendar">
-                                    <h3 class="caption">Date:</h3>
-                                    <div class="datetimepicker2"></div>
-                                </div>
-                                <div class="appl-jb">
-                                    <h3>Saved/Applied Jobs</h3>
-                                    <ul>{% for job in jobs %}
-                                        <li>
-                                            <div >
-                                                <p>{{ job.title }}</p>
-                                                <p>{{ job.comapnyName }}</p>
-                                            </div>
-                                            <a class="add" data-target="#reminder" data-toggle="modal" href="#"><img alt="" src="images/plus.svg"></a>
-                                        </li>
-    {% endfor %}
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    <p><strong>Notes:</strong>{{ task.notes }} </p>
+                    <div class=" ft-cx d-sm-flex justify-content-between align-items-center">
+                      <div class="footer-card"> <a href="#" class="clr-c">NEXT STEP</a> <a href="#">APPLY</a> </div>
+                      <a href="{{ path('completetask', {'id' : task.id }) }}" class="btn btn-primary submitBtn" >{{ task.taskStatus }}</a> </div>
+                  </div>
+                  
                 </div>
+                {% endfor %}
+            
+                </div>
+              </div>
             </div>
-
-            <!-- Modal -->
-            <div aria-hidden="true" aria-labelledby="reminder" class="modal fade" id="reminder" role="dialog" tabindex="-1">
-                <div class="modal-dialog modal-dialog-centered" role="document">
-                    <div class="modal-content">
-                        {{ form_start(form) }}
-                        <div class="modal-header">
-                            <h4>
-                                ADD NEW TASK
-                            </h4>
-                            <button aria-label="Close" class="close" data-dismiss="modal" type="button">
-                                <span aria-hidden="true"><img alt="" src="images/close2.svg"></span>
-                            </button>
-                        </div>
-                        <div class="modal-body">
-                            <div class="relative status mt-2">
-                                <select class="form-control " id="" name="">
-                                    <option value="">Task</option>
-                                </select>
-                                <i class="t-f r-0"><img alt="" src="images/select.svg"></i>
-                            </div>
-                           <h3> {{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}</h3>
-                            <div class="cc-text">
-                                {{ form_row(form.fromName, {'attr': {'class': 'form-control'}}) }}
+          
+          <div class="col-xl-3">
+            <div class="right-content">
+              <div class="card-calendar">
+                <h3 class="caption">Date:</h3>
+                <div class="datetimepicker2"></div>
+              </div>
+              <div class="appl-jb">
+                <h3>Saved/Applied Jobs</h3>
+                <ul>{% for job in jobs %}
+                  <li>
+                    <div class="txt">
+                      <span>{{ job.title }}</span>
+                      <span>{{ job.comapnyName }}</sapn>
+                    </div>
+                    
+                    <a href="#" class="add" data-toggle="modal" data-target="#reminder" data-whatever="{{ job.comapnyName }}"><img
+                                                    src="images/plus.svg" alt=""></a> </li>
+                                                    {% endfor %}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <!-- Modal -->
+    <div class="modal fade" id="reminder" tabindex="-1" role="dialog" aria-labelledby="reminder"
+                aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+        {{ form_start(form) }}
+          <div class="modal-header">
+            <h4> ADD NEW TASK </h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true"><img src="images/close2.svg" alt=""></span> </button>
+          </div>
+          <div class="modal-body">
+            <div class="relative status mt-2">
+              <select name="" id="" class="form-control ">
+                <option value="">Task</option>
+              </select>
+              <i class="t-f r-0"><img src="images/select.svg" alt=""></i> </div>
+            <h3>{{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}</h3>
+            <div class="cc-text">
+              {{ form_row(form.fromName, {'attr': {'class': 'form-control'}}) }}
                                 {{ form_row(form.toName, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                            <div class="inner_modal">
-                                <div class="media">
-                                    <h4>Due Date</h4>
-                                    <div class="media-body">
-                                        <div class="input-group">
-                                            {{ form_row(form.dueDate, {'attr': {'class': 'form-control'}}) }}
-                                        </div>
-                                    </div>
-                                </div>
-                                {{ form_row(form.notes, {'attr': {'class': 'form-control'}}) }}
-                            </div>
-                        </div>
-                        {{ form_row(form._token) }}
-                        <div class="modal-footer">
-
-                            <button class="btn btn-primary">Save
+            </div>
+            <div class="inner_modal">
+              <div class="media">
+                <h4>Due Date</h4>
+                <div class="media-body">
+                  <div class="input-group">
+                   {{ form_widget(form.dueDate, {'attr': {'class': 'form-control'}}) }}
+                  </div>
+                </div>
+              </div>
+              {{ form_row(form.notes, {'attr': {'class': 'form-control'}}) }}
+            </div>
+          </div>
+          {{ form_row(form._token) }}
+          <div class="modal-footer">
+               <button class="btn btn-primary">Save
                             </button>
                             {{ form_end(form, {'render_rest': false}) }}
-                        </div>
-                    </div>
-
-                </div>
-            </div>
+          </div>
         </div>
-
+      </div>
     </div>
-    <script src="js/jquery-3.2.1.slim.min.js"></script>
-    <script src="js/popper.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/moment.js"></script> 
+  </div>
+</div>
+<!-- Optional JavaScript --> 
+<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
+<script src="js/jquery-3.2.1.slim.min.js"></script> 
+<script src="js/popper.min.js"></script> 
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/moment.js"></script> 
 <script src="js/timepicker.js"></script> 
 <script type="text/javascript">
                 $(document).ready(function () {
@@ -283,5 +201,27 @@
                     sideBySide: false
                 });
             </script>
+                       <script>
+$('#reminder').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+  var id= button.data('whatever') // Extract info from data-* attributes
+  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+  var modal = $(this)
+  modal.find('.modal-body #task_toName').val(id)
+})
+            </script>
 
+
+
+   
+
+</script>
+    </script>
+
+  
+
+
+ 
+</div>
 {% endblock %}

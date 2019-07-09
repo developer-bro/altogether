@@ -66,4 +66,22 @@ class SavedJobSearchesRepository extends ServiceEntityRepository
             
             return $query->execute();
     }
+
+    public function deleteSearch($user, $id)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	DELETE 
+                	FROM App\Entity\SavedJobSearches s
+                	WHERE s.user = :user AND s.id = :id
+            		')
+                ->setParameter('user', $user)
+                ->setParameter('id', $id)
+            ;
+            
+            return $query->execute();
+    }
+
+
 }

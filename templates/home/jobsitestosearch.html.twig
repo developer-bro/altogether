@@ -75,21 +75,21 @@
     <div class="serch-wrapper">
       <div class="media">
         <div class="check">
-          <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox"  >
+          <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="radio"  checked>
           <label for="checkbox-1" class="checkbox-style-3-label"> <img src="images/linkedin.svg" alt=""> <span>LinkedIn</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
         <a href="#">Edit</a> </div>
       <div class="media">
         <div class="check">
-          <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox"  >
+          <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="radio"  >
           <label for="checkbox-2" class="checkbox-style-3-label"> <img src="images/indeed.svg" alt=""> <span>Indeed</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
         <a href="#">Edit</a> </div>
       <div class="media">
         <div class="check">
-          <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox" >
+          <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="radio" >
           <label for="checkbox-3" class="checkbox-style-3-label"> <img src="images/monster.svg" alt=""> <span>Monster</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
@@ -107,10 +107,20 @@ $("#submitBtn").click("submit", function (e) {
     var locationName = $("#locationName").val();
     var email = [jobName, locationName];
   
+    if(document.getElementById('checkbox-1').checked) {
+      window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
     
-  window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
-  window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
-  window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+} else if(document.getElementById('checkbox-2').checked) {
+    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
+} else{
+window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+}
+  
+
+
+  
+  
+  
 
    $.ajax({
                 url: "{{ path('savedjobsearches') }}",

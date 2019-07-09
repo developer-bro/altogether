@@ -47,4 +47,20 @@ class UploadRepository extends ServiceEntityRepository
         ;
     }
     */
+
+    public function findFiles($user)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	SELECT f, u
+                	FROM App\Entity\Upload f JOIN f.user u
+                	WHERE u.id = :user
+                	ORDER BY f.id DESC
+            		')
+                ->setParameter('user', $user)
+            ;
+            
+            return $query->execute();
+    }
 }

@@ -41,4 +41,18 @@ class SavedSearchesController extends AbstractController
         ]);
     }
 
+    /**
+     * @Route("/deletesearch/{id}", methods={"GET"}, name="deletesearch")
+     *
+     * 
+     */
+    public function deleteindex(Request $request, SavedJobSearchesRepository $jobsearches, $id): Response
+    {
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $deletesearch = $jobsearches->deleteSearch($user, $id);
+                return $this->redirectToRoute('savedsearches');
+    }
+
 }

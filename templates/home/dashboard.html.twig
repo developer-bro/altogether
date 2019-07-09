@@ -37,7 +37,7 @@
                         <a href="/documents">My documents</a>
                     </li>
                     <li>
-                        <a href="/mytask">My Tasks</a>
+                        <a href="{{ path('mytask') }}">My Tasks</a>
                     </li>
                     <li>
                         <a href="/logout">LogOut</a>
@@ -152,8 +152,9 @@
                                             <h4>Saved/Applied</h4>
                                         </div>
                                     </div>
+                                    {% for job in jobs| slice(0,3) %}
                                     <div class="row no-gutters c-shadow">
-                                        {% for job in jobs| slice(0,3) %}
+                                        
                                             <div class="col-4">
                                                 <p class="title-txt">
                                                     {{ job.title }}</p>
@@ -171,9 +172,10 @@
                                           
                                             </div>
                                             
-                                        {% endfor %}
+                                        
                                         
                                     </div>
+                                    {% endfor %}
 
                                 
                                 <div class="text-center mt-41">
@@ -206,33 +208,35 @@
                                     </div>
 
                                 </div>
+                                 {% for task in tasks| slice(0,3) %}
                                 <div class="row no-gutters c-shadow">
-                                    {% for task in tasks| slice(0,3) %}
+                                   
                                         <div class="col-4">
                                             <p class="title-txt">{{ task.name }}</p>
                                         </div>
                                         <div class="col-4">
                                             <p class="c-name">
-                                                <span class="elipse"></span>
-                                                {{ task.toName }}</p>
+                                                
+                                                {{ task.job.title }}</p>
                                         </div>
                                         <div class="col-4">
                                             <p class="s-date">
-                                                <span class="elipse"></span>
+                                                
                                                 {{ task.dueDate|date('d-m-Y') }}<img alt="" src="images/dots-line.svg">
                                             </p>
                                         </div>
                                         <div align="center">
                                             </div>
-                                    {% endfor %}
+                                    
 
                                 </div>
+                                {% endfor %}
                                 <div class="text-center mt-41">
-                                    <a class="btn-Links " href="/mytask">View all
+                                    <a class="btn-Links " href="">View all
                                         <img alt="" src="images/arrow-down.svg"></a>
                                 </div>
                                 <div class="text-right">
-                                    <a class="plus-more" href="/mytask"><img alt="" src="images/plus.svg"></a>
+                                    <a class="plus-more" href="{{ path('mytask') }}"><img alt="" src="images/plus.svg"></a>
                                 </div>
                             </div>
                         </div>

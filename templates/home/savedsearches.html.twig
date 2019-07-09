@@ -61,7 +61,7 @@
             <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
             <label for="checkbox-1" class="checkbox-style-3-label"> {{ search.jobName }}, {{ search.location }} </label>
           </div>
-          <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="#"><img src="images/recycle.svg" alt=""></a> </div>
+          <div class="action"> <a href="#"><img src="images/icon_edit.svg" alt=""></a> <a href="{{ path('deletesearch', { 'id' : search.id }) }}"><img src="images/recycle.svg" alt=""></a> </div>
         </div>
         {% endfor %}
       </div>

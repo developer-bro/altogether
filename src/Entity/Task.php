@@ -52,6 +52,21 @@ class Task
      */
     private $job;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isComplete;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dateThankYouLetter;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $taskStatus;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -137,6 +152,42 @@ class Task
     public function setJob(?Jobs $job): self
     {
         $this->job = $job;
+
+        return $this;
+    }
+
+    public function getIsComplete(): ?bool
+    {
+        return $this->isComplete;
+    }
+
+    public function setIsComplete(?bool $isComplete): self
+    {
+        $this->isComplete = $isComplete;
+
+        return $this;
+    }
+
+    public function getDateThankYouLetter(): ?\DateTimeInterface
+    {
+        return $this->dateThankYouLetter;
+    }
+
+    public function setDateThankYouLetter(?\DateTimeInterface $dateThankYouLetter): self
+    {
+        $this->dateThankYouLetter = $dateThankYouLetter;
+
+        return $this;
+    }
+
+    public function getTaskStatus(): ?string
+    {
+        return $this->taskStatus;
+    }
+
+    public function setTaskStatus(?string $taskStatus): self
+    {
+        $this->taskStatus = $taskStatus;
 
         return $this;
     }

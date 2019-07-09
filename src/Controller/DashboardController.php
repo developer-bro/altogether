@@ -39,12 +39,13 @@ class DashboardController extends AbstractController
 
         $user = $this->getUser();
         $latestJobs = $jobs->findLatest($user);
-        $latestTasks = $tasks->findLatest($user);
+        $latestTasks = $tasks->findLatest1($user);
+        $savedjobs = $jobs->findSaved($user);
         $appliedjobs = $jobs->findApplied($user);
         $followupjobs = $jobs->findFollowup($user);
         $interviewjobs = $jobs->findInterview($user);
         $postinterviewjobs = $jobs->findPostInterview($user);
-        $savedjobscount= count($latestJobs);
+        $savedjobscount= count($savedjobs);
         $appliedjobscount= count($appliedjobs);
         $followupjobscount= count($followupjobs);
         $interviewjobscount= count($interviewjobs);

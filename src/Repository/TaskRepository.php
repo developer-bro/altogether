@@ -51,7 +51,23 @@ class TaskRepository extends ServiceEntityRepository
     }
     */
 
-    public function findLatest($user)
+    public function findLatest($user, $job)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	SELECT t, j, u
+                	FROM App\Entity\Task t JOIN t.job j JOIN j.user u
+                	WHERE u.id = :user AND j.id = :job
+                	ORDER BY t.id DESC
+            		')
+                ->setParameter('user', $user)
+                ->setParameter('job', $job)
+            ;
+            
+            return $query->execute();
+    }
+    public function findLatest1($user)
     {
 
         $entityManager = $this->getEntityManager();
@@ -66,4 +82,6 @@ class TaskRepository extends ServiceEntityRepository
             
             return $query->execute();
     }
+
+    
 }

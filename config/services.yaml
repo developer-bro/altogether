@@ -35,5 +35,9 @@ services:
         - 'App\Entity\User'   
         - { linkedin : email }
 
+    App\Service\FileUploader:
+        arguments:
+            $targetDirectory: '%directory%'
+
     
 

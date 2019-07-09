@@ -113,6 +113,11 @@ class Jobs
      */
     private $tasks;
 
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isSaved;
+
     public function __construct()
     {
         $this->tasks = new ArrayCollection();
@@ -354,6 +359,18 @@ class Jobs
                 $task->setJob(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getIsSaved(): ?bool
+    {
+        return $this->isSaved;
+    }
+
+    public function setIsSaved(?bool $isSaved): self
+    {
+        $this->isSaved = $isSaved;
 
         return $this;
     }

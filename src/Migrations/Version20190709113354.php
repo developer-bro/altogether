@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190706173535 extends AbstractMigration
+final class Version20190709113354 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20190706173535 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE task ADD job_id INT DEFAULT NULL');
-        $this->addSql('ALTER TABLE task ADD CONSTRAINT FK_527EDB25BE04EA9 FOREIGN KEY (job_id) REFERENCES jobs (id)');
-        $this->addSql('CREATE INDEX IDX_527EDB25BE04EA9 ON task (job_id)');
+        $this->addSql('ALTER TABLE task ADD is_complete TINYINT(1) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +30,6 @@ final class Version20190706173535 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE task DROP FOREIGN KEY FK_527EDB25BE04EA9');
-        $this->addSql('DROP INDEX IDX_527EDB25BE04EA9 ON task');
-        $this->addSql('ALTER TABLE task DROP job_id');
+        $this->addSql('ALTER TABLE task DROP is_complete');
     }
 }

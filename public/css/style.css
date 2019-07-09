@@ -63,6 +63,36 @@ body {
 		padding-left: 10px;
 	}
 
+	#task_dueDate_day{
+		background: none;
+		border: none;
+		color: green;
+		padding-right: 1px;
+		padding-left: 1px;
+
+
+	}
+
+	#task_dueDate_month{
+		background: none;
+		border: none;
+		color: green;
+		padding-right: 1px;
+		padding-left: 1px;
+
+
+	}
+
+	#task_dueDate_year{
+		background: none;
+		border: none;
+		color: green;
+		padding-right: 1px;
+		padding-left: 1px;
+
+
+	}
+
 	
 a.active, a:focus, button:focus, button.active {
 	outline: none;

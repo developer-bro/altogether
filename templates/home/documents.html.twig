@@ -50,7 +50,7 @@
     <div class="wrapper-account">
       <div class="container-fluid">
         <div class="row no-gutters  mt-91">
-          <div class="col-md-6">
+          <div class="col-md-10">
             <div class="cards">
               <div class="card_header">
                 <h3><img src="images/folder.svg" alt="">CV</h3>
@@ -60,13 +60,17 @@
                 <div class="ch-bx">
                   
                   <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox"
-                                            checked="">
+                                            >
                   <label for="checkbox-1" class="checkbox-style-3-label"> {{ files.name }} </label>
                 </div>
                 {% endfor %}
                 {{ form_start(form) }}
                 <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt="">{{ form_widget(form.name, {'attr': {'class': 'checkbox-style'}}) }}</a> </div>
-               {{ form_widget(form.submit) }}
+               
+               
+               <div align="center">
+               {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+               </div>
                {{ form_end(form) }}
               </div>
               
@@ -74,7 +78,7 @@
           </div>
         </div>
         <div class="row no-gutters ">
-          <div class="col-md-6">
+          <div class="col-md-10">
             <div class="cards">
               <div class="card_header">
                 <h3><img src="images/folder.svg" alt="">Cover letter</h3>
@@ -102,4 +106,14 @@
 
 
 </div>
+<script>
+$(document).ready(function(){
+        $('input[type="file"]').change(function(e){
+            var fileName = e.target.files[0].name;
+            alert('The file "' + fileName +  '" has been selected.');
+        });
+    });
+</script>
+ 
+
 {% endblock %}

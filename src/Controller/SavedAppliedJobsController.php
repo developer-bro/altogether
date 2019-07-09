@@ -58,6 +58,7 @@ class SavedAppliedJobsController extends AbstractController
             $jobs->setComapnyName($comapnyName);
             $jobs->setDescription($description);
             $jobs->setUri($uri);
+            $jobs->SetIsSaved(TRUE);
             $jobs->setDateSaved(new \DateTime());
             $jobs->setUser($user);
             $entityManager->persist($jobs);
@@ -100,7 +101,7 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
 
-      
+        $job->setIsSaved(FALSE);
         $job->setIsApplied(TRUE);
         $job->setIsFollowUp(FALSE);
         $job->setIsInterview(FALSE);
@@ -136,12 +137,12 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
 
-      
+        $job->setIsSaved(FALSE);
         $job->setIsApplied(FALSE);
         $job->setIsFollowUp(TRUE);
         $job->setIsInterview(FALSE);
         $job->setIsPostInterviewFollowUp(FALSE);
-        $jobs->setDateInitialFollowUp(new \DateTime());
+        $job->setDateInitialFollowUp(new \DateTime());
 
       
 
@@ -170,12 +171,12 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
 
-      
+        $job->setIsSaved(FALSE);
         $job->setIsApplied(FALSE);
         $job->setIsFollowUp(FALSE);
         $job->setIsInterview(TRUE);
         $job->setIsPostInterviewFollowUp(FALSE);
-        $jobs->setDateInterview(new \DateTime());
+        $job->setDateInterview(new \DateTime());
 
        
 
@@ -206,13 +207,13 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
 
-      
+        $job->setIsSaved(FALSE);
         $job->setIsApplied(FALSE);
         $job->setIsFollowUp(FALSE);
         $job->setIsInterview(FALSE);
         $job->setIsPostInterviewFollowUp(TRUE);
 
-        $jobs->setDateFollowUp(new \DateTime());
+        $job->setDateFollowUp(new \DateTime());
 
 
 
