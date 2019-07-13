@@ -19,7 +19,7 @@
                         <div class="input-grops">
 
                             <div class="position-relative form-group">
-                                <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                                <input type="email"  name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
                                 <img alt="" src="images/email.svg">
                             </div>
 
@@ -34,9 +34,10 @@
 
                         <a class="forget-btn" href="/passwordrequest ">Forgot password?</a>
                         {% if error %}
-    <div style="background-color: red; color:white;" align="center" >{{ error.messageKey|trans(error.messageData, 'security') }} </div>
+    <div style="background-color: red; color:white;" align="center" > {% if error.messageKey == 'Account is locked.' %}  {{ error.messageKey|trans(error.messageData, 'security') }} <span><a href="/lockedaccount">click here to unlock</a></span> {% else %} {{ error.messageKey|trans(error.messageData, 'security') }} {% endif %}</div>
 {% endif %}
 <br>
+
                         <button type="submit" id="_submit" name="_submit" class="sigin-btn">
         Sign in
     </button>

@@ -56,7 +56,7 @@ class NewPasswordController extends AbstractController
 
             // do anything else you need here, like send an email
 
-            return $this->redirectToRoute('accountinfo');
+            return $this->redirectToRoute('app_login');
         }
 
     

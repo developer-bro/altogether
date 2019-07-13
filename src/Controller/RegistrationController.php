@@ -33,6 +33,7 @@ class RegistrationController extends AbstractController
 
             $user->setEmailReqistrationToken($token);
             $user->setEnabled(FALSE);
+            $user->setIsAccountNonLocked(TRUE);
 
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->persist($user);

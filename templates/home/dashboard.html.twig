@@ -157,6 +157,7 @@
                                         
                                             <div class="col-4">
                                                 <p class="title-txt">
+                                                {% if job.isApplied %} <span><img src="images/check-circle.svg" alt=""></span> {% else %} <span><img src="images/fav-c.svg" alt=""></span> {% endif %}
                                                     {{ job.title }}</p>
                                             </div>
                                             <div class="col-4">
@@ -232,7 +233,7 @@
                                 </div>
                                 {% endfor %}
                                 <div class="text-center mt-41">
-                                    <a class="btn-Links " href="">View all
+                                    <a class="btn-Links " href="{{ path('mytask') }}">View all
                                         <img alt="" src="images/arrow-down.svg"></a>
                                 </div>
                                 <div class="text-right">

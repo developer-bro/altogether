@@ -117,7 +117,7 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('dashboard');
+        return $this->redirectToRoute('savedappliedjobs');
 
 
         
@@ -153,7 +153,7 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('dashboard');
+        return $this->redirectToRoute('savedappliedjobs');
         
         
     }
@@ -187,7 +187,7 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('dashboard');
+        return $this->redirectToRoute('savedappliedjobs');
 
 
         
@@ -223,7 +223,7 @@ class SavedAppliedJobsController extends AbstractController
         $entityManager->persist($user);
         $entityManager->flush();
 
-        return $this->redirectToRoute('dashboard');
+        return $this->redirectToRoute('savedappliedjobs');
 
 
         

@@ -21,28 +21,28 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\User;
-use App\Form\PasswordRequestType;
+use App\Form\LockedAccountType;
 
 
 
-class PasswordRequestController extends AbstractController
+class LockedAccountController extends AbstractController
 {
     /**
-     * @Route("/passwordrequest", methods={"GET", "POST"}, name="passwordrequest")
+     * @Route("/lockedaccount", methods={"GET", "POST"}, name="lockedaccount")
      *
      * 
      */
     public function index(Request $request, \Swift_Mailer $mailer): Response
     {
         $entityManager = $this->getDoctrine()->getManager();
-        $form = $this->createForm(PasswordRequestType::class);
+        $form = $this->createForm(LockedAccountType::class);
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
             $user = $entityManager->getRepository(User::class)->findOneByEmail($form->getData()['email']);
             if ($user !== null) {
                 $token = bin2hex(random_bytes(32));
-                $user->setPasswordRequestToken($token);
+                $user->setAccountUnlockToken($token);
                 $entityManager->persist($user);
                 $entityManager->flush();
 
@@ -54,21 +54,21 @@ class PasswordRequestController extends AbstractController
             	->setTo($email)
             	->setBody(
                     $this->renderView(
-                        'home/passwordmail.html.twig',
+                        'home/accountunlockmail.html.twig',
                         ['token' => $token]
                     ),
                     'text/html'
                 );
         		$mailer->send($message);
               $this->addFlash('success', "An email has been sent to your address");
-                return $this->redirectToRoute('confirmemail');
+                return $this->redirectToRoute('lockconfirm');
 
         
         }
     }
           
 
-        return $this->render('home/passwordrequest.html.twig', [
+        return $this->render('home/accountlockrequest.html.twig', [
             'form' => $form->createView(),
         ]);
 

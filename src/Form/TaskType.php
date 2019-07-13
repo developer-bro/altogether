@@ -19,6 +19,7 @@ class TaskType extends AbstractType
             ->add('dueDate', DateType::class, [
                 'widget' => 'choice',
                 // this is actually the default format for single_text
+                'data' => new \DateTime('now'),
              
             ])
             ->add('notes')

@@ -59,10 +59,15 @@
               {% for files in uploadedFiles %}
                 <div class="ch-bx">
                   
-                  <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox"
-                                            >
+                  <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="radio">
+                                            
                   <label for="checkbox-1" class="checkbox-style-3-label"> {{ files.name }} </label>
                 </div>
+                <div>
+                <a href="{{ path('documentdownload', {'id' : files.id }) }}" class="btn btn-primary"> Download</a>
+                
+                </div>
+                <br>
                 {% endfor %}
                 {{ form_start(form) }}
                 <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt="">{{ form_widget(form.name, {'attr': {'class': 'checkbox-style'}}) }}</a> </div>
@@ -72,6 +77,7 @@
                {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
                </div>
                {{ form_end(form) }}
+
               </div>
               
             </div>
@@ -111,6 +117,7 @@ $(document).ready(function(){
         $('input[type="file"]').change(function(e){
             var fileName = e.target.files[0].name;
             alert('The file "' + fileName +  '" has been selected.');
+            
         });
     });
 </script>

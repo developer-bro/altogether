@@ -94,6 +94,22 @@ class User implements UserInterface
      */
     private $savedJobSearches;
 
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $noOfAttempts;
+
+
+    /**
+     * @ORM\Column(type="boolean", nullable=true)
+     */
+    private $isAccountNonLocked;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $accountUnlockToken;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -392,6 +408,42 @@ class User implements UserInterface
                 $savedJobSearch->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getNoOfAttempts(): ?int
+    {
+        return $this->noOfAttempts;
+    }
+
+    public function setNoOfAttempts(?int $noOfAttempts): self
+    {
+        $this->noOfAttempts = $noOfAttempts;
+
+        return $this;
+    }
+
+    public function getIsAccountNonLocked(): ?bool
+    {
+        return $this->isAccountNonLocked;
+    }
+
+    public function setIsAccountNonLocked(?bool $isAccountNonLocked): self
+    {
+        $this->isAccountNonLocked = $isAccountNonLocked;
+
+        return $this;
+    }
+
+    public function getAccountUnlockToken(): ?string
+    {
+        return $this->accountUnlockToken;
+    }
+
+    public function setAccountUnlockToken(?string $accountUnlockToken): self
+    {
+        $this->accountUnlockToken = $accountUnlockToken;
 
         return $this;
     }

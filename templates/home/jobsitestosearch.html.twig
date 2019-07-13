@@ -111,9 +111,11 @@ $("#submitBtn").click("submit", function (e) {
       window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
     
 } else if(document.getElementById('checkbox-2').checked) {
-    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
+
+  window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
 } else{
-window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
+
 }
   
 

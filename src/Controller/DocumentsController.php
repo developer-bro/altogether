@@ -27,6 +27,12 @@ use App\Form\UploadType;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use App\Service\FileUploader;
 use App\Repository\UploadRepository;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
+use Symfony\Component\HttpFoundation\ResponseHeaderBag;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\File\MimeType\FileinfoMimeTypeGuesser;
+use Symfony\Component\HttpFoundation\HeaderUtils;
+
 
 
 class DocumentsController extends AbstractController
@@ -72,5 +78,37 @@ class DocumentsController extends AbstractController
             'form' => $form->createView(), 'uploadedFiles' => $uploadedFiles
         ]);
     }
+
+    /**
+     * @Route("/documentdownload/{id}", methods={"GET", "POST"}, name="documentdownload")
+     *
+     * 
+     * @IsGranted("ROLE_USER")
+     */
+    public function downloadindex(Request $request, FileUploader $fileUploader, UploadRepository $upladed, $id): Response
+    {
+       
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $file = $entityManager->getRepository(Upload::class)->findOneBy(['id' => $id, 'user' => $user]);
+
+        $fileName = $file->getName();
+
+        $file_with_path = $this->getParameter('directory')."/".$fileName;
+
+        $response = new BinaryFileResponse($file_with_path);
+        
+
+        $response->setContentDisposition(ResponseHeaderBag::DISPOSITION_ATTACHMENT, $fileName);
+
+
+              
+        
+        return $response;
+    
+    
+    }
+
 
 }

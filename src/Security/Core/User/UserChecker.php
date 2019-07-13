@@ -9,6 +9,7 @@ use Symfony\Component\Security\Core\Exception\CustomUserMessageAuthenticationExc
 use Symfony\Component\Security\Core\User\UserCheckerInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\Exception\DisabledException;
+use Symfony\Component\Security\Core\Exception\LockedException;
 
 class UserChecker implements UserCheckerInterface
 {
@@ -17,6 +18,12 @@ class UserChecker implements UserCheckerInterface
 
         if (!$user->getEnabled()) {
             $ex = new DisabledException('User account is disabled.');
+            $ex->setUser($user);
+            throw $ex;
+        }
+
+        if (!$user->getIsAccountNonLocked()) {
+            $ex = new LockedException('User account is locked.');
             $ex->setUser($user);
             throw $ex;
         }

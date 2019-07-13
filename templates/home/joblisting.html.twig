@@ -89,7 +89,7 @@
     </ul>
     <div class="filter-card">
       <div class="media">
-        <div class="icon-filter"> <img src="{{ asset('images/check-c.svg') }}" alt=""> </div>
+        {% if job.isApplied %} <div class="icon-filter"> <img src="{{ asset('images/fav2.svg') }}" alt=""> </div> {% else %} <div class="icon-filter"> <img src="{{ asset('images/check-c.svg') }}" alt=""> </div> {% endif %}
         <div class="media-body">
           <div class="auth_w">
             <div class="author-dt">

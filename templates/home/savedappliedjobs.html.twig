@@ -129,7 +129,7 @@
                         </li>
                         <li>
                             <div class="check">
-                                <input checked="" class="checkbox-style" id="checkbox-1" name="checkbox-10" type="checkbox">
+                                <input class="checkbox-style" id="checkbox-1" name="checkbox-10" type="checkbox">
                                 <label class="checkbox-style-3-label" for="checkbox-1">
                                     Saved
                                 </label>
@@ -137,7 +137,7 @@
                         </li>
                         <li>
                             <div class="check">
-                                <input checked="" class="checkbox-style" id="checkbox-2" name="checkbox-10" type="checkbox">
+                                <input class="checkbox-style" id="checkbox-2" name="checkbox-10" type="checkbox">
                                 <label class="checkbox-style-3-label" for="checkbox-2">
                                     Applied
                                 </label>
@@ -147,9 +147,7 @@
                     <div class="filter-card">
                      {% for job in jobs %}
                         <div class="media">
-                            <div class="icon-filter">
-                                
-                            </div>
+                          {% if job.isApplied %} <div class="icon-filter"> <img src="images/fav2.svg" alt=""> </div> {% else %} <div class="icon-filter"> <img src="images/check-c.svg" alt=""> </div> {% endif %}
                            
                                 <div class="media-body">
                                 <a href="{{ path('joblistingshow', { id: job.id }) }}">
@@ -204,18 +202,18 @@
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4>
-                                    ADD JOB</h4>
+                                    Please Read</h4>
                                 
                             </div>
                             <div class="modal-body">
                                 <div class="form-row">
                                     <div class="col-md-2">
-                                        <h4>Please Read</h4>
+                                        <h4></h4>
                                     </div>
                                     <div class="col-md-10">
-                                        <p>Please wait while the information populates in the form below.</p>
-                                        <p>Provide information of the missing fields and save the job.</p>
-                                        <p>Retry with different url if it takes time. Thank You</p>
+                                        <p>Please wait while the information populates in the form below.</p><br>
+                                        <p>Provide information of the missing fields and save the job.</p><br>
+                                        <p>Retry with different url if it takes time. Thank You</p><br>
                                     </div>
                                 </div>
                             </div>
@@ -256,4 +254,5 @@
             });
         });
     </script>
+    
 {% endblock %}

@@ -19,6 +19,8 @@ use Symfony\Component\Security\Csrf\CsrfTokenManagerInterface;
 use Symfony\Component\Security\Guard\Authenticator\AbstractFormLoginAuthenticator;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
 use App\Security\Core\User\UserChecker;
+use Symfony\Component\Security\Core\Exception\AuthenticationException;
+use Symfony\Component\Security\Guard\AbstractGuardAuthenticator;
 
 class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
 {
@@ -95,7 +97,19 @@ class LoginFormAuthenticator extends AbstractFormLoginAuthenticator
         }
 
         // For example : return new RedirectResponse($this->urlGenerator->generate('some_route'));
-        return new RedirectResponse($this->urlGenerator->generate('dashboard'));    }
+        return new RedirectResponse($this->urlGenerator->generate('dashboard'));    
+    }
+
+    public function onAuthenticationFailure(Request $request, AuthenticationException $exception)
+    {
+        if ($request->hasSession()) {
+            $request->getSession()->set(Security::AUTHENTICATION_ERROR, $exception);
+        }
+
+        $url = $this->getLoginUrl();
+
+        return new RedirectResponse($url);
+    }
 
     protected function getLoginUrl()
     {
