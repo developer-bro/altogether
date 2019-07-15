@@ -33,11 +33,11 @@
       <h3 class="title">Welcome</h3>
       <div class="w-message">
  <div class="text-center pt-115">
-      <p>Your Account is Locked. We will send a resetting link to your account email.</p>
+      <p>Enter your email address and we'll send you instructions to enable your account if your email exists in our system.</p>
     {{ form_start(form) }}
     {{ form_row(form.email, {'attr': {'class': 'form-control'}}) }}
     
-    {{ form_row(form.send, {'attr': {'class': 'btn-primary'}}) }}
+    {{ form_row(form.send, {'attr': {'class': 'btn-primary','label': 'Send Reset Instructions'}}) }}
     {{ form_end(form) }}
     </div>
         </div>

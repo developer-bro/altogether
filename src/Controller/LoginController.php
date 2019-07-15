@@ -41,7 +41,7 @@ class LoginController extends AbstractController
                     $user->setIsAccountNonLocked(FALSE);
                     $entityManager->persist($user);
                 $entityManager->flush();
-                return $this->redirectToRoute('lockedaccount');
+                
                 }
                 $user->setNoOfAttempts($attempts + 1);
                 $entityManager->persist($user);

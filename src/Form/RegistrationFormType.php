@@ -43,7 +43,7 @@ class RegistrationFormType extends AbstractType
                 ],
                 'first_options' => ['label' => 'Password'],
        'second_options' => ['label' => 'Confirm Password'],
-       'invalid_message' => 'Your password does not match the confirmation.'
+       'invalid_message' => 'Passwords do not match. Please try again.'
             ])
         ;
     }

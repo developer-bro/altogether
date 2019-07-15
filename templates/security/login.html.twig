@@ -19,12 +19,14 @@
                         <div class="input-grops">
 
                             <div class="position-relative form-group">
-                                <input type="email"  name="email" id="inputEmail" class="form-control" placeholder="Email" required autofocus>
+                                <input type="email"  name="email" id="inputEmail" class="form-control" placeholder="Email" oninvalid="this.setCustomValidity('Please fill in your Email')"
+    oninput="this.setCustomValidity('')" required autofocus>
                                 <img alt="" src="images/email.svg">
                             </div>
 
                             <div class="position-relative form-group">
-                               <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                               <input type="password" name="password" id="inputPassword" class="form-control" placeholder="Password" oninvalid="this.setCustomValidity('Please fill in your password')"
+    oninput="this.setCustomValidity('')" required>
                                 <img alt="" src="images/password.svg">
                             </div>
                              <input type="hidden" name="_csrf_token"
@@ -34,7 +36,7 @@
 
                         <a class="forget-btn" href="/passwordrequest ">Forgot password?</a>
                         {% if error %}
-    <div style="background-color: red; color:white;" align="center" > {% if error.messageKey == 'Account is locked.' %}  {{ error.messageKey|trans(error.messageData, 'security') }} <span><a href="/lockedaccount">click here to unlock</a></span> {% else %} {{ error.messageKey|trans(error.messageData, 'security') }} {% endif %}</div>
+    <div style="background-color: red; color:white;" align="center" > {% if error.messageKey == 'Account is locked.' %}  {{ error.messageKey|trans(error.messageData, 'security') }} <span><a href="/lockedaccount">click here to unlock</a></span> {% elseif error.messageKey == 'Account is disabled.' %}<span>Your Account is disabled.<a href="/emailresendtoken"> click here to enable</a></span>{% else %} {{ error.messageKey|trans(error.messageData, 'security') }} {% endif %}</div>
 {% endif %}
 <br>
 

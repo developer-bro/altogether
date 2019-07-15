@@ -36,6 +36,7 @@ class SavedAppliedJobsController extends AbstractController
      */
     public function index(Request $request, JobsRepository $jobs): Response
     {
+        
 
         $entityManager = $this->getDoctrine()->getManager();
         $form = $this->createForm(JobsSaveType::class);

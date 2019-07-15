@@ -61,7 +61,7 @@ class PasswordRequestController extends AbstractController
                 );
         		$mailer->send($message);
               $this->addFlash('success', "An email has been sent to your address");
-                return $this->redirectToRoute('confirmemail');
+                return $this->redirectToRoute('confirmpasswordemail');
 
         
         }

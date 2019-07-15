@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Job Site Results</title>
+    <style>
+
+    iframe:focus { 
+  outline: none;
+}
+
+iframe[seamless] { 
+  display: block;
+}
+    </style>
+</head>
+<body>
+<button onclick="myFunction()">Replace document</button>
+
+<iframe src="https://www.monster.com/jobs/search/?q=janitor&where=nyc" width = "1000" height = "500"></iframe>
+<a href=""></a>
+
+<script>
+
+    // Create anchor element and use href property for the purpose of this example
+// A more correct alternative is to browse to the URL and use document.location or window.location
+var iframe = document.createElement('iframe');
+iframe.scr = 'https://www.linkedin.com/jobs/search?keywords=janitor&location=nyc&redirect=false&position=1&pageNum=0';
+iframe.width = "1000";
+iframe.height = "500";
+document.querySelector('body').appendChild(iframe)
+document.body.appendChild(iframe);
+iframe.contentWindow.document.open();
+iframe.contentWindow.document.write(iframe);
+iframe.contentWindow.document.close();
+
+</script>
+<script type="text/javascript">
+    function prepareFrame() {
+        var ifrm = document.createElement("iframe");
+        ifrm.setAttribute("src", "http://google.com/");
+        ifrm.style.width = "640px";
+        ifrm.style.height = "480px";
+        document.body.appendChild(ifrm);
+    }
+</script> 
+<script>
+function myFunction() {
+  window.location.replace("https://www.w3schools.com")
+}
+</script>
+</body>
+</html>
