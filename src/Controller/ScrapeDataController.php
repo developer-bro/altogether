@@ -55,7 +55,7 @@ if (preg_match("/linkedin/", $email))
 elseif(preg_match("/monster/", $email))
 {
 	
-        $title = $crawler->filter('.title')->text();
+        $title = $crawler->filter('.heading h1')->text();
         $description = $crawler->filter('#JobDescription')->text(); 
         $company = $crawler->filter('.subtitle')->text(); 
         

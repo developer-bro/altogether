@@ -22,10 +22,28 @@
 	font-style: normal;
 }
 
-body {
-	font-family: 'IBM Plex Sans', sans-serif;
-	font-size: 16px;
-	line-height: normal;
+
+.doc {
+	padding: 17px 35px 0px 0px;
+	
+}
+
+.docmedia{
+height :60px;
+padding: 5px;
+	
+	
+}
+
+.input-top{
+	padding: 0px 35px 0px 0px !important;
+
+}
+
+.form-control.docinput {
+	background-color: #ffffff;
+    border: none;
+
 }
 
 #account_edit_form_dob{
@@ -93,7 +111,13 @@ body {
 
 	}
 
-	
+
+
+body {
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: 16px;
+	line-height: normal;
+}
 a.active, a:focus, button:focus, button.active {
 	outline: none;
 }
@@ -186,7 +210,7 @@ header .navbar-nav li.active a {
 }
 .link_login a.signup {
 	width: 180.8px;
-	height: 53.3px;
+	height: 40px;
 	border-radius: 4px;
 	border: solid 2px #1e9af2;
 	display: flex;
@@ -214,7 +238,6 @@ header .navbar-nav li.active a {
 	max-width: 274px;
 	width: 100%;
 }
-
 .input_cg {
 	display: flex;
 	align-items: center;
@@ -232,10 +255,9 @@ header .navbar-nav li.active a {
 	height: 50px;
 	background-color: #F1F9FF;
 }
-
 .form-control {
 	font-family: 'IBM Plex Sans', sans-serif;
-	font-size: 18px;
+	font-size: 16px;
 	font-weight: 400;
 	line-height: 1.28;
 	text-align: left;
@@ -343,7 +365,7 @@ select {
 	border: none;
 	color: #B0B0B0;
 	height: 80px;
-	font-size: 28px;
+	font-size: 16px;
 	font-weight: 500;
 }
 .input-grops .form-group {
@@ -444,7 +466,7 @@ select {
 }
 .creat-items a {
 	color: #3E3E3E;
-	font-size: 28px;
+	font-size: 18px;
 }
 /*models-css*/
 .welcome-box {
@@ -625,7 +647,7 @@ select {
 .payment-form .cst-form .form-control {
 	height: 48px;
 	border-radius: 4px;
-	font-size: 14px;
+	font-size: 16px;
 }
 .payment-form .cst-form select.form-control {
 	height: 48px !important;
@@ -642,12 +664,12 @@ select {
 /***********************************/
 .w-message {
 	max-width: 1349px;
-	margin: 155px auto;
+	margin: 50px auto;
 }
 .w-message p {
 	opacity: 0.71;
 	font-size: 36px;
-	font-weight: 700;
+	font-weight: 500;
 	line-height: 1.31;
 	color: #212121;
 	margin-bottom: 47px;
@@ -773,7 +795,7 @@ select {
 	position: relative;
 }
 .dashboard-review li h3 {
-	font-size: 24px;
+	font-size: 14px;
 	line-height: 1.33;
 	text-align: center;
 	color: #212121;
@@ -805,7 +827,7 @@ select {
 }
 .card_title h3 {
 	padding: 0 18px;
-	font-size: 36px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #212121;
 }
@@ -880,7 +902,7 @@ select {
 	margin-top: 41px;
 }
 .btn-Links {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #1e9af2;
 }
@@ -927,7 +949,7 @@ select {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	font-size: 22px;
+	font-size: 16px;
 	font-weight: 700;
 	line-height: 1.32;
 	color: #ffffff;
@@ -947,16 +969,16 @@ select {
 	padding: 0px;
 }
 #reminder .modal-body h3 {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #1e9af2;
 	text-align: center;
-	border-bottom: 1px solid #707070;
+	border-bottom: 1px solid #1e9af2;
 	padding: 20px 16px 11px;
 }
 .cc-text {
 	padding: 20px 16px 0;
-	font-size: 22px;
+	font-size: 16px;
 	text-align: center;
 	display: flex;
 	justify-content: center;
@@ -971,7 +993,7 @@ select {
 	line-height: 1.32;
 	letter-spacing: normal;
 	text-align: left;
-	color: #2d3778;
+	color: #1e9af2;
 }
 .cc-text p span {
 	width: 40px;
@@ -1009,9 +1031,9 @@ select {
 #reminder .media h4 {
 	width: 97px;
 	font-family: 'Gotham-Bold';
-	font-size: 20px;
+	font-size: 16px;
 	text-align: right;
-	color: #2d3778;
+	color: #1e9af2;
 	margin-right: 41px;
 }
 #reminder .inner_modal {
@@ -1021,9 +1043,9 @@ select {
 #reminder .inner_modal .media .form-control {
 	height: 33px !important;
 	border-radius: 4px;
-	border: solid 2px #2d3778;
+	border: 1px solid #BCE0FD;
 	font-size: 16px;
-	color: #2d3778;
+	color: #1e9af2;
 	padding: 0 10px;
 }
 #reminder .inner_modal .media .input-group {
@@ -1044,12 +1066,12 @@ select {
 	margin-bottom: 8px;
 	height: 151.2px;
 	border-radius: 6px;
-	border: solid 2px #2d3778;
+	border: 1px solid #BCE0FD;
 	background-color: #ffffff;
-	font-size: 20px;
+	font-size: 16px;
 	line-height: 1.35;
 	text-align: left;
-	color: #2d3778;
+	color: #1e9af2;
 	resize: none;
 }
 #reminder .modal-footer {
@@ -1075,7 +1097,7 @@ select {
 	border-radius: 50px;
 	border: 1px solid transparent;
 	background-color: transparent;
-	color: #2d3778;
+	color: #1e9af2;
 }
 .sidebar-link .collapse.list-unstyled li a {
 	font-size: 20px;
@@ -1130,7 +1152,7 @@ select {
 	margin-left: 86.5px;
 }
 .search_form label {
-	font-size: 36px;
+	font-size: 16px;
 	font-weight: 700;
 	letter-spacing: normal;
 	text-align: left;
@@ -1141,7 +1163,7 @@ select {
 .search_form .form-control {
 	height: 65px;
 	border-radius: 50px;
-	font-size: 24px;
+	font-size: 16px;
 	box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.16);
 	background-color: #ffffff;
 	padding-left: 93px;
@@ -1166,15 +1188,15 @@ select {
 	pointer-events: none;
 }
 .btn-search {
-	width: 317px;
-	height: 67px;
-	border-radius: 50px;
-	background-color: #1e9af2;
-	font-size: 28px;
-	font-weight: 700;
-	display: inline-flex;
-	align-items: center;
-	margin: 54px auto 70px;
+	width: 230px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #1e9af2;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    margin: 54px auto 70px;
 }
 .btn-search:hover, .btn-search:focus {
 	background-color: transparent;
@@ -1227,14 +1249,14 @@ select {
 	padding: 24px 20px 23px;
 }
 .checkbox-style-3-label span {
-	font-size: 36px;
+	font-size: 16px;
 	font-weight: 700;
 	text-align: left;
 	color: #212121;
 	margin-left: 40px;
 }
 .serch-wrapper .media .date {
-	font-size: 28px;
+	font-size: 16px;
 	font-weight: 600;
 	line-height: 1.32;
 	text-align: left;
@@ -1247,10 +1269,10 @@ select {
 	opacity: 1;
 }
 .serch-wrapper .media a {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 700;
 	text-align: left;
-	color: #1e9af2;
+	color: #fff;
 	margin-right: 45px;
 }
 .serch-wrapper .media {
@@ -1264,10 +1286,11 @@ select {
 	max-width: 1297px;
 }
 .s-link label {
-	font-size: 24px;
+	font-size: 20px;
 	line-height: 1.33;
 	text-align: center;
 	color: #212121;
+	font-weight:700;
 }
 .s-link .form-control {
 	border-radius: 50px;
@@ -1293,9 +1316,10 @@ select {
 	margin-left: auto;
 }
 .s-link .btn-search {
-	width: 251px;
-	height: 67px;
+	width: 250px;
+	height: 50px;
 	margin: 15px 0;
+	font-size:16px;
 }
 .filter {
 	display: flex;
@@ -1306,11 +1330,11 @@ select {
 	margin-right: 50px;
 }
 .filter li h3 {
-	font-size: 26px;
+	font-size: 16px;
 	color: #212121;
 }
 .filter li .checkbox-style-3-label {
-	font-size: 22px;
+	font-size: 16px;
 	color: #212121;
 }
 .filter-card .media {
@@ -1327,19 +1351,24 @@ select {
 }
 .author-dt h3 {
 	font-weight: 700;
-	font-size: 26px;
+	font-size: 16px;
 	text-align: left;
-	color: #212121;
+	color:#1E9AF2;
 	line-height: 22px;
 	margin-bottom: 8px;
 }
 .filter-card .media-body p {
-	font-size: 22px;
+	font-size: 16px;
 	line-height: 1.45;
 	text-align: left;
-	color: #212121;
+
 	max-width: 926px;
-	margin-bottom: 54px;
+	
+	font-weight:normal;
+
+	color:black;
+
+	
 }
 .author-dt p {
 	font-size: 22px;
@@ -1347,7 +1376,7 @@ select {
 	margin-bottom: 0 !Important;
 }
 .author-dt ul li {
-	font-size: 22px;
+	font-size: 16px;
 	color: #212121;
 	display: flex;
 	align-items: center;
@@ -1364,8 +1393,8 @@ select {
 	background-color: #ffffff;
 }
 .filter-card .media-body .footer-card a {
-	font-size: 22px;
-	color: #212121;
+	font-size: 16px;
+	
 	font-weight: 700;
 	margin-right: 45px;
 }
@@ -1373,17 +1402,19 @@ select {
 	color: #7cb242;
 }
 .sav-link {
-	font-size: 22px;
+	font-size: 14px;
 }
 .sav-link span {
 	color: #7cb242;
 	margin-right: 30px;
+	font-size: 14px;
+	font-weight:700;
 }
 .job-listing .counter {
 	font-size: 28px;
 }
 .job-listing .dashboard-review li h3 {
-	font-size: 24px;
+	font-size: 14px;
 }
 .job-listing .dashboard-review {
 	padding-top: 35px;
@@ -1398,13 +1429,13 @@ select {
 	display: flex;
 }
 .steps-filter span {
-	font-size: 22px;
+	font-size: 16px;
 	text-align: left;
 	color: #1e9af2;
 	padding: 0 60px 0 35px;
 }
 .steps-filter .checkbox-style-3-label {
-	font-size: 22px;
+	font-size: 16px;
 	text-align: left;
 	margin-bottom: 12px;
 	color: #212121;
@@ -1414,6 +1445,7 @@ select {
 }
 .job-listing .filter-card .media-body p {
 	margin-bottom: 0;
+	font-weight:500;
 }
 .author-dt ul {
 	display: flex;
@@ -1451,13 +1483,13 @@ select {
 	box-shadow: 0 0 15px 0 rgba(0, 0, 0, 0.16);
 }
 .card-search .media .checkbox-style-3-label {
-	font-size: 28px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #212121;
 }
 .card-search .media {
 	justify-content: space-between;
-	padding: 30px;
+	padding: 5px;
 	border-bottom: solid 2px rgba(112, 112, 112, 0.16);
 }
 .card-search .media .action a {
@@ -1471,7 +1503,7 @@ select {
 	width: 100%;
 	text-align: center;
 	justify-content: center;
-	font-size: 20px;
+	font-size: 16px;
 	color: #fff;
 }
 #add-jobs .modal-dialog {
@@ -1564,7 +1596,7 @@ select {
 	box-shadow: 0 0 20px 0 rgba(30, 154, 242, 0.16);
 	background-color: rgba(30, 154, 242, 0.2);
 	margin: 0 auto;
-	font-size: 22px;
+	font-size: 16px;
 	text-align: left;
 	color: #7cb242;
 }
@@ -1649,7 +1681,7 @@ select {
 	padding: 45px 55px 22.5px;
 }
 .card_header h3 {
-	font-size: 36px;
+	font-size: 18px;
 	font-weight: 700;
 	display: inline-flex;
 	align-items: center;
@@ -1662,7 +1694,7 @@ select {
 	padding: 22.5px 55px 34.6px;
 }
 .card_body .checkbox-style-3-label {
-	font-size: 24px;
+	font-size: 18px;
 	text-align: left;
 	color: #212121;
 }
@@ -1680,7 +1712,7 @@ select {
 	justify-content: center;
 }
 .task-bx .caption {
-	font-size: 28px;
+	font-size: 16px;
 	font-weight: 700;
 	line-height: 1.32;
 	color: #1e9af2;
@@ -1690,9 +1722,9 @@ select {
 	margin-bottom: 0;
 }
 .task-bx .filter-card .btn.btn-primary {
-	width: 283px;
-	height: 67px;
-	font-size: 24px;
+	width: 220px;
+	height: 50px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #ffffff;
 }
@@ -1842,3 +1874,131 @@ select {
 .close-btn {
 	display: none;
 }
+
+/* .resendtokenform .form-control{
+	width: 300px;
+} */
+
+.token{
+	margin-top:100px;
+}
+
+
+
+/* 0verrides */
+
+.dropdown-menu{
+	border-radius: 0!important;
+}
+
+
+.serch-wrapper .media a:hover {
+    font-size: 16px;
+    font-weight: 700;
+    text-align: left;
+    color: #1e9af2;
+    margin-right: 45px;
+}
+
+.change-status{
+	color: #1e9af2;
+	font-weight:700;
+}
+
+
+button, input, optgroup, select, textarea {
+	margin: 5px;
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    color: #1E9AF2;
+    font-weight: 700;
+}
+
+.checkbox-style-3-label img {
+    position: relative;
+    height: 30px;
+}
+
+
+/* .cc-text .form-control{
+	border:solid 2px #2d3778!important;
+}
+
+
+.relative .form-control{
+	border:solid 2px #2d3778!important;	
+}
+
+.custom-input .form-control{
+	border:solid 2px #2d3778!important;	
+} */
+
+select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	-ms-appearance: none;
+	appearance: none;
+	outline: 0;
+	box-shadow: none;
+	border: 0 !important;
+	background: #1E9AF2;
+	background-image: none;
+  }
+  /* Remove IE arrow */
+  select::-ms-expand {
+	display: none;
+  }
+  /* Custom Select */
+  .select {
+	position: relative;
+	display: flex;
+	width: 20em;
+	height: 3em;
+	line-height: 3;
+	background: #1E9AF2;
+	overflow: hidden;
+	border-radius: .25em;
+  }
+  select {
+	flex: 1;
+	padding:0.1em;
+	color: #fff;
+	cursor: pointer;
+  }
+  /* Arrow */
+  .select::after {
+	content: '\25BC';
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 0 1em;
+	background:#1E9AF2;
+	cursor: pointer;
+	pointer-events: none;
+	-webkit-transition: .25s all ease;
+	-o-transition: .25s all ease;
+	transition: .25s all ease;
+  }
+  /* Transition */
+  .select:hover::after {
+	color: #f39c12;
+  }
+
+
+  .from-name{
+	  color: #1E9AF2;
+	  font-weight:700;
+  }
+
+
+  .email{
+	color: #1E9AF2;
+	font-weight:700;
+	padding-top: 12px;
+    margin-right: 6px;
+  }
+
+  .resendtokenform{
+	  display:flex;
+  }

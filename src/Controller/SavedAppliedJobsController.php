@@ -30,20 +30,69 @@ use App\Repository\JobsRepository;
 class SavedAppliedJobsController extends AbstractController
 {
     /**
-     * @Route("/savedappliedjobs", methods={"GET", "POST"}, name="savedappliedjobs")
+     * @Route("/savedappliedjobs/{variable}",   methods={"GET", "POST"}, name="savedappliedjobs")
      *
      * 
      */
-    public function index(Request $request, JobsRepository $jobs): Response
+    public function index(Request $request, JobsRepository $jobs, $variable = "all"): Response
     {
+
         
 
         $entityManager = $this->getDoctrine()->getManager();
         $form = $this->createForm(JobsSaveType::class);
         $this->denyAccessUnlessGranted('ROLE_USER');
         $user = $this->getUser();
-        $latestJobs = $jobs->findLatest($user);
+
+        if($variable == "saved"){
+
+            $latestJobs = $jobs->findSaved($user);
+
+        }
+
+        if($variable == "applied"){
+
+            $latestJobs = $jobs->findApplied($user);
+            
+        }
+
+        if($variable == "follow up"){
+
+            $latestJobs = $jobs->findFollowUp($user);
+            
+        }
+
+        if($variable == "interview"){
+
+            $latestJobs = $jobs->findInterview($user);
+            
+        }
+
+        if($variable == "post interview follow up"){
+
+            $latestJobs = $jobs->findPostInterview($user);
+            
+        }
+
+        $savedjobs = $jobs->findSaved($user);
+        $appliedjobs = $jobs->findApplied($user);
+        $followupjobs = $jobs->findFollowup($user);
+        $interviewjobs = $jobs->findInterview($user);
+        $postinterviewjobs = $jobs->findPostInterview($user);
+        $savedjobscount= count($savedjobs);
+        $appliedjobscount= count($appliedjobs);
+        $followupjobscount= count($followupjobs);
+        $interviewjobscount= count($interviewjobs);
+        $postinterviewjobscount= count($postinterviewjobs);
         
+
+        
+        
+
+        if($variable == "all"){
+
+        $latestJobs = $jobs->findLatest($user);
+    }
 
         $form->handleRequest($request);
         if ($form->isSubmitted() && $form->isValid()) {
@@ -66,10 +115,10 @@ class SavedAppliedJobsController extends AbstractController
             $entityManager->persist($user);
             $entityManager->flush();
 
-            return $this->redirectToRoute('dashboard');
+            return $this->redirectToRoute('savedappliedjobs');
         }
         return $this->render('home/savedappliedjobs.html.twig', [
-            'form' => $form->createView(), 'jobs' => $latestJobs,
+            'form' => $form->createView(), 'jobs' => $latestJobs, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount
         ]);
     }
 
@@ -230,6 +279,9 @@ class SavedAppliedJobsController extends AbstractController
         
         
     }
+
+   
+        
 
 
 

@@ -72,24 +72,24 @@
         <button type="submit" id="submitBtn" class="btn btn-search">Run Search <img src="images/search2.svg" alt=""> </button>
       </div>
     </form>
-    <div class="serch-wrapper">
+     <div class="serch-wrapper">
       <div class="media">
         <div class="check">
-          <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="radio"  checked>
+          <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
           <label for="checkbox-1" class="checkbox-style-3-label"> <img src="images/linkedin.svg" alt=""> <span>LinkedIn</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
         <a href="#">Edit</a> </div>
       <div class="media">
         <div class="check">
-          <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="radio"  >
+          <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" >
           <label for="checkbox-2" class="checkbox-style-3-label"> <img src="images/indeed.svg" alt=""> <span>Indeed</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
         <a href="#">Edit</a> </div>
       <div class="media">
         <div class="check">
-          <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="radio" >
+          <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox">
           <label for="checkbox-3" class="checkbox-style-3-label"> <img src="images/monster.svg" alt=""> <span>Monster</span> </label>
         </div>
         <div class="date"> Last updated: <span>03 May 19</span> </div>
@@ -99,24 +99,58 @@
 </div>
 
 </div>
+{% block javascripts %}
 
-<script>
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   
+  <script>
 $("#submitBtn").click("submit", function (e) {
     e.preventDefault();
     var jobName = $("#jobName").val();
     var locationName = $("#locationName").val();
     var email = [jobName, locationName];
-  
-    if(document.getElementById('checkbox-1').checked) {
-      window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
     
-} else if(document.getElementById('checkbox-2').checked) {
+    console.log(email);
+  
+  if(document.getElementById('checkbox-1').checked && document.getElementById('checkbox-2').checked && document.getElementById('checkbox-3').checked){
+  console.log(jobName);
+  window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
+    window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
+    
 
-  window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
-} else{
+}
+     
+else if(document.getElementById('checkbox-1').checked && document.getElementById('checkbox-2').checked){
+    window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
+    window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+console.log(locationName);
+}
+else if(document.getElementById('checkbox-1').checked && document.getElementById('checkbox-3').checked){
+    window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
     window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
 
 }
+else if(document.getElementById('checkbox-2').checked && document.getElementById('checkbox-3').checked){
+    window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
+
+}
+else if(document.getElementById('checkbox-1').checked) {
+      window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
+    
+}
+else if(document.getElementById('checkbox-2').checked) {
+
+  window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
+}
+ else if(document.getElementById('checkbox-3').checked){
+    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
+
+}
+
   
 
 
@@ -132,8 +166,7 @@ $("#submitBtn").click("submit", function (e) {
                 },
                 success: function (res) {
                   
-                    console.log(res.jobName);
-                    console.log(res.locationName);
+                    
                     
 
 
@@ -148,6 +181,11 @@ $("#submitBtn").click("submit", function (e) {
 });
 
 </script>
+{# var myNewArray = myArray.filter(function(elem, index, self) {
+      return index === self.indexOf(elem);
+  }); #}
+
+{% endblock %}
 
   
 {% endblock %}

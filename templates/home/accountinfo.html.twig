@@ -160,15 +160,129 @@
                     <div style="max-width:794px; padding-top:0px;">
                         <div align="center" class="col-sm-12" style="padding-top:0px;">
                             <div class="text-center pt-115" style="padding-top:0px;">
-                                <button class="btn btn-form" id="edit" style="color: #ffffff;">EDIT</a>
+                                <button class="btn btn-form" data-backdrop="static" data-keyboard="false" data-target="#reminder" data-toggle="modal" id="edit" style="color: #ffffff;">EDIT</a>
                             </button>
                         </div>
                     </div>
                 </div>
 
+
                 <br>
                 <br>
             </div>
         </div>
+        {# modal #}
+        <div aria-hidden="true" aria-labelledby="reminder" class="modal fade" id="reminder" role="dialog" tabindex="-1">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div align="center" class="modal-header">
+                        <h4>
+                            Enter Your Password
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true"><img src="images/close2.svg" alt=""></span> </button>
+
+                    </div>
+                    <div class="modal-body">
+                    <br>
+                    <br>
+
+                        <div class="position-relative form-group">
+                            <input class="form-control" id="inputPassword" name="password" oninput="this.setCustomValidity('')" oninvalid="this.setCustomValidity('Please fill in your password')" placeholder="Password" required type="password" >
+                            
+                        </div>
+
+                    </div>
+                    <div align="center">
+                    <p class="message"></p>
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <button class="btn btn-primary" id = "submitBtn">Submit
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-</div></div></div>{% endblock %}
+</div></div></div>
+
+<script>
+$("#submitBtn").click("submit", function (e) {
+    e.preventDefault();
+    var password = $("#inputPassword").val();
+    var modal = $("#reminder");
+    modal.find('.message').hide();
+    
+    var email = password;
+$.ajax({
+                url: "{{ path('accountinfoedit') }}",
+                type: 'POST',
+                data: {
+                    email: email
+                },
+                success: function (res) {
+    
+                    if(res == "Authentication Succesful"){
+$('.data-backdrop').remove();
+$('.data-keyboard').remove();
+$('#reminder').modal('hide');
+                    }
+                    else{
+
+                        $('.data-backdrop').add();
+$('.data-keyboard').add();
+$('#reminder').modal('show');
+                        
+
+                        modal.find('.message').show();
+                        modal.find('.message').html(res);
+
+
+                    }
+
+
+                    
+
+                    
+                    
+                  
+                    
+                    
+
+
+                }
+            });
+    
+   
+
+  
+    
+    
+});
+{# modal.data("modal").options) {
+    backdrop = true;
+    keyboard = true;
+} #}
+</script>
+
+<script>
+$(document).ready(function(){
+   var modal = $("#reminder");
+    modal.find('.close').click(function(){
+  $("#update").hide();
+$("#edit").show();
+
+$("input").prop('disabled', true);
+
+
+    }
+    );
+});
+
+</script>
+
+
+{% endblock %}

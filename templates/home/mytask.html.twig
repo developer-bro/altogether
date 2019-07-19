@@ -125,14 +125,18 @@
                 <ul>{% for job in jobs %}
                   <li>
                     <div class="txt">
-                      <span>{{ job.title }}</span>
-                      <span>{{ job.comapnyName }}</sapn>
+                      <span>{{ job.title }}</sapn>
+                      <span>{{ job.comapnyName }}</span>
                     </div>
-                    
+                    <div>
                     <a href="#" class="add" data-toggle="modal" data-target="#reminder" data-whatever="{{ job.comapnyName }}"><img
-                                                    src="images/plus.svg" alt=""></a> </li>
+                                                    src="images/plus.svg" alt=""></a> 
+                                                    </div>
+                                                    </li>
                                                     {% endfor %}
+                                                    
                 </ul>
+                
               </div>
             </div>
           </div>

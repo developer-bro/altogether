@@ -76,7 +76,7 @@
                             <li>
                                 <div class="c1">
                                     <div class="counter">
-                                        {{ savedjobscount }}
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'saved'}) }}">{{ savedjobscount }}</a>
                                     </div>
                                     <span class="img-dots">
                                         <img alt="" src="images/dots.svg">
@@ -87,7 +87,7 @@
                             <li>
                                 <div class="c1">
                                     <div class="counter">
-                                        {{ appliedjobscount }}
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'applied'}) }}">{{ appliedjobscount }}</a>
                                     </div>
                                     <span class="img-dots">
                                         <img alt="" src="images/dots.svg">
@@ -98,7 +98,7 @@
                             <li>
                                 <div class="c1">
                                     <div class="counter">
-                                        {{ followupjobscount }}
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'follow up'}) }}">{{ followupjobscount }}</a>
                                     </div>
                                     <span class="img-dots">
                                         <img alt="" src="images/dots.svg">
@@ -109,7 +109,7 @@
                             <li>
                                 <div class="c1">
                                     <div class="counter">
-                                        {{ interviewjobscount }}
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'interview'}) }}">{{ interviewjobscount }}</a>
                                     </div>
                                     <span class="img-dots">
                                         <img alt="" src="images/dots.svg">
@@ -120,7 +120,7 @@
                             <li>
                                 <div class="c1">
                                     <div class="counter">
-                                        {{ postinterviewjobscount }}
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'post interview follow up'}) }}">{{ postinterviewjobscount }}</a>
                                     </div>
                                     <span class="img-dots">
                                         <img alt="" src="images/dots.svg">
@@ -157,7 +157,7 @@
                                         
                                             <div class="col-4">
                                                 <p class="title-txt">
-                                                {% if job.isApplied %} <span><img src="images/check-circle.svg" alt=""></span> {% else %} <span><img src="images/fav-c.svg" alt=""></span> {% endif %}
+                                                {% if job.isSaved %} <span><img src="images/check-circle.svg" alt=""></span> {% elseif job.isApplied %} <span><img src="images/fav-c.svg" alt=""></span> {% else %}<span></span>{% endif %}
                                                     {{ job.title }}</p>
                                             </div>
                                             <div class="col-4">
@@ -201,7 +201,7 @@
                                     </div>
                                     <div class="col-4">
                                         <h4><img alt="" src="images/portfolio.svg">
-                                            Job</h4>
+                                            Company</h4>
                                     </div>
                                     <div class="col-4">
                                         <h4><img alt="" src="images/deadline.svg">

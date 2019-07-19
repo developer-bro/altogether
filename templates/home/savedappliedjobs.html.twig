@@ -9,37 +9,37 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="sidebar-header text-center">
-                    <img alt="" src="images/logo.svg">
+                    <img alt="" src="{{ asset('images/logo.svg') }}">
                 </div>
                 <ul class="list-unstyled components">
                     <li>
-                        <a href="dashboard">My Dashboard</a>
+                        <a href="/dashboard">My Dashboard</a>
                     </li>
                     <li>
                         <a aria-expanded="true" data-toggle="collapse" href="#pageSubmenu">Job search</a>
                         <ul class="collapse list-unstyled show" id="pageSubmenu">
                             <li>
-                                <a href="/jobsitestosearch">Job Sites to Search</a>
+                                <a href="{{ path('jobsitestosearch') }}">Job Sites to Search</a>
                             </li>
                             <li class="active">
-                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                                <a href="{{ path('savedappliedjobs') }}">Saved/Applied Jobs</a>
                             </li>
                             <li>
-                                <a href="/joblisting">Job Listing</a>
+                                <a href="{{ path('joblisting') }}">Job Listing</a>
                             </li>
                             <li>
-                                <a href="/savedsearches">Saved Searches</a>
+                                <a href="{{ path('savedsearches') }}">Saved Searches</a>
                             </li>
                         </ul>
                     </li>
                     <li>
-                        <a href="/documents">My documents</a>
+                        <a href="{{ path('documents') }}">My documents</a>
                     </li>
                     <li>
-                        <a href="/mytask">My Tasks</a>
+                        <a href="{{ path('mytask') }}">My Tasks</a>
                     </li>
                     <li>
-                        <a href="/logout">LogOut</a>
+                        <a href="{{ path('app_logout') }}">LogOut</a>
                     </li>
                 </ul>
             </nav>
@@ -57,7 +57,7 @@
                                     <a href="#">HELP</a>
                                 </li>
                                 <li>
-                                    <a href="/accountinfo">SETTINGS</a>
+                                    <a href="{{ path('accountinfo') }}">SETTINGS</a>
                                 </li>
                                 <li>
                                     <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
@@ -84,7 +84,7 @@
                     </li>
                 </ul>
                 <div class="serch-wrapper ">
-                    <form action="/savedappliedaction" class="s-link ">
+                    <form  class="s-link ">
                         <div class="row align-items-center no-gutters">
                             <div class="col-xl-2">
                                 <label for="">Add new Job</label>
@@ -107,47 +107,75 @@
                         </div>
                     </form>
                     <br>
-                    <br>
-                    {{ form_start(form) }}
 
-                    {{ form_row(form.title, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_row(form.comapnyName, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_row(form.location, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_row(form.description, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_row(form.uri, {'attr': {'class': 'form-control'}}) }}
-                    {{ form_row(form._token) }}
-                    <div class="text-center">
-                        <button class="btn btn-search">Save Job
-                        </button>
+                    <div class="container-fluid">
+                        <ul class="dashboard-review">
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'saved'}) }}">{{ savedjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Saved Jobs</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'applied'}) }}">{{ appliedjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Applied</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'follow up'}) }}">{{ followupjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Follow-up</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'interview'}) }}">{{ interviewjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Interviews</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'post interview follow up'}) }}">{{ postinterviewjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Post Interview Follow-up</h3>
+                            </li>
+                        </ul>
                     </div>
-                    {{ form_end(form, {'render_rest': false}) }}
+                    
                     <br>
-                    <br>
-                    <ul class="filter">
-                        <li>
-                            <h3>Filters:</h3>
-                        </li>
-                        <li>
-                            <div class="check">
-                                <input class="checkbox-style" id="checkbox-1" name="checkbox-10" type="checkbox">
-                                <label class="checkbox-style-3-label" for="checkbox-1">
-                                    Saved
-                                </label>
-                            </div>
-                        </li>
-                        <li>
-                            <div class="check">
-                                <input class="checkbox-style" id="checkbox-2" name="checkbox-10" type="checkbox">
-                                <label class="checkbox-style-3-label" for="checkbox-2">
-                                    Applied
-                                </label>
-                            </div>
-                        </li>
-                    </ul>
+                    
+
+                    
                     <div class="filter-card">
                      {% for job in jobs %}
                         <div class="media">
-                          {% if job.isApplied %} <div class="icon-filter"> <img src="images/fav2.svg" alt=""> </div> {% else %} <div class="icon-filter"> <img src="images/check-c.svg" alt=""> </div> {% endif %}
+                         {% if job.isSaved %} <div class="icon-filter"><img src="images/check-c.svg" alt=""></div> {% elseif job.isApplied %} <div class="icon-filter"><img src="images/fav2.svg" alt=""></div> {% else %}<div class="icon-filter"></div>{% endif %}
                            
                                 <div class="media-body">
                                 <a href="{{ path('joblistingshow', { id: job.id }) }}">
@@ -162,17 +190,41 @@
                                                 </li>
                                             </ul>
                                         </div>
+
+                                        {% if job.isSaved %}
                                         <div class="sav-link">
-                                            <span>SAVED:</span>
-                                            {{ job.dateSaved|ago }}</div>
+                                            <p><span>SAVED:</span>
+                                            {{ job.dateSaved|ago }}</p></div>
                                     </div>
+                                    {% elseif job.isApplied %}
+                                    <div class="sav-link">
+                                            <p><span>Applied:</span>
+                                            {{ job.dateApplied|ago }}</p></div>
+                                    </div>
+                                    {% elseif job.isInterview %}
+                                    <div class="sav-link">
+                                            <p><span>Interview:</span>
+                                            {{ job.dateInterview|ago }}</p></div>
+                                    </div>
+                                    {% elseif job.isFollowUp %}
+                                    <div class="sav-link">
+                                            <p><span>Follow Up:</span>
+                                            {{ job.dateInitialFollowUp|ago }}</p></div>
+                                    </div>
+                                    {% elseif job.isPostInterviewFollowUp %}
+                                    <div class="sav-link">
+                                            <p><span>Post Interview Folow Up:</span>
+                                            {{ job.dateFollowUp|ago }}</p></div>
+                                    </div>
+                                    {% endif %}
+
                                     <p>{{ job.description|truncate(250) }}
                                     </p>
                                     </a>
                                     <div class="footer-card">
                                         <a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>
                                     </div>
-                                    <div class="dropdown">
+                                    {# <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Change Status
     <span class="caret"></span></button>
     <ul class="dropdown-menu">
@@ -181,7 +233,34 @@
       <li><a href="{{ path('interviewaction', { id: job.id }) }}">Interview</a></li>
       <li><a href="{{ path('postinterviewaction', { id: job.id }) }}">Post Interview Follow Up</a></li>
     </ul>
-  </div>
+  </div> #}
+  <div class="d-flex flex-row bd-highlight mb-3">
+                                    <div class="p-3 bd-highlight change-status"> Change status:</div>
+                                    <div class="p-2 bd-highlight">
+
+
+                                        <div class="relative">
+
+                                            <select class="form-control" id="" name="" style="
+                                                                          border: none;
+                                                                          border-radius: 0;
+                                                                          padding: 0;
+                                                                          background-color: transparent;
+                                                                          box-shadow: none;
+                                                                          border-bottom: 1px solid #BCE0FD !important;
+                                                                      " onchange="location = this.value;">
+
+ <option value="/appliedaction"></option>
+                                                <option value="{{ path('appliedaction', { id: job.id }) }}">Apply</option>
+                                                <option value="{{ path('followupaction', { id: job.id }) }}">Follow Up</option>
+                                                <option value="{{ path('interviewaction', { id: job.id }) }}">Interview</option>
+                                                <option value="{{ path('postinterviewaction', { id: job.id }) }}">Post Interview Follow Up</option>
+                                            </select>
+                                            <i class="t-f r-0"><img alt="" src="images/select.svg"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
                                     <div>
                                             <hr style="height:2px;border:none;color:#333;background-color:#333;" width="100px">
                                             </div>
@@ -200,28 +279,63 @@
                 <div aria-hidden="true" aria-labelledby="add-jobs" class="modal fade" id="add-jobs" role="dialog" tabindex="-1">
                     <div class="modal-dialog modal-dialog-centered" role="document">
                         <div class="modal-content">
+                        
                             <div class="modal-header">
-                                <h4>
-                                    Please Read</h4>
-                                
-                            </div>
-                            <div class="modal-body">
-                                <div class="form-row">
-                                    <div class="col-md-2">
-                                        <h4></h4>
-                                    </div>
-                                    <div class="col-md-10">
-                                        <p>Please wait while the information populates in the form below.</p><br>
-                                        <p>Provide information of the missing fields and save the job.</p><br>
-                                        <p>Retry with different url if it takes time. Thank You</p><br>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer justify-content-center">
-                                <button class="btn btn-secondary" data-dismiss="modal" type="button">Cancel</button>
-                                
-                                </button>
-                            </div>
+            <h4> ADD JOB</h4>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true"><img src="images/close2.svg" alt=""></span> </button>
+          </div>
+          <div class="modal-body">
+          {{ form_start(form) }}
+            <div class="form-row">
+              
+              <div class="col-md-12"><div class='loadingmessage' style='display:none' align="center">
+       <img src="{{ asset('images/loader.gif') }}"/>
+</div>
+               {{ form_row(form.title, {'attr': {'class': 'form-control b3'}}) }}
+              </div>
+            </div>
+            <div class="form-row">
+              
+              <div class="col-md-12"><div class='loadingmessage' style='display:none' align="center">
+       <img src="{{ asset('images/loader.gif') }}"/>
+</div>
+                {{ form_row(form.comapnyName, {'attr': {'class': 'form-control b4'}}) }}
+              </div>
+            </div>
+            <div class="form-row">
+              
+              <div class="col-md-12"><div class='loadingmessage' style='display:none' align="center">
+       <img src="{{ asset('images/loader.gif') }}"/>
+</div>
+             {{ form_row(form.location, {'attr': {'class': 'form-control b4'}}) }}
+              </div>
+            </div>
+            <div class="form-row">
+              
+              <div class="col-md-12"><div class='loadingmessage' style='display:none' align="center">
+       <img src="{{ asset('images/loader.gif') }}"/>
+</div>
+                {{ form_row(form.description, {'attr': {'class': 'form-control b4'}}) }}
+              </div>
+            </div>
+            <div class="form-row">
+              
+              <div class="col-md-12"><div class='loadingmessage' style='display:none' align="center">
+       <img src="{{ asset('images/loader.gif') }}"/>
+</div>
+               {{ form_row(form.uri, {'attr': {'class': 'form-control b7'}}) }}
+              </div>
+            </div>
+            
+          </div>
+          {{ form_row(form._token) }}
+          <div class="modal-footer justify-content-center">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+               <button class="btn btn-primary">Save
+                            </button>
+                            {{ form_end(form, {'render_rest': false}) }}
+          </div>
+        </div>
                         </div>
                     </div>
                 </div>
@@ -229,10 +343,25 @@
         </div>
 
     </div>
-
+    {% block javascripts %}
+        
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+   
     <script>
+                $(document).ready(function () {
+                    $('.sidebarCollapse').on('click', function () {
+                        $('.sidebar').toggleClass('active');
+                    });
+                });
+            </script>
+    
+    <script>
+  
         $("#submitBtn").click("submit", function (e) {
             e.preventDefault();
+            var modal = $("#add-jobs");
+            modal.find('.loadingmessage').show();
             var email = $("#emailId").val();
             $.ajax({
                 url: "{{ path('scrapedataindex') }}",
@@ -241,20 +370,33 @@
                     email: email
                 },
                 success: function (res) {
-                    $("#jobs_save_description").html(res.description);
-                    $("#jobs_save_title").html(res.title);
-                    $("#jobs_save_comapnyName").html(res.company);
-                    $("#jobs_save_location").html(res.location);
-                    $("#jobs_save_uri").html(res.uri);
-                    console.log(res.location);
+                    modal.find('.loadingmessage').hide();
+                    modal.find('#jobs_save_title').html(res.title);
+                    modal.find('#jobs_save_comapnyName').html(res.company);
+                    modal.find('#jobs_save_location').html(res.location);
+                    modal.find('#jobs_save_description').html(res.description);
+                    modal.find('#jobs_save_uri').html(res.uri);
+                    
                     
 
 
-                }
+                },
+                error: function () {
+                    modal.find('.loadingmessage').html(" Enter information manually");
+                    
+                    
+                    
+                    }
             });
         });
     </script>
 
     
+
     
+{% endblock %}
+    
+    {# setTimeout(function(){
+   location.reload(true);
+}, 2000); #}
 {% endblock %}

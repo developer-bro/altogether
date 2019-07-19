@@ -1,126 +1,168 @@
 {% extends 'base.html.twig' %}
-        {% block body %}
-<div class="account-info">
-<div class="wrapper"> 
-  <!-- Sidebar  -->
-  <nav class="sidebar">
-    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
-    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
-    <ul class="list-unstyled components">
-      <li><a href="/dashboard">My Dashboard</a></li>
-      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Job search</a>
-        <ul class="collapse list-unstyled " id="pageSubmenu">
-          <li> <a href="/jobsitestosearch">Job Sites to Search</a> </li>
-          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-          <li><a href="/joblisting">Job Listing</a></li>
-          <li><a href="/savedsearches">Saved Searches</a></li>
-        </ul>
-      </li>
-      <li class="active"><a href="/documents">My documents</a></li>
-      <li><a href="/mytask">My Tasks</a></li>
-      <li>
+{% block body %}
+    <div class="account-info">
+        <div
+            class="wrapper">
+            <!-- Sidebar  -->
+            <nav class="sidebar">
+                <button class="btn close-btn sidebarCollapse">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="sidebar-header text-center">
+                    <img alt="" src="images/logo.svg">
+                </div>
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="/dashboard">My Dashboard</a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <ul class="collapse list-unstyled " id="pageSubmenu">
+                            <li>
+                                <a href="/jobsitestosearch">Job Sites to Search</a>
+                            </li>
+                            <li>
+                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                            </li>
+                            <li>
+                                <a href="/joblisting">Job Listing</a>
+                            </li>
+                            <li>
+                                <a href="/savedsearches">Saved Searches</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="active">
+                        <a href="/documents">My documents</a>
+                    </li>
+                    <li>
+                        <a href="/mytask">My Tasks</a>
+                    </li>
+                    <li>
                         <a href="/logout">LogOut</a>
                     </li>
-    </ul>
-  </nav>
-  
-  <!-- Page Content  -->
-  <div class="content">
-    <nav class="dashboard-nav navbar-expand-lg">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center">
-          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
-          <ul class="sidetop ml-auto">
-            <li class="active"> <a href="#">HELP</a> </li>
-            <li> <a href="/accountinfo">SETTINGS</a> </li>
-        <li>
-                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div class="content">
+                <nav class="dashboard-nav navbar-expand-lg">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-info sidebarCollapse">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <ul class="sidetop ml-auto">
+                                <li class="active">
+                                    <a href="#">HELP</a>
+                                </li>
+                                <li>
+                                    <a href="/accountinfo">SETTINGS</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
 
                                     </a>
-                        
+
                                 </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
 
-   
 
-    
-    <div class="wrapper-account">
-      <div class="container-fluid">
-        <div class="row no-gutters  mt-91">
-          <div class="col-md-10">
-            <div class="cards">
-              <div class="card_header">
-                <h3><img src="images/folder.svg" alt="">CV</h3>
-                <a href="#"><img src="images/dots-line.svg" alt=""></a> </div>
-              <div class="card_body">
-              {% for files in uploadedFiles %}
-                <div class="ch-bx">
-                  
-                  <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="radio">
+                <div class="wrapper-account">
+                    <div class="container-fluid">
+                        <div class="row no-gutters  mt-91">
+                            <div class="col-md-10">
+                                <div class="cards">
+                                    <div class="card_header">
+                                        <h3><img alt="" src="images/folder.svg">CV</h3>
+                                        <a href="#"><img alt="" src="images/dots-line.svg"></a>
+                                    </div>
+                                    <div class="card_body">
+                                        <div class="card-search">
+                                            {% for files in uploadedFiles %}
+                                                <div class="media docmedia">
+                                                    <div class="input-top">
+                                                        <input class="form-control docinput" disabled="true" type="text" value=" {{ files.name }} "></label>
+                                                    </div>
+                                                    <div class="action doc">
+                                                    <a href="#" id="edit">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    <a href="#" id="update" style=" display: none;"><img alt="" src="images/check-circle.svg"></a>
+                                                    <a href="{{ path('documentdownload', {'id' : files.id }) }}">
+                                                        <i class="fas fa-cloud-download-alt"></i>
+                                                    </a>
+                                                    <a href="#">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
                                             
-                  <label for="checkbox-1" class="checkbox-style-3-label"> {{ files.name }} </label>
-                </div>
-                <div>
-                <a href="{{ path('documentdownload', {'id' : files.id }) }}" class="btn btn-primary"> Download</a>
-                
-                </div>
-                <br>
-                {% endfor %}
-                {{ form_start(form) }}
-                <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt="">{{ form_widget(form.name, {'attr': {'class': 'checkbox-style'}}) }}</a> </div>
-               
-               
-               <div align="center">
-               {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
-               </div>
-               {{ form_end(form) }}
+                                        {% endfor %}
+                                    </div>
+                                    {{ form_start(form) }}
+                                    <div class="text-right">
+                                        <a class="add"><img alt="" src="images/plus.svg">{{ form_widget(form.name, {'attr': {'class': 'checkbox-style'}}) }}</a>
+                                    </div>
 
-              </div>
-              
-            </div>
-          </div>
-        </div>
-        <div class="row no-gutters ">
-          <div class="col-md-10">
-            <div class="cards">
-              <div class="card_header">
-                <h3><img src="images/folder.svg" alt="">Cover letter</h3>
-                <a href="#"><img src="images/dots-line.svg" alt=""></a> </div>
-              <div class="card_body">
-                <div class="ch-bx">
-                  <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox"
-                                            checked="">
-                  <label for="checkbox-3" class="checkbox-style-3-label"> My latest Cover letter.pdf </label>
+
+                                    <div align="center" id="hidebutton">
+                                        {{ form_widget(form.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                                    </div>
+                                    {{ form_end(form) }}
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row no-gutters ">
+                        <div class="col-md-10">
+                            <div class="cards">
+                                <div class="card_header">
+                                    <h3><img alt="" src="images/folder.svg">Cover letter</h3>
+                                    <a href="#"><img alt="" src="images/dots-line.svg"></a>
+                                </div>
+                                <div class="card_body">
+                                    <div class="ch-bx">
+                                        <input checked="" class="checkbox-style" id="checkbox-3" name="checkbox-10" type="checkbox">
+                                        <label class="checkbox-style-3-label" for="checkbox-3">
+                                            My latest Cover letter.pdf
+                                        </label>
+                                    </div>
+                                    <div class="ch-bx">
+                                        <input class="checkbox-style" id="checkbox-2" name="checkbox-10" type="checkbox">
+                                        <label class="checkbox-style-3-label" for="checkbox-2">
+                                            Cover letter.pdf
+                                        </label>
+                                    </div>
+                                    <div class="text-right">
+                                        <a class="add" href="#"><img alt="" src="images/plus.svg"></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="ch-bx">
-                  <input id="checkbox-2" class="checkbox-style" name="checkbox-10"
-                                            type="checkbox">
-                  <label for="checkbox-2" class="checkbox-style-3-label"> Cover letter.pdf </label>
-                </div>
-                <div class="text-right"> <a href="#" class="add"><img src="images/plus.svg" alt=""></a> </div>
-              </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
-</div>
 
 
 </div>
 <script>
-$(document).ready(function(){
-        $('input[type="file"]').change(function(e){
+    $(document).ready(function () {
+        $("#hidebutton").hide();
+        $('input[type="file"]').change(function (e) {
             var fileName = e.target.files[0].name;
-            alert('The file "' + fileName +  '" has been selected.');
-            
+            alert('The file "' + fileName + '" has been selected.');
+
+            $("form").submit();
+
         });
     });
-</script>
- 
-
-{% endblock %}
+</script>{% endblock %}

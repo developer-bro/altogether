@@ -20,21 +20,6 @@ class NewPasswordType extends AbstractType
     {
         $builder
         ->add('password', RepeatedType::class, ['type' => PasswordType::class,
-            // instead of being set onto the object directly,
-            // this is read and encoded in the controller
-            'type' => PasswordType::class,
-            'mapped' => false,
-            'constraints' => [
-                new NotBlank([
-                    'message' => 'Please enter a password',
-                ]),
-                new Length([
-                    'min' => 6,
-                    'minMessage' => 'Your password should be at least {{ limit }} characters',
-                    // max length allowed by Symfony for security reasons
-                    'max' => 4096,
-                ]),
-            ],
             'first_options' => ['label' => 'Password'],
    'second_options' => ['label' => 'Confirm Password'],
    'invalid_message' => 'Passwords do not match. Please try again.'
