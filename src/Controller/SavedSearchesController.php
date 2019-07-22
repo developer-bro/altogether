@@ -23,6 +23,7 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\SavedJobSearches;
 use App\Entity\User;
 use App\Repository\SavedJobSearchesRepository;
+Use Symfony\Component\HttpFoundation\JsonResponse;
 
 
 class SavedSearchesController extends AbstractController
@@ -53,6 +54,33 @@ class SavedSearchesController extends AbstractController
         $entityManager = $this->getDoctrine()->getManager();
         $deletesearch = $jobsearches->deleteSearch($user, $id);
                 return $this->redirectToRoute('savedsearches');
+    }
+
+        /**
+     * @Route("/updatesearch/{id}", methods={"GET", "POST"}, name="updatesearch")
+     *
+     * 
+     */
+    public function updateindex(Request $request, SavedJobSearchesRepository $jobsearches, $id): Response
+    {
+        $user = $this->getUser();
+        $input = $request->request->get('searchname');
+        $arr = explode(',', $input, 2);
+
+        $first = reset($arr);
+        $last = end($arr);
+
+        echo "$first";
+        echo "$last";
+       
+       
+        
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $updatesearch = $jobsearches->updateSearch($user, $id, $first, $last);
+
+        return $this->redirectToRoute('savedsearches');
+                
     }
 
 }

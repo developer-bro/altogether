@@ -110,12 +110,18 @@ class User implements UserInterface
      */
     private $accountUnlockToken;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\CVupload", mappedBy="user")
+     */
+    private $cVuploads;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
         $this->uploads = new ArrayCollection();
         $this->tasks = new ArrayCollection();
         $this->savedJobSearches = new ArrayCollection();
+        $this->cVuploads = new ArrayCollection();
     }
     
 
@@ -444,6 +450,37 @@ class User implements UserInterface
     public function setAccountUnlockToken(?string $accountUnlockToken): self
     {
         $this->accountUnlockToken = $accountUnlockToken;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|CVupload[]
+     */
+    public function getCVuploads(): Collection
+    {
+        return $this->cVuploads;
+    }
+
+    public function addCVupload(CVupload $cVupload): self
+    {
+        if (!$this->cVuploads->contains($cVupload)) {
+            $this->cVuploads[] = $cVupload;
+            $cVupload->setUser($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCVupload(CVupload $cVupload): self
+    {
+        if ($this->cVuploads->contains($cVupload)) {
+            $this->cVuploads->removeElement($cVupload);
+            // set the owning side to null (unless already changed)
+            if ($cVupload->getUser() === $this) {
+                $cVupload->setUser(null);
+            }
+        }
 
         return $this;
     }

@@ -2,33 +2,33 @@
 
 namespace App\Repository;
 
-use App\Entity\Upload;
+use App\Entity\CVupload;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 
 /**
- * @method Upload|null find($id, $lockMode = null, $lockVersion = null)
- * @method Upload|null findOneBy(array $criteria, array $orderBy = null)
- * @method Upload[]    findAll()
- * @method Upload[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CVupload|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CVupload|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CVupload[]    findAll()
+ * @method CVupload[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class UploadRepository extends ServiceEntityRepository
+class CVuploadRepository extends ServiceEntityRepository
 {
     public function __construct(RegistryInterface $registry)
     {
-        parent::__construct($registry, Upload::class);
+        parent::__construct($registry, CVupload::class);
     }
 
     // /**
-    //  * @return Upload[] Returns an array of Upload objects
+    //  * @return CVupload[] Returns an array of CVupload objects
     //  */
     /*
     public function findByExampleField($value)
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
             ->setParameter('val', $value)
-            ->orderBy('u.id', 'ASC')
+            ->orderBy('c.id', 'ASC')
             ->setMaxResults(10)
             ->getQuery()
             ->getResult()
@@ -37,10 +37,10 @@ class UploadRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Upload
+    public function findOneBySomeField($value): ?CVupload
     {
-        return $this->createQueryBuilder('u')
-            ->andWhere('u.exampleField = :val')
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.exampleField = :val')
             ->setParameter('val', $value)
             ->getQuery()
             ->getOneOrNullResult()
@@ -54,7 +54,7 @@ class UploadRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery('
                 	SELECT f, u
-                	FROM App\Entity\Upload f JOIN f.user u
+                	FROM App\Entity\CVupload f JOIN f.user u
                 	WHERE u.id = :user
                 	ORDER BY f.id DESC
             		')
@@ -70,7 +70,7 @@ class UploadRepository extends ServiceEntityRepository
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery('
                 	DELETE 
-                	FROM App\Entity\Upload f
+                	FROM App\Entity\CVupload f
                 	WHERE f.user = :user AND f.id = :id
             		')
                 ->setParameter('user', $user)
@@ -85,7 +85,7 @@ class UploadRepository extends ServiceEntityRepository
 
         $entityManager = $this->getEntityManager();
         $query = $entityManager->createQuery('
-                	UPDATE App\Entity\Upload f
+                	UPDATE App\Entity\CVupload f
                     SET f.name = :first
                 	WHERE f.user = :user AND f.id = :id
             		')

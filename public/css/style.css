@@ -22,18 +22,12 @@
 	font-style: normal;
 }
 
-
 .doc {
 	padding: 17px 35px 0px 0px;
 	
 }
 
-.docmedia{
-height :60px;
-padding: 5px;
-	
-	
-}
+
 
 .input-top{
 	padding: 0px 35px 0px 0px !important;
@@ -41,8 +35,8 @@ padding: 5px;
 }
 
 .form-control.docinput {
-	background-color: #ffffff;
-    border: none;
+	
+    width: 400px;
 
 }
 
@@ -112,7 +106,7 @@ padding: 5px;
 	}
 
 
-
+	
 body {
 	font-family: 'IBM Plex Sans', sans-serif;
 	font-size: 16px;
@@ -761,7 +755,7 @@ select {
 	object-fit: cover;
 }
 .dashboard-nav {
-	padding: 40px 31.5px 20px;
+	padding: 20px 31.5px 20px;
 }
 /*****************************************************/
 .counter {
@@ -783,10 +777,10 @@ select {
 	background-color: #f2f0f0;
 }
 .dashboard-review {
-	padding: 61px 48px 0;
+	padding: 20px 48px 0;
 	display: flex;
 	align-items: center;
-	margin-bottom: 57px;
+	margin-bottom: 25px;
 }
 .dashboard-review .c1 {
 	text-align: center;
@@ -1122,7 +1116,7 @@ select {
 	display: flex;
 	background-color: rgba(30, 154, 242, 0.1);
 	padding: 0 39px;
-	margin-bottom: 39px;
+	margin-bottom: 25px;
 }
 .links_search li {
 	margin-right: 84px;
@@ -1196,7 +1190,7 @@ select {
     font-weight: 700;
     display: inline-flex;
     align-items: center;
-    margin: 54px auto 70px;
+    margin: 18px auto 0px;
 }
 .btn-search:hover, .btn-search:focus {
 	background-color: transparent;
@@ -2001,4 +1995,9 @@ select {
 
   .resendtokenform{
 	  display:flex;
+  }
+
+
+  .password-custom{
+	  width:98%!important;
   }

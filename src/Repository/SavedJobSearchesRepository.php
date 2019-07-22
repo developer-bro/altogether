@@ -83,5 +83,23 @@ class SavedJobSearchesRepository extends ServiceEntityRepository
             return $query->execute();
     }
 
+    public function updateSearch($user, $id, $first, $last)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	UPDATE App\Entity\SavedJobSearches s
+                    SET s.jobName = :first, s.location = :last
+                	WHERE s.user = :user AND s.id = :id
+            		')
+                ->setParameter('user', $user)
+                ->setParameter('id', $id)
+                ->setParameter('first', $first)
+                ->setParameter('last', $last)
+                ;
+            
+            return $query->execute();
+    }
+
 
 }

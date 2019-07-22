@@ -79,7 +79,7 @@ class JobsRepository extends ServiceEntityRepository
                 	SELECT j, u
                 	FROM App\Entity\Jobs j JOIN j.User u
                 	WHERE u.id = :user AND j.isSaved = 1
-                	ORDER BY j.id DESC
+                	ORDER BY j.dateSaved DESC
             		')
                 ->setParameter('user', $user)
             ;
@@ -95,7 +95,7 @@ class JobsRepository extends ServiceEntityRepository
                 	SELECT j, u
                 	FROM App\Entity\Jobs j JOIN j.User u
                 	WHERE u.id = :user AND j.isApplied = 1
-                	ORDER BY j.id DESC
+                	ORDER BY j.dateApplied DESC
             		')
                 ->setParameter('user', $user)
             ;
@@ -111,7 +111,7 @@ class JobsRepository extends ServiceEntityRepository
                 	SELECT j, u
                 	FROM App\Entity\Jobs j JOIN j.User u
                 	WHERE u.id = :user AND j.isFollowUp = 1
-                	ORDER BY j.id DESC
+                	ORDER BY j.dateInitialFollowUp DESC
             		')
                 ->setParameter('user', $user)
             ;
@@ -127,7 +127,7 @@ class JobsRepository extends ServiceEntityRepository
                 	SELECT j, u
                 	FROM App\Entity\Jobs j JOIN j.User u
                 	WHERE u.id = :user AND j.isInterview = 1
-                	ORDER BY j.id DESC
+                	ORDER BY j.dateInterview DESC
             		')
                 ->setParameter('user', $user)
             ;
@@ -143,7 +143,7 @@ class JobsRepository extends ServiceEntityRepository
                 	SELECT j, u
                 	FROM App\Entity\Jobs j JOIN j.User u
                 	WHERE u.id = :user AND j.isPostInterviewFollowUp = 1
-                	ORDER BY j.id DESC
+                	ORDER BY j.dateFollowUp DESC
             		')
                 ->setParameter('user', $user)
             ;

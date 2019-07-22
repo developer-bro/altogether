@@ -56,12 +56,15 @@
       </div>
       <div class="card-search">
       {% for search in searches %}
-        <div class="media">
+        <div class="media"><form action="{{ path('updatesearch', { 'id' : search.id }) }}" id="myform" method="post">
+
           <div >
-           <input type="text" class="form-control" disabled = "true" value=" {{ search.jobName }}, {{ search.location }} "></label>
+           <input type="text" class="form-control" disabled = "true" value=" {{ search.jobName }}, {{ search.location }} " name="searchname"></label>
+          <button type="submit" id="search_submit"  style="border:none;display: none;" ><img alt="" src="images/check-circle.svg"></button>
           </div>
-          <div class="action"> <a href="#" id="edit"><img src="images/icon_edit.svg" alt=""></a> 
-          <a href="#" id="update" style=" display: none;"><img src="images/check-circle.svg" alt=""></a>
+          </form>
+          <div class="action"> <a href="#" id ="edit"><img src="images/icon_edit.svg" alt=""></a> 
+          
           <a href="{{ path('deletesearch', { 'id' : search.id }) }}"><img src="images/recycle.svg" alt=""></a> </div>
         </div>
         {% endfor %}
@@ -75,15 +78,17 @@
 <script>
 $(document).ready(function(){
 
-  var media =$(".media");
+  var action =$(".action");
   $(this).find("#edit").click(function(){
     $(this).find("input").prop('disabled', false);
     $(this).find("#edit").hide();
-    $(this).find("#update").show();
+    $("#search_submit").css("display", "block");
   });
 });
 
 
 
 </script>
+
+
 {% endblock %}

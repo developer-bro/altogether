@@ -1,191 +1,221 @@
 {% extends 'base.html.twig' %}
-        {% block body %}
-<div>
-<div class="wrapper"> 
-  <!-- Sidebar  -->
-  <nav class="sidebar">
-    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
-    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
-    <ul class="list-unstyled components">
-      <li><a href="dashboard">My Dashboard</a></li>
-      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
-        <ul class="collapse list-unstyled show" id="pageSubmenu">
-          <li class="active"><a href="/jobsitestosearch">Job Sites to Search</a></li>
-          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-          <li><a href="/joblisting">Job Listing</a></li>
-          <li><a href="/savedsearches">Saved Searches</a></li>
-        </ul>
-      </li>
-      <li><a href="/documents">My documents</a></li>
-      <li><a href="/mytask">My Tasks</a></li>
-      <li>
+{% block body %}
+    <div>
+        <div
+            class="wrapper">
+            <!-- Sidebar  -->
+            <nav class="sidebar">
+                <button class="btn close-btn sidebarCollapse">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="sidebar-header text-center">
+                    <img alt="" src="images/logo.svg">
+                </div>
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="dashboard">My Dashboard</a>
+                    </li>
+                    <li>
+                        <a aria-expanded="true" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <ul class="collapse list-unstyled show" id="pageSubmenu">
+                            <li class="active">
+                                <a href="/jobsitestosearch">Job Sites to Search</a>
+                            </li>
+                            <li>
+                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                            </li>
+                            <li>
+                                <a href="/joblisting">Job Listing</a>
+                            </li>
+                            <li>
+                                <a href="/savedsearches">Saved Searches</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/documents">My documents</a>
+                    </li>
+                    <li>
+                        <a href="/mytask">My Tasks</a>
+                    </li>
+                    <li>
                         <a href="/logout">LogOut</a>
                     </li>
-    </ul>
-  </nav>
-  
-  <!-- Page Content  -->
-  <div class="content">
-    <nav class="dashboard-nav navbar-expand-lg">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center">
-          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
-          <ul class="sidetop ml-auto">
-            <li class="active"> <a href="#">HELP</a> </li>
-            <li> <a href="/accountinfo">SETTINGS</a> </li>
-            <li>
-                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div class="content">
+                <nav class="dashboard-nav navbar-expand-lg">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-info sidebarCollapse">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <ul class="sidetop ml-auto">
+                                <li class="active">
+                                    <a href="#">HELP</a>
+                                </li>
+                                <li>
+                                    <a href="/accountinfo">SETTINGS</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
 
                                     </a>
-                        
+
                                 </li>
-          </ul>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <ul class="links_search">
+                    <li class="active">
+                        <a href="/jobsitestosearch">Job Sites to Search</a>
+                    </li>
+                    <li>
+                        <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                    </li>
+                    <li>
+                        <a href="/joblisting">Job Listing</a>
+                    </li>
+                    <li>
+                        <a href="/savedsearches">Saved Searches</a>
+                    </li>
+                </ul>
+                <form action="" class="search_form">
+                    <div class="form-row">
+                        <div class="form-group col-md-7">
+                            <div class="keyword-input">
+                                <label for="">Job description</label>
+                                <div class="relative">
+                                    <input class="form-control" id="jobName" placeholder="Job title, keywords" type="text">
+                                    <i class="search-icon">
+                                        <img alt="" src="images/search.svg"></i>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group col-md-5">
+                            <div class="des-input ml-auto">
+                                <label for="">Location</label>
+                                <div class="relative">
+                                    <input class="form-control" id="locationName" placeholder="City, state or ZIP code" type="text">
+                                    <i class="search-icon"><img alt="" src="images/maps-and-flags.svg"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button class="btn btn-search" id="sub" type="submit">Run Search
+                            <img alt="" src="images/search2.svg">
+                        </button>
+                    </div>
+                </form>
+                <div class="serch-wrapper">
+                    <div class="media">
+                        <div class="check">
+                            <input checked="" class="checkbox-style" id="checkbox-1" name="checkbox-10" type="checkbox">
+                            <label class="checkbox-style-3-label" for="checkbox-1">
+                                <img alt="" src="images/linkedin.svg">
+                                <span>LinkedIn</span>
+                            </label>
+                        </div>
+                        <div class="date">
+                            Last updated:
+                            <span>03 May 19</span>
+                        </div>
+                        <a href="#">Edit</a>
+                    </div>
+                    <div class="media">
+                        <div class="check">
+                            <input class="checkbox-style" id="checkbox-2" name="checkbox-10" type="checkbox">
+                            <label class="checkbox-style-3-label" for="checkbox-2">
+                                <img alt="" src="images/indeed.svg">
+                                <span>Indeed</span>
+                            </label>
+                        </div>
+                        <div class="date">
+                            Last updated:
+                            <span>03 May 19</span>
+                        </div>
+                        <a href="#">Edit</a>
+                    </div>
+                    <div class="media">
+                        <div class="check">
+                            <input class="checkbox-style" id="checkbox-3" name="checkbox-10" type="checkbox">
+                            <label class="checkbox-style-3-label" for="checkbox-3">
+                                <img alt="" src="images/monster.svg">
+                                <span>Monster</span>
+                            </label>
+                        </div>
+                        <div class="date">
+                            Last updated:
+                            <span>03 May 19</span>
+                        </div>
+                        <a href="#">Edit</a>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
-    </nav>
-    <ul class="links_search">
-      <li class="active"><a href="/jobsitestosearch">Job Sites to Search</a></li>
-      <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-      <li><a href="/joblisting">Job Listing</a></li>
-      <li><a href="/savedsearches">Saved Searches</a></li>
-    </ul>
-    <form action="" class="search_form">
-      <div class="form-row">
-        <div class="form-group col-md-7">
-          <div class="keyword-input">
-            <label for="">Job description</label>
-            <div class="relative">
-              <input type="text" class="form-control" placeholder="Job title, keywords" id="jobName">
-              <i class="search-icon"> <img src="images/search.svg" alt=""></i> </div>
-          </div>
-        </div>
-        <div class="form-group col-md-5">
-          <div class="des-input ml-auto">
-            <label for="">Location</label>
-            <div class="relative">
-              <input type="text" class="form-control" placeholder="City, state or ZIP code" id="locationName">
-              <i class="search-icon"><img src="images/maps-and-flags.svg" alt=""></i> </div>
-          </div>
-        </div>
-      </div>
-      <div class="text-center">
-        <button type="submit" id="submitBtn" class="btn btn-search">Run Search <img src="images/search2.svg" alt=""> </button>
-      </div>
-    </form>
-     <div class="serch-wrapper">
-      <div class="media">
-        <div class="check">
-          <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
-          <label for="checkbox-1" class="checkbox-style-3-label"> <img src="images/linkedin.svg" alt=""> <span>LinkedIn</span> </label>
-        </div>
-        <div class="date"> Last updated: <span>03 May 19</span> </div>
-        <a href="#">Edit</a> </div>
-      <div class="media">
-        <div class="check">
-          <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" >
-          <label for="checkbox-2" class="checkbox-style-3-label"> <img src="images/indeed.svg" alt=""> <span>Indeed</span> </label>
-        </div>
-        <div class="date"> Last updated: <span>03 May 19</span> </div>
-        <a href="#">Edit</a> </div>
-      <div class="media">
-        <div class="check">
-          <input id="checkbox-3" class="checkbox-style" name="checkbox-10" type="checkbox">
-          <label for="checkbox-3" class="checkbox-style-3-label"> <img src="images/monster.svg" alt=""> <span>Monster</span> </label>
-        </div>
-        <div class="date"> Last updated: <span>03 May 19</span> </div>
-        <a href="#">Edit</a> </div>
+
     </div>
-  </div>
-</div>
-
-</div>
-{% block javascripts %}
-
-        
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
-   
-  <script>
-$("#submitBtn").click("submit", function (e) {
-    e.preventDefault();
-    var jobName = $("#jobName").val();
-    var locationName = $("#locationName").val();
-    var email = [jobName, locationName];
-    
-    console.log(email);
-  
-  if(document.getElementById('checkbox-1').checked && document.getElementById('checkbox-2').checked && document.getElementById('checkbox-3').checked){
-  console.log(jobName);
-  window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
-    window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
-    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
-    
-
-}
-     
-else if(document.getElementById('checkbox-1').checked && document.getElementById('checkbox-2').checked){
-    window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
-    window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
-console.log(locationName);
-}
-else if(document.getElementById('checkbox-1').checked && document.getElementById('checkbox-3').checked){
-    window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
-    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
-
-}
-else if(document.getElementById('checkbox-2').checked && document.getElementById('checkbox-3').checked){
-    window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
-    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
-
-}
-else if(document.getElementById('checkbox-1').checked) {
-      window.open("https://www.linkedin.com/jobs/search?keywords="+jobName+"&location="+locationName);
-    
-}
-else if(document.getElementById('checkbox-2').checked) {
-
-  window.open("https://www.indeed.com/jobs?q="+jobName+"&l="+locationName);
-}
- else if(document.getElementById('checkbox-3').checked){
-    window.open("https://www.monster.com/jobs/search/?q="+jobName+"&where="+locationName);
-
-}
-
-  
 
 
-  
-  
-  
+    <script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+    <script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
 
-   $.ajax({
+    <script>
+        $("#sub").click("submit", function (e) {
+            if (document.getElementById('checkbox-1').checked && document.getElementById('checkbox-2').checked && document.getElementById('checkbox-3').checked) {
+
+                window.open("https://www.linkedin.com/jobs/search?keywords=" + jobName + "&location=" + locationName);
+                window.open("https://www.indeed.com/jobs?q=" + jobName + "&l=" + locationName);
+                window.open("https://www.monster.com/jobs/search/?q=" + jobName + "&where=" + locationName);
+
+
+            } else if (document.getElementById('checkbox-1').checked && document.getElementById('checkbox-2').checked) {
+                window.open("https://www.linkedin.com/jobs/search?keywords=" + jobName + "&location=" + locationName);
+                window.open("https://www.indeed.com/jobs?q=" + jobName + "&l=" + locationName);
+
+            } else if (document.getElementById('checkbox-1').checked && document.getElementById('checkbox-3').checked) {
+                window.open("https://www.linkedin.com/jobs/search?keywords=" + jobName + "&location=" + locationName);
+                window.open("https://www.monster.com/jobs/search/?q=" + jobName + "&where=" + locationName);
+
+            } else if (document.getElementById('checkbox-2').checked && document.getElementById('checkbox-3').checked) {
+                window.open("https://www.indeed.com/jobs?q=" + jobName + "&l=" + locationName);
+                window.open("https://www.monster.com/jobs/search/?q=" + jobName + "&where=" + locationName);
+
+            } else if (document.getElementById('checkbox-2').checked) {
+
+                window.open("https://www.indeed.com/jobs?q=" + jobName + "&l=" + locationName);
+            } else if (document.getElementById('checkbox-3').checked) {
+                window.open("https://www.monster.com/jobs/search/?q=" + jobName + "&where=" + locationName);
+
+            } else {
+                window.open("https://www.linkedin.com/jobs/search?keywords=" + jobName + "&location=" + locationName);
+
+            }
+
+
+            e.preventDefault();
+            var jobName = $("#jobName").val();
+            var locationName = $("#locationName").val();
+            var email = [jobName, locationName];
+
+            console.log(email);
+
+
+            $.ajax({
                 url: "{{ path('savedjobsearches') }}",
                 type: 'POST',
                 data: {
                     email: email
                 },
-                success: function (res) {
-                  
-                    
-                    
-
-
-                }
+                success: function (res) {}
             });
-    
-   
 
-  
-    
-    
-});
 
-</script>
-{# var myNewArray = myArray.filter(function(elem, index, self) {
-      return index === self.indexOf(elem);
-  }); #}
+        });
+    </script>
 
-{% endblock %}
-
-  
 {% endblock %}

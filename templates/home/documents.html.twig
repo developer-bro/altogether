@@ -83,19 +83,22 @@
                                     <div class="card_body">
                                         <div class="card-search">
                                             {% for files in uploadedFiles %}
-                                                <div class="media docmedia">
+                                                <div class="media docmedia"><form action="{{ path('updatefile', { 'id' : files.id }) }}" id="myfileform" method="post">
                                                     <div class="input-top">
-                                                        <input class="form-control docinput" disabled="true" type="text" value=" {{ files.name }} "></label>
+                                                        <input class="form-control docinput" disabled="true" type="text" value=" {{ files.name }} " name="filename">
+                                                        <button type="submit" id="search_submit" style="border:none; display: none;" ><img alt="" src="images/check-circle.svg"></button>
+
                                                     </div>
+                                                    </form>
                                                     <div class="action doc">
                                                     <a href="#" id="edit">
                                                         <i class="fas fa-pen"></i>
                                                     </a>
-                                                    <a href="#" id="update" style=" display: none;"><img alt="" src="images/check-circle.svg"></a>
+                                                   
                                                     <a href="{{ path('documentdownload', {'id' : files.id }) }}">
                                                         <i class="fas fa-cloud-download-alt"></i>
                                                     </a>
-                                                    <a href="#">
+                                                    <a href="{{ path('deletefile', { 'id' : files.id }) }}">
                                                         <i class="fas fa-trash-alt"></i>
                                                     </a>
                                                 </div>
@@ -104,9 +107,9 @@
                                             
                                         {% endfor %}
                                     </div>
-                                    {{ form_start(form) }}
+                                    {{ form_start(form, {'attr': {'id': 'form'}}) }}
                                     <div class="text-right">
-                                        <a class="add"><img alt="" src="images/plus.svg">{{ form_widget(form.name, {'attr': {'class': 'checkbox-style'}}) }}</a>
+                                        <a class="add"><img alt="" src="images/plus.svg">{{ form_widget(form.name, {'attr': {'class': 'checkbox-style', 'accept': '.pdf, .doc'}}) }}</a>
                                     </div>
 
 
@@ -128,21 +131,42 @@
                                     <a href="#"><img alt="" src="images/dots-line.svg"></a>
                                 </div>
                                 <div class="card_body">
-                                    <div class="ch-bx">
-                                        <input checked="" class="checkbox-style" id="checkbox-3" name="checkbox-10" type="checkbox">
-                                        <label class="checkbox-style-3-label" for="checkbox-3">
-                                            My latest Cover letter.pdf
-                                        </label>
+                                    <div class="card-search">
+                                            {% for cvfiles in cvuploadedFiles %}
+                                                <div class="media docmedia"><form action="{{ path('updatefile', { 'id' : cvfiles.id }) }}" id="myfileform" method="post">
+                                                    <div class="input-top">
+                                                        <input class="form-control docinput" disabled="true" type="text" value=" {{ cvfiles.name }} " name="filename">
+                                                        <button type="submit" id="search_submit" style="border:none;  display: none;" ><img alt="" src="images/check-circle.svg"></button>
+
+                                                    </div>
+                                                    </form>
+                                                    <div class="action doc">
+                                                    <a href="#" id="edit">
+                                                        <i class="fas fa-pen"></i>
+                                                    </a>
+                                                    
+                                                    <a href="{{ path('cvdocumentdownload', {'id' : cvfiles.id }) }}">
+                                                        <i class="fas fa-cloud-download-alt"></i>
+                                                    </a>
+                                                    <a href="{{ path('cvdeletefile', { 'id' : cvfiles.id }) }}">
+                                                        <i class="fas fa-trash-alt"></i>
+                                                    </a>
+                                                </div>
+                                            </div>
+
+                                            
+                                        {% endfor %}
                                     </div>
-                                    <div class="ch-bx">
-                                        <input class="checkbox-style" id="checkbox-2" name="checkbox-10" type="checkbox">
-                                        <label class="checkbox-style-3-label" for="checkbox-2">
-                                            Cover letter.pdf
-                                        </label>
-                                    </div>
+                                    {{ form_start(cvform, {'attr': {'id': 'cvform'}}) }}
                                     <div class="text-right">
-                                        <a class="add" href="#"><img alt="" src="images/plus.svg"></a>
+                                        <a class="add"><img alt="" src="images/plus.svg">{{ form_widget(cvform.name, {'attr': {'class': 'checkbox-style', 'accept': '.pdf, .doc'}}) }}</a>
                                     </div>
+
+
+                                    <div align="center" id="hidebutton2">
+                                        {{ form_widget(cvform.submit, {'attr': {'class': 'btn btn-primary'}}) }}
+                                    </div>
+                                    {{ form_end(cvform) }}
                                 </div>
                             </div>
                         </div>
@@ -157,12 +181,50 @@
 <script>
     $(document).ready(function () {
         $("#hidebutton").hide();
+        $("#hidebutton2").hide();
         $('input[type="file"]').change(function (e) {
             var fileName = e.target.files[0].name;
             alert('The file "' + fileName + '" has been selected.');
 
-            $("form").submit();
+document.getElementById('form').submit();
+            
 
         });
     });
-</script>{% endblock %}
+    
+</script>
+
+<script>
+    $(document).ready(function () {
+        $("#hidebutton").hide();
+        $("#hidebutton2").hide();
+        $('input[type="file"]').change(function (e) {
+            var fileName = e.target.files[0].name;
+            alert('The file "' + fileName + '" has been selected.');
+
+            document.getElementById('cvform').submit();
+
+        });
+    });
+    
+</script>
+
+<script>
+$(document).ready(function(){
+
+  var action =$(".action");
+  $(this).find("#edit").click(function(){
+    $(this).find("input").prop('disabled', false);
+    $(this).find("#edit").hide();
+    $("#search_submit").css("display", "block");
+  });
+});
+
+
+
+</script>
+
+
+
+
+{% endblock %}
