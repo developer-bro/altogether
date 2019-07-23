@@ -33,7 +33,16 @@
                         </ul>
                     </li>
                     <li>
-                        <a href="/documents">My documents</a>
+                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu1">My Documents</a>
+                        <ul class="collapse list-unstyled " id="pageSubmenu1">
+                            <li>
+                                <a href="/documents">Curriculum Vitae</a>
+                            </li>
+                            <li>
+                                <a href="/coverletter">Cover Letter</a>
+                            </li>
+                            
+                        </ul>
                     </li>
                     <li>
                         <a href="/mytask">My Tasks</a>
@@ -85,21 +94,22 @@
                 </ul>
                 <form action="" class="search_form">
                     <div class="form-row">
-                        <div class="form-group col-md-7">
+                        <div class="form-group col-md-7 firstinput">
                             <div class="keyword-input">
                                 <label for="">Job description</label>
                                 <div class="relative">
-                                    <input class="form-control" id="jobName" placeholder="Job title, keywords" type="text">
+                                    <input class="form-control" id="jobName" placeholder="Job title, keywords" type="text" required autofocus>
                                     <i class="search-icon">
                                         <img alt="" src="images/search.svg"></i>
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group col-md-5">
+                         
+                        <div class="form-group col-md-5 secondinput">
                             <div class="des-input ml-auto">
                                 <label for="">Location</label>
                                 <div class="relative">
-                                    <input class="form-control" id="locationName" placeholder="City, state or ZIP code" type="text">
+                                    <input class="form-control" id="locationName" placeholder="City, state or ZIP code" type="text" required>
                                     <i class="search-icon"><img alt="" src="images/maps-and-flags.svg"></i>
                                 </div>
                             </div>
@@ -111,6 +121,9 @@
                         </button>
                     </div>
                 </form>
+
+                <br>
+                <br>
                 <div class="serch-wrapper">
                     <div class="media">
                         <div class="check">

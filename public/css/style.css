@@ -22,17 +22,38 @@
 	font-style: normal;
 }
 
+.firstinput{
+	padding-right: 38px !important;
+
+}
+
+.secondinput{
+	padding-right: 50px !important;
+	
+}
+
+.delete{
+	padding-top: 13px
+}
+
+.mediaaction{
+
+	display: flex;
+	padding: 0px 0px 0px 0px !important;
+}
+
 .doc {
 	padding: 17px 35px 0px 0px;
 	
 }
 
-
-
-.input-top{
-	padding: 0px 35px 0px 0px !important;
-
+.form-control.docinput:focus{
+    outline:solid 2px #0077cc;
 }
+
+
+
+
 
 .form-control.docinput {
 	
@@ -1143,7 +1164,7 @@ select {
 }
 .search_form {
 	max-width: 1168px;
-	margin-left: 86.5px;
+	margin-left: 10px;
 }
 .search_form label {
 	font-size: 16px;
@@ -1482,7 +1503,7 @@ select {
 	color: #212121;
 }
 .card-search .media {
-	justify-content: space-between;
+	
 	padding: 5px;
 	border-bottom: solid 2px rgba(112, 112, 112, 0.16);
 }

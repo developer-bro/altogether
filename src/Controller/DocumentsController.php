@@ -46,7 +46,7 @@ class DocumentsController extends AbstractController
      * 
      * @IsGranted("ROLE_USER")
      */
-    public function index(Request $request, FileUploader $fileUploader, UploadRepository $upladed, CVuploadRepository $cvupladed): Response
+    public function index(Request $request, FileUploader $fileUploader, UploadRepository $upladed): Response
     {
         $upload = new Upload();
         
@@ -82,6 +82,34 @@ class DocumentsController extends AbstractController
             return $this->redirectToRoute('documents');
         }
 
+        
+
+
+        return $this->render('home/documents.html.twig', [
+            'form' => $form->createView(), 'uploadedFiles' => $uploadedFiles
+        ]);
+    }
+
+
+    /**
+     * @Route("/coverletter", methods={"GET", "POST"}, name="coverletter")
+     *
+     * 
+     * @IsGranted("ROLE_USER")
+     */
+    public function coverindex(Request $request, FileUploader $fileUploader, CVuploadRepository $cvupladed): Response
+    {
+        
+
+
+        $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
+
+    
+        
+
+        
+
         $cvupload = new CVupload();
         $cvuploadedFiles = $cvupladed->findFiles($user);
 
@@ -106,12 +134,12 @@ class DocumentsController extends AbstractController
             $entityManager->flush();
             
 
-            return $this->redirectToRoute('documents');
+            return $this->redirectToRoute('coverletter');
         }
 
 
-        return $this->render('home/documents.html.twig', [
-            'form' => $form->createView(), 'uploadedFiles' => $uploadedFiles, 'cvform' => $cvform->createView(), 'cvuploadedFiles' => $cvuploadedFiles
+        return $this->render('home/coverletter.html.twig', [
+            'cvform' => $cvform->createView(), 'cvuploadedFiles' => $cvuploadedFiles
         ]);
     }
 

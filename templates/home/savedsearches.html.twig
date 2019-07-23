@@ -1,94 +1,141 @@
 {% extends 'base.html.twig' %}
 
-        {% block body %}
-<div class="job-listing">
-<div class="wrapper"> 
-  <!-- Sidebar  -->
-  <nav class="sidebar">
-    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
-    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
-       <ul class="list-unstyled components">
-      <li><a href="/dashboard">My Dashboard</a></li>
-      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
-        <ul class="collapse list-unstyled show" id="pageSubmenu">
-          <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
-          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-          <li><a href="/joblisting">Job Listing</a></li>
-          <li  class="active"><a href="/savedsearches">Saved Searches</a></li>
-        </ul>
-      </li>
-      <li><a href="/documents">My documents</a></li>
-      <li><a href="/mytask">My Tasks</a></li>
-      <li>
+{% block body %}
+    <div class="job-listing">
+        <div
+            class="wrapper">
+            <!-- Sidebar  -->
+            <nav class="sidebar">
+                <button class="btn close-btn sidebarCollapse">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="sidebar-header text-center">
+                    <img alt="" src="images/logo.svg">
+                </div>
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="/dashboard">My Dashboard</a>
+                    </li>
+                    <li>
+                        <a aria-expanded="true" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <ul class="collapse list-unstyled show" id="pageSubmenu">
+                            <li>
+                                <a href="/jobsitestosearch">Job Sites to Search</a>
+                            </li>
+                            <li>
+                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                            </li>
+                            <li>
+                                <a href="/joblisting">Job Listing</a>
+                            </li>
+                            <li class="active">
+                                <a href="/savedsearches">Saved Searches</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu1">My Documents</a>
+                        <ul class="collapse list-unstyled " id="pageSubmenu1">
+                            <li>
+                                <a href="/documents">Curriculum Vitae</a>
+                            </li>
+                            <li>
+                                <a href="/coverletter">Cover Letter</a>
+                            </li>
+                            
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="/mytask">My Tasks</a>
+                    </li>
+                    <li>
                         <a href="/logout">LogOut</a>
                     </li>
-    </ul>
-  </nav>
-  
-  <!-- Page Content  -->
-  <div class="content">
-    <nav class="dashboard-nav navbar-expand-lg">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center">
-          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
-          <ul class="sidetop ml-auto">
-            <li class="active"> <a href="#">HELP</a> </li>
-            <li> <a href="/accountinfo">SETTINGS</a> </li>
-          <li>
-                                    <a  href="#" id="navbardrop"><img alt="" src="images/avatar.png">
+                </ul>
+            </nav>
+
+            <!-- Page Content  -->
+            <div class="content">
+                <nav class="dashboard-nav navbar-expand-lg">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-info sidebarCollapse">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <ul class="sidetop ml-auto">
+                                <li class="active">
+                                    <a href="#">HELP</a>
+                                </li>
+                                <li>
+                                    <a href="/accountinfo">SETTINGS</a>
+                                </li>
+                                <li>
+                                    <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
 
                                     </a>
-                        
+
                                 </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <ul class="links_search">
-      <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
-      <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-      <li><a href="/joblisting">Job Listing</a></li>
-      <li class="active"><a href="/savedsearches">Saved Searches</a></li>
-    </ul>
-    <div class="search-saved">
-      <div class="card_title">
-        <h3>Saved searches</h3>
-      </div>
-      <div class="card-search">
-      {% for search in searches %}
-        <div class="media"><form action="{{ path('updatesearch', { 'id' : search.id }) }}" id="myform" method="post">
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <ul class="links_search">
+                    <li>
+                        <a href="/jobsitestosearch">Job Sites to Search</a>
+                    </li>
+                    <li>
+                        <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                    </li>
+                    <li>
+                        <a href="/joblisting">Job Listing</a>
+                    </li>
+                    <li class="active">
+                        <a href="/savedsearches">Saved Searches</a>
+                    </li>
+                </ul>
+                <div class="search-saved">
+                    <div class="card_title">
+                        <h3>Saved searches</h3>
+                    </div>
+                    <div class="card-search">
+                        {% for search in searches %}
+                            <div class="media">
+                                <form action="{{ path('updatesearch', { 'id' : search.id }) }}"  method="post">
 
-          <div >
-           <input type="text" class="form-control" disabled = "true" value=" {{ search.jobName }}, {{ search.location }} " name="searchname"></label>
-          <button type="submit" id="search_submit"  style="border:none;display: none;" ><img alt="" src="images/check-circle.svg"></button>
-          </div>
-          </form>
-          <div class="action"> <a href="#" id ="edit"><img src="images/icon_edit.svg" alt=""></a> 
-          
-          <a href="{{ path('deletesearch', { 'id' : search.id }) }}"><img src="images/recycle.svg" alt=""></a> </div>
+                                    <div class="mediaaction">
+                                        <input class="form-control docinput" name="searchname" type="text" value=" {{ search.jobName }}, {{ search.location }} " style="border:none;">
+                                    
+                                    <button class="search_submit" style="border:none; padding-left: 60px;" type="submit"><i class="fas fa-check"></i></button>
+                                </div>
+                            </form>
+                            <div class="action delete">
+
+                                <a href="{{ path('deletesearch', { 'id' : search.id }) }}"><i class="fas fa-trash-alt"></i></a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        {% endfor %}
-      </div>
     </div>
-  </div>
-</div>
 
 </div>
+
+
+{# <script>
+    $(document).ready(function () {
+
+        var media = $(".media");
+        $(this).find(".edit").click(function () {
+            media.find("form").find("input").prop('disabled', false);
+            $(this).find(".edit").hide();
+            media.find(".search_submit").css("display", "block");
+        });
+    });
+</script> #}
 
 <script>
-$(document).ready(function(){
-
-  var action =$(".action");
-  $(this).find("#edit").click(function(){
-    $(this).find("input").prop('disabled', false);
-    $(this).find("#edit").hide();
-    $("#search_submit").css("display", "block");
-  });
-});
-
 
 
 </script>
-
-
 {% endblock %}
