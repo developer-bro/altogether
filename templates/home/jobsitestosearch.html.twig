@@ -24,9 +24,7 @@
                             <li>
                                 <a href="/savedappliedjobs">Saved/Applied Jobs</a>
                             </li>
-                            <li>
-                                <a href="/joblisting">Job Listing</a>
-                            </li>
+                            
                             <li>
                                 <a href="/savedsearches">Saved Searches</a>
                             </li>
@@ -69,9 +67,7 @@
                                     <a href="/accountinfo">SETTINGS</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
-
-                                    </a>
+                                  <div class="avtar"><img src="images/avatar.png" alt=""></div>
 
                                 </li>
                             </ul>
@@ -85,9 +81,7 @@
                     <li>
                         <a href="/savedappliedjobs">Saved/Applied Jobs</a>
                     </li>
-                    <li>
-                        <a href="/joblisting">Job Listing</a>
-                    </li>
+                    
                     <li>
                         <a href="/savedsearches">Saved Searches</a>
                     </li>
@@ -117,10 +111,16 @@
                     </div>
                     <div class="text-center">
                         <button class="btn btn-search" id="sub" type="submit">Run Search
-                            <img alt="" src="images/search2.svg">
+                            &nbsp;<img alt="" src="images/search2.svg">
                         </button>
                     </div>
                 </form>
+
+
+                <br>
+                <br>
+
+                <p class="text-center">Be sure to allow pop-ups</p>
 
                 <br>
                 <br>
@@ -133,11 +133,8 @@
                                 <span>LinkedIn</span>
                             </label>
                         </div>
-                        <div class="date">
-                            Last updated:
-                            <span>03 May 19</span>
-                        </div>
-                        <a href="#">Edit</a>
+                        
+                        
                     </div>
                     <div class="media">
                         <div class="check">
@@ -147,11 +144,7 @@
                                 <span>Indeed</span>
                             </label>
                         </div>
-                        <div class="date">
-                            Last updated:
-                            <span>03 May 19</span>
-                        </div>
-                        <a href="#">Edit</a>
+                        
                     </div>
                     <div class="media">
                         <div class="check">
@@ -161,11 +154,7 @@
                                 <span>Monster</span>
                             </label>
                         </div>
-                        <div class="date">
-                            Last updated:
-                            <span>03 May 19</span>
-                        </div>
-                        <a href="#">Edit</a>
+                        
                     </div>
                 </div>
             </div>
@@ -179,6 +168,13 @@
 
     <script>
         $("#sub").click("submit", function (e) {
+
+            e.preventDefault();
+            var jobName = $("#jobName").val();
+            var locationName = $("#locationName").val();
+            var email = [jobName, locationName];
+
+            console.log(email);
             if (document.getElementById('checkbox-1').checked && document.getElementById('checkbox-2').checked && document.getElementById('checkbox-3').checked) {
 
                 window.open("https://www.linkedin.com/jobs/search?keywords=" + jobName + "&location=" + locationName);

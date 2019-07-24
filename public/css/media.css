@@ -76,14 +76,14 @@
 		margin-right: 0;
 	}
 	.sidetop li a {
-		font-size: 18px;
+		font-size: 16px;
 		margin: 0 10.5px;
 	}
 	.avtar {
 		margin-left: 15px;
 	}
 	.dashboard-nav {
-		padding: 20px 31.5px 20px;
+		padding: 5px 31.5px 5px;
 	}
 	.breadcrumb li, .breadcrumb li a {
 		font-size: 24px;
@@ -95,12 +95,12 @@
 		margin-right: 50px;
 	}
 	.sidebar {
-		min-width: 300px;
-		max-width: 300px;
+		min-width: 230px;
+		max-width: 230px;
 	}
 	.components li a {
-		font-size: 18px;
-		padding: 16px 20px 16px 48px;
+		font-size: 16px;
+		padding: 16px 20px 16px 30px;
 	}
 	.components li .list-unstyled li a {
 		padding: 12.5px 0 12.5px 66px;
@@ -723,7 +723,7 @@
 		padding-top: 30px;
 	}
 	.sidetop li a {
-		font-size: 14px;
+		font-size: 16px;
 		margin: 0 4.5px;
 	}
 	.avtar {
@@ -740,7 +740,7 @@
 		margin-bottom: 15px;
 	}
 	.components li {
-		margin-bottom: 0;
+		margin-bottom: 20px;
 	}
 	.sidebar .sidebar-header img {
 		height: 64px;

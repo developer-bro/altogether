@@ -50,7 +50,8 @@ class DashboardController extends AbstractController
         $followupjobscount= count($followupjobs);
         $interviewjobscount= count($interviewjobs);
         $postinterviewjobscount= count($postinterviewjobs);
-        return $this->render('home/dashboard.html.twig', ['jobs' => $latestJobs, 'tasks' => $latestTasks, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
+        $alljobscount= count($latestJobs);
+        return $this->render('home/dashboard.html.twig', ['jobs' => $latestJobs, 'tasks' => $latestTasks, 'alljobscount' => $alljobscount, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
     }
 
 }

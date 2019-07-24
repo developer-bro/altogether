@@ -84,6 +84,8 @@ class SavedAppliedJobsController extends AbstractController
         $followupjobscount= count($followupjobs);
         $interviewjobscount= count($interviewjobs);
         $postinterviewjobscount= count($postinterviewjobs);
+        $alljobs = $jobs->findLatest($user);
+        $alljobscount = count($alljobs);
         
 
         
@@ -92,6 +94,7 @@ class SavedAppliedJobsController extends AbstractController
         if($variable == "all"){
 
         $latestJobs = $jobs->findLatest($user);
+
     }
 
         $form->handleRequest($request);
@@ -118,7 +121,7 @@ class SavedAppliedJobsController extends AbstractController
             return $this->redirectToRoute('savedappliedjobs');
         }
         return $this->render('home/savedappliedjobs.html.twig', [
-            'form' => $form->createView(), 'jobs' => $latestJobs, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount
+            'form' => $form->createView(), 'jobs' => $latestJobs, 'alljobscount' => $alljobscount, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount
         ]);
     }
 

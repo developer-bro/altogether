@@ -10,7 +10,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="sidebar-header text-center">
-                    <img alt="" src="images/logo.svg">
+                    <a href="/dashboard"><img alt="" src="images/logo.svg"></a>
                 </div>
                 <ul class="list-unstyled components">
                     <li class="active">
@@ -25,9 +25,7 @@
                             <li>
                                 <a href="/savedappliedjobs">Saved/Applied Jobs</a>
                             </li>
-                            <li>
-                                <a href="/joblisting">Job Listing</a>
-                            </li>
+                            
                             <li>
                                 <a href="/savedsearches">Saved Searches</a>
                             </li>
@@ -70,9 +68,7 @@
                                     <a href="/accountinfo">SETTINGS</a>
                                 </li>
                                 <li>
-                                    <a href="#" id="navbardrop"><img alt="" src="images/avatar.png">
-
-                                    </a>
+                                    <div class="avtar"><img src="images/avatar.png" alt=""></div>
 
                                 </li>
                             </ul>
@@ -82,6 +78,17 @@
                 <div class="over-wrapper">
                     <div class="container-fluid">
                         <ul class="dashboard-review">
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'all'}) }}">{{ alljobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="images/dots.svg">
+                                    </span>
+                                </div>
+                                <h3>All Jobs</h3>
+                            </li>
                             <li>
                                 <div class="c1">
                                     <div class="counter">
@@ -150,32 +157,29 @@
                                         <h3>Saved/Applied Jobs</h3>
                                     </div>
                                     <div class="content-card row no-gutters">
-                                        <div class="col-4">
-                                            <h4>
-                                                Title</h4>
+                                        <div class="col-8 text-center">
+                                            <h4><img alt="" src="images/task.svg">
+                                                  &nbsp; &nbsp;Title/Company</h4>
                                         </div>
+                                        
                                         <div class="col-4">
-                                            <h4>Company</h4>
-                                        </div>
-                                        <div class="col-4">
-                                            <h4>Saved/Applied</h4>
+                                            <h4><img alt="" src="images/deadline.svg">   &nbsp;&nbsp;Saved/Applied</h4>
                                         </div>
                                     </div>
                                     {% for job in jobs| slice(0,3) %}
                                     <div class="row no-gutters c-shadow">
                                         
-                                            <div class="col-4">
+                                            <div class="col-8">
                                                 <p class="title-txt">
-                                                {% if job.isSaved %} <span><img src="images/check-circle.svg" alt=""></span> {% elseif job.isApplied %} <span><img src="images/fav-c.svg" alt=""></span> {% else %}<span></span>{% endif %}
+                                                {% if job.isSaved %} <span><i class="fas fa-heart" style="color: #80cbfd;"></i></span> {% elseif job.isApplied %} <span><i class="fas fa-check" style="color: #80cbfd;"></i></span> {% else %}<span></span>{% endif %}
                                                     {{ job.title }}</p>
+                                                    <p class="c-name">{{ job.comapnyName}}</p>
                                             </div>
-                                            <div class="col-4">
-                                                <p class="c-name">{{ job.comapnyName}}</p>
-                                            </div>
+                                            
                                             <div class="col-4">
                                                 <p class="s-date">
                                                     {{ job.dateSaved|date('d-m-Y') }}
-                                                    <img alt="" src="images/dots-line.svg">
+                                                    
                                                 </p>
                                             </div>
                                             <div align="center">
@@ -200,18 +204,15 @@
                         <div class=" fl2">
                             <div class="card2 card-main">
                                 <div class="card_title">
-                                    <h3>Reminders</h3>
+                                    <h3>Tasks</h3>
                                 </div>
                                 <div class="content-card row no-gutters">
 
-                                    <div class="col-4">
+                                    <div class="col-8">
                                         <h4><img alt="" src="images/task.svg">
-                                            Task</h4>
+                                            Task/Company</h4>
                                     </div>
-                                    <div class="col-4">
-                                        <h4><img alt="" src="images/portfolio.svg">
-                                            Company</h4>
-                                    </div>
+                    
                                     <div class="col-4">
                                         <h4><img alt="" src="images/deadline.svg">
                                             Due date</h4>
@@ -221,18 +222,17 @@
                                  {% for task in tasks| slice(0,3) %}
                                 <div class="row no-gutters c-shadow">
                                    
-                                        <div class="col-4">
+                                        <div class="col-8">
                                             <p class="title-txt">{{ task.name }}</p>
+
+                                               <p> {{ task.job.title }}</p>
+                                            
                                         </div>
-                                        <div class="col-4">
-                                            <p class="c-name">
-                                                
-                                                {{ task.job.title }}</p>
-                                        </div>
+                                        
                                         <div class="col-4">
                                             <p class="s-date">
                                                 
-                                                {{ task.dueDate|date('d-m-Y') }}<img alt="" src="images/dots-line.svg">
+                                                {{ task.dueDate|date('d-m-Y') }}
                                             </p>
                                         </div>
                                         <div align="center">

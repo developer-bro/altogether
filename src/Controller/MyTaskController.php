@@ -64,6 +64,7 @@ class MyTaskController extends AbstractController
         $followupjobscount= count($followupjobs);
         $interviewjobscount= count($interviewjobs);
         $postinterviewjobscount= count($postinterviewjobs);
+        $alljobscount= count($latestJobs);
 
         
         $form = $this->createForm(TaskType::class);
@@ -97,7 +98,7 @@ class MyTaskController extends AbstractController
     }
 
         return $this->render('home/mytask.html.twig', [
-            'form' => $form->createView(), 'tasks' => $tasks, 'jobs' => $latestJobs, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
+            'form' => $form->createView(), 'tasks' => $tasks, 'jobs' => $latestJobs, 'alljobscount' => $alljobscount, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
     }
 
     /**

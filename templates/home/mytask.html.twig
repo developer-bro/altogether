@@ -13,7 +13,6 @@
         <ul class="collapse list-unstyled " id="pageSubmenu">
           <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
           <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-          <li><a href="/joblisting">Job Listing</a></li>
           <li><a href="/savedsearches">Saved Searches</a></li>
         </ul>
       </li>
@@ -63,35 +62,71 @@
               <h3 class="caption">Stage</h3>
               <ul class="dashboard-review">
                 <li>
-                  <div class="c1">
-                    <div class="counter">{{ savedjobscount }}</div>
-                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
-                  <h3>Saved Jobs</h3>
-                </li>
-                <li>
-                  <div class="c1">
-                    <div class="counter">{{ appliedjobscount }}</div>
-                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
-                  <h3>Applied</h3>
-                </li>
-                <li>
-                  <div class="c1">
-                    <div class="counter">{{ followupjobscount }}</div>
-                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
-                  <h3>Follow-up</h3>
-                </li>
-                <li>
-                  <div class="c1">
-                    <div class="counter">{{ interviewjobscount }}</div>
-                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
-                  <h3>Interviews</h3>
-                </li>
-                <li>
-                  <div class="c1">
-                    <div class="counter">{{ postinterviewjobscount }}</div>
-                    <span class="img-dots"> <img src="images/dots.svg" alt=""> </span> </div>
-                  <h3>Follow-up</h3>
-                </li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'all'}) }}">{{ alljobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>All Jobs</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'saved'}) }}">{{ savedjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Saved Jobs</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'applied'}) }}">{{ appliedjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Applied</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'follow up'}) }}">{{ followupjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Follow-up</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'interview'}) }}">{{ interviewjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Interviews</h3>
+                            </li>
+                            <li>
+                                <div class="c1">
+                                    <div class="counter">
+                                        <a href="{{ path('savedappliedjobs', {'variable': 'post interview follow up'}) }}">{{ postinterviewjobscount }}</a>
+                                    </div>
+                                    <span class="img-dots">
+                                        <img alt="" src="{{ asset('images/dots.svg') }}">
+                                    </span>
+                                </div>
+                                <h3>Post Interview Follow-up</h3>
+                            </li>
               </ul>
               <div class="filter-card">{% for task in tasks %}
                 <div class="media">
@@ -127,10 +162,7 @@
           
           <div class="col-xl-3">
             <div class="right-content">
-              <div class="card-calendar">
-                <h3 class="caption">Date:</h3>
-                <div class="datetimepicker2"></div>
-              </div>
+            
               <div class="appl-jb">
                 <h3>Saved/Applied Jobs</h3>
                 <ul>{% for job in jobs %}

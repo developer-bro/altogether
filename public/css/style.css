@@ -699,14 +699,14 @@ select {
 	align-items: stretch;
 }
 .sidebar {
-	min-width: 348px;
-	max-width: 348px;
+	min-width: 230px;
+	max-width: 230px;
 	color: #fff;
 	background-color: #8ab958;
 }
 .sidebar .sidebar-header {
 	border-right: solid 1px #707070;
-	padding: 40px 0;
+	padding: 13px 0;
 	background-color: #ffffff;
 }
 .sidebar .sidebar-header img {
@@ -731,7 +731,7 @@ select {
 	margin: 0;
 }
 .components li {
-	margin-bottom: 35px;
+	margin-bottom: 20px;
 }
 .components li.active a, .components li a:hover, .components li .list-unstyled li.active a {
 	opacity: 1;
@@ -754,7 +754,7 @@ select {
 	align-items: center;
 }
 .sidetop li a {
-	font-size: 24px;
+	font-size: 16px;
 	font-weight: 700;
 	color: #212121;
 	margin: 0 24.5px;
@@ -776,7 +776,7 @@ select {
 	object-fit: cover;
 }
 .dashboard-nav {
-	padding: 20px 31.5px 20px;
+	padding: 5px 31.5px 5px;
 }
 /*****************************************************/
 .counter {
@@ -1148,7 +1148,7 @@ select {
 	line-height: 1.32;
 	color: #212121;
 	border-bottom: 4px solid transparent;
-	padding: 25.5px 0;
+	padding: 19.5px 0;
 	display: block;
 }
 .links_search li.active a {
@@ -1219,9 +1219,33 @@ select {
 	color: #1e9af2;
 	box-shadow: none;
 }
-.btn-search img {
+
+.btn-search2 img {
 	margin-left: 18px;
 }
+
+.btn-search2 {
+	width: 230px;
+    height: 50px;
+    border-radius: 50px;
+    background-color: #1e9af2;
+    font-size: 16px;
+    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    margin: 18px auto 0px;
+}
+.btn-search2:hover {
+	background-color: transparent;
+	border-color: #1e9af2;
+	color: #1e9af2;
+	box-shadow: none;
+}
+
+.btn-search2 img {
+	margin-left: 18px;
+}
+
 .checkbox-style, .radio-style, .checkbox-style-3-label {
 	display: flex;
 	align-items: center;
@@ -1460,7 +1484,7 @@ select {
 }
 .job-listing .filter-card .media-body p {
 	margin-bottom: 0;
-	font-weight:500;
+	
 }
 .author-dt ul {
 	display: flex;
@@ -2021,4 +2045,10 @@ select {
 
   .password-custom{
 	  width:98%!important;
+  }
+
+  .squares{
+	  height:50px;
+	  width:50px;
+	  border-radius:0px!important;
   }

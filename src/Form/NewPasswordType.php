@@ -20,7 +20,7 @@ class NewPasswordType extends AbstractType
     {
         $builder
         ->add('password', RepeatedType::class, ['type' => PasswordType::class,
-            'first_options' => ['label' => 'Password'],
+            'first_options' => ['label' => 'New Password'],
    'second_options' => ['label' => 'Confirm Password'],
    'invalid_message' => 'Passwords do not match. Please try again.'
         ])

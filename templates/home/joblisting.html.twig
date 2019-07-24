@@ -44,10 +44,7 @@
           <ul class="sidetop ml-auto">
             <li class="active"> <a href="#">HELP</a> </li>
             <li> <a href="/accountinfo">SETTINGS</a> </li>
-            <li>
-                                    <a  href="#" id="navbardrop"><img alt="" src="{{ asset('images/avatar.png') }}">
-
-                                    </a>
+            <li><div class="avtar"><img src="images/avatar.png" alt=""></div>
                         
                                 </li>
           </ul>
@@ -57,45 +54,39 @@
     <ul class="links_search">
       <li ><a href="/jobsitestosearch">Job Sites to Search</a></li>
       <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-      <li class="active"><a href="joblisting">Job Listing</a></li>
+      <li class="active"><a href="/joblisting">Job Listing</a></li>
       <li><a href="/savedsearches">Saved Searches</a></li>
     </ul>
     <ul class="dashboard-review">
       <li>
         <div class="c1">
-          <div class="counter done"> {{ job.dateApplied ? job.dateApplied|date('d-m') }} </div>
+          <div class="counter done squares"> {{ job.dateSaved ? job.dateSaved|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
+        <h3>Saved</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter done squares"> {{ job.dateApplied ? job.dateApplied|date('d-m') }} </div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Applied</h3>
       </li>
       <li>
         <div class="c1">
-          <div class="counter done"> {{ job.dateInitialFollowUp ? job.dateInitialFollowUp|date('d-m')  }} </div>
-          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
-        <h3>Initial Follow-up</h3>
-      </li>
-      <li>
-        <div class="c1">
-          <div class="counter"> {{ job.dateInterviewPrep ? job.dateInterviewPrep|date('d-m') }}</div>
-          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
-        <h3>Interview Prep</h3>
-      </li>
-      <li>
-        <div class="c1">
-          <div class="counter"> {{ job.dateInterview ? job.dateInterview|date('d-m') }} </div>
-          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
-        <h3>Interviews</h3>
-      </li>
-      <li>
-        <div class="c1">
-          <div class="counter"> {{ job.dateThankYouLetter ? job.dateThankYouLetter|date('d-m') }} </div>
-          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
-        <h3>Thank You Letter</h3>
-      </li>
-      <li>
-        <div class="c1">
-          <div class="counter"> {{ job.dateFollowUp ? job.dateFollowUp|date('d-m') }} </div>
+          <div class="counter done squares"> {{ job.dateInitialFollowUp ? job.dateInitialFollowUp|date('d-m')  }} </div>
           <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
         <h3>Follow-up</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter squares"> {{ job.dateInterview ? job.dateInterview|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
+        <h3>Interview</h3>
+      </li>
+      <li>
+        <div class="c1">
+          <div class="counter squares"> {{ job.dateFollowUp ? job.dateFollowUp|date('d-m') }} </div>
+          <span class="img-dots"> <img src="{{ asset('images/dots.svg') }}" alt=""> </span> </div>
+        <h3>Post Interview Follow-up</h3>
       </li>
     </ul>
     <div class="filter-card">
@@ -104,29 +95,109 @@
         <div class="media-body">
           <div class="auth_w">
             <div class="author-dt">
-              <h3>{{ job.title }}</h3>
+              <a href="{{ job.uri }}" target="blanck"><h3>{{ job.title }}</h3></a>
               <p>{{ job.comapnyName }}</p>
               <ul>
                 <li><img src="{{ asset('images/pin.svg') }}" alt=""> <span> {{ job.location }}</span></li>
               
             </div>
-            <div class="sav-link"> {{ job.dateSaved|ago }} </div>
+            {% if job.isSaved %}
+                                                <div class="sav-link">
+                                                    <p>
+                                                        <span>SAVED:</span>
+                                                        {{ job.dateSaved|ago }}</p>
+                                                </div>
+                                            
+                                        {% elseif job.isApplied %}
+                                            <div class="sav-link">
+                                                <p>
+                                                    <span>Applied:</span>
+                                                    {{ job.dateApplied|ago }}</p>
+                                            
+                                        </div>
+                                    {% elseif job.isInterview %}
+                                        <div class="sav-link">
+                                            <p>
+                                                <span>Interview:</span>
+                                                {{ job.dateInterview|ago }}</p>
+                                        </div>
+                                    
+                                {% elseif job.isFollowUp %}
+                                    <div class="sav-link">
+                                        <p>
+                                            <span>Follow Up:</span>
+                                            {{ job.dateInitialFollowUp|ago }}</p>
+                                    </div>
+                                
+                            {% elseif job.isPostInterviewFollowUp %}
+                                <div class="sav-link">
+                                    <p>
+                                        <span>Post Interview Folow Up:</span>
+                                        {{ job.dateFollowUp|ago }}</p>
+                                </div>
+                            
+                        {% endif %}
           </div>
           <p>{{ job.description }} </p>
+<br>
+          <div class="container">
+                        <div class="row">
+                            <div class="col-6">
+                                <div class="footer-card">
+                              
+                                    {% if job.isSaved %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>{% elseif job.isApplied %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">View on website</a>{% else %}<span></span>{% endif %}
+                                </div>
+                            </div>
+                            {# <div class="dropdown">
+                                                            <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown">Change Status
+                                                            <span class="caret"></span></button>
+                                                            <ul class="dropdown-menu">
+                                                              <li><a href="{{ path('appliedaction', { id: job.id }) }}">Apply</a></li>
+                                                              <li><a href="{{ path('followupaction', { id: job.id }) }}">Follow Up</a></li>
+                                                              <li><a href="{{ path('interviewaction', { id: job.id }) }}">Interview</a></li>
+                                                              <li><a href="{{ path('postinterviewaction', { id: job.id }) }}">Post Interview Follow Up</a></li>
+                                                            </ul>
+                                                          </div> #}
+
+                            <div class="col-6">
+                                <br>
+
+                                <div class="d-flex flex-row bd-highlight mb-3">
+                                    <div class="p-3 bd-highlight change-status">
+                                        Change status:</div>
+                                    <div class="p-2 bd-highlight">
+
+
+                                        <div class="relative">
+
+                                            <select class="form-control" id="" name="" onchange="location = this.value;" style="
+                                                                                                                                                                                  border: none;
+                                                                                                                                                                                  border-radius: 0;
+                                                                                                                                                                                  padding: 0;
+                                                                                                                                                                                  background-color: transparent;
+                                                                                                                                                                                  box-shadow: none;
+                                                                                                                                                                                  border-bottom: 1px solid #BCE0FD !important;
+                                                                                                                                                                              ">
+
+                                                <option value="/appliedaction"></option>
+                                                <option value="{{ path('appliedaction', { id: job.id }) }}">Apply</option>
+                                                <option value="{{ path('followupaction', { id: job.id }) }}">Follow Up</option>
+                                                <option value="{{ path('interviewaction', { id: job.id }) }}">Interview</option>
+                                                <option value="{{ path('postinterviewaction', { id: job.id }) }}">Post Interview Follow Up</option>
+                                            </select>
+                                            <i class="t-f r-0"><img alt="" src="{{ asset('images/select.svg') }}"></i>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
         </div>
       </div>
-      <div class="steps-filter"> <span>Next Steps</span>
-        <div class="media-body">
-          <div >
-            <input id="checkbox-1" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
-            <label for="checkbox-1" class="checkbox-style-3-label"> Interview prep. </label>
-          </div>
-          <div >
-            <input id="checkbox-2" class="checkbox-style" name="checkbox-10" type="checkbox" checked="">
-            <label for="checkbox-2" class="checkbox-style-3-label"> Send note to someone who can provide a referral. </label>
-          </div>
-        </div>
-      </div>
+     
     </div>
   </div>
 </div>
