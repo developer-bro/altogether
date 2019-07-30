@@ -42,6 +42,21 @@ class SavedSearchesController extends AbstractController
         ]);
     }
 
+
+     /**
+     * @Route("/jobsitestosearch/{id}", methods={"GET"}, name="searchshow")
+     *
+     */
+    public function searchShow($id, Request $request, SavedJobSearchesRepository $jobsearches): Response
+    {
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $search = $entityManager->getRepository(SavedJobSearches::class)->findOneBy(['id' => $id, 'user' => $user]);
+
+        return $this->render('home/jobsitestosearch.html.twig', ['search' => $search]);
+    }
+
     /**
      * @Route("/deletesearch/{id}", methods={"GET"}, name="deletesearch")
      *

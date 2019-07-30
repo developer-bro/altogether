@@ -216,7 +216,8 @@ else
     public function updateindex(Request $request, UploadRepository $upladed, $id): Response
     {
         $user = $this->getUser();
-        $input = $request->request->get('filename');
+        $input1 = $request->request->get('filename');
+        $input = trim($input1);
 
         echo "$input";
        
@@ -305,7 +306,7 @@ else
   }
 
   $deletefile = $upladed->deleteFile($user, $id);
-                return $this->redirectToRoute('documents');
+                return $this->redirectToRoute('coverletter');
     }
 
      /**
@@ -316,9 +317,12 @@ else
     public function cvupdateindex(Request $request, CVuploadRepository $upladed, $id): Response
     {
         $user = $this->getUser();
-        $input = $request->request->get('filename');
+        $input1 = $request->request->get('filename');
+        $input = trim($input1);
+
 
         echo "$input";
+
        
         $inputname = $this->getParameter('directory')."/".$input;
        
@@ -339,7 +343,7 @@ else
 
         $updatesearch = $upladed->updateFile($user, $id, $input);
 
-        return $this->redirectToRoute('documents');
+        return $this->redirectToRoute('coverletter');
                 
     }
 

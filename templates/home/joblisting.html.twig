@@ -5,7 +5,7 @@
   <!-- Sidebar  -->
   <nav class="sidebar">
     <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
-    <div class="sidebar-header text-center"> <img src="{{ asset('images/logo.svg') }}" alt=""> </div>
+    <div class="sidebar-header text-center">  <a href="/dashboard"><img alt="" src="{{ asset('images/logo.svg') }}"></a> </div>
     <ul class="list-unstyled components">
       <li><a href="/dashboard">My Dashboard</a></li>
       <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
@@ -91,7 +91,7 @@
     </ul>
     <div class="filter-card">
       <div class="media">
-       {% if job.isSaved %} <div class="icon-filter"><img src="images/check-c.svg" alt=""></div> {% elseif job.isApplied %} <div class="icon-filter"><img src="images/fav2.svg" alt=""></div> {% else %}<div class="icon-filter"></div>{% endif %}
+       {% if job.isSaved %} <div class="icon-filter"><img src="{{ asset('images/check-c.svg') }}" alt=""></div> {% elseif job.isApplied %} <div class="icon-filter"><img src="{{ asset('images/fav2.svg') }}" alt=""></div> {% else %}<div class="icon-filter"></div>{% endif %}
         <div class="media-body">
           <div class="auth_w">
             <div class="author-dt">
@@ -138,14 +138,14 @@
                             
                         {% endif %}
           </div>
-          <p>{{ job.description }} </p>
+          <p style="white-space: pre-line">{{ job.description }} </p>
 <br>
           <div class="container">
                         <div class="row">
                             <div class="col-6">
                                 <div class="footer-card">
                               
-                                    {% if job.isSaved %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>{% elseif job.isApplied %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">View on website</a>{% else %}<span></span>{% endif %}
+                                    {% if job.isSaved %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>{% elseif job.isApplied %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">View on website</a>{% else %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">View on website</a>{% endif %}
                                 </div>
                             </div>
                             {# <div class="dropdown">
@@ -165,7 +165,7 @@
                                 <div class="d-flex flex-row bd-highlight mb-3">
                                     <div class="p-3 bd-highlight change-status">
                                         Change status:</div>
-                                    <div class="p-2 bd-highlight">
+                                    <div class="p-1 bd-highlight">
 
 
                                         <div class="relative">
@@ -176,7 +176,8 @@
                                                                                                                                                                                   padding: 0;
                                                                                                                                                                                   background-color: transparent;
                                                                                                                                                                                   box-shadow: none;
-                                                                                                                                                                                  border-bottom: 1px solid #BCE0FD !important;
+                                                                                                                                                                                  border-bottom: 2px solid #1e9af2 !important;
+                                                                                                                                                                                  width: 92%;
                                                                                                                                                                               ">
 
                                                 <option value="/appliedaction"></option>

@@ -21,10 +21,7 @@ class Task
      */
     private $name;
 
-    /**
-     * @ORM\Column(type="string", length=255)
-     */
-    private $fromName;
+  
 
     /**
      * @ORM\Column(type="string", length=255)
@@ -67,6 +64,19 @@ class Task
      */
     private $taskStatus;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $fromName;
+
+   
+
+    
+
+  
+
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -84,17 +94,7 @@ class Task
         return $this;
     }
 
-    public function getFromName(): ?string
-    {
-        return $this->fromName;
-    }
-
-    public function setFromName(string $fromName): self
-    {
-        $this->fromName = $fromName;
-
-        return $this;
-    }
+ 
 
     public function getToName(): ?string
     {
@@ -191,4 +191,23 @@ class Task
 
         return $this;
     }
+
+    public function getFromName(): ?string
+    {
+        return $this->fromName;
+    }
+
+    public function setFromName(?string $fromName): self
+    {
+        $this->fromName = $fromName;
+
+        return $this;
+    }
+
+    
+  
+
+   
+
+ 
 }

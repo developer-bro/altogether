@@ -22,6 +22,48 @@
 	font-style: normal;
 }
 
+
+
+.plus-more img{width:30%;}
+
+.ft-cx.d-sm-flex.justify-content-between.align-items-center {
+    align-items: center !important;
+    margin-left: 85px !important;
+    margin-top: 20px !important;
+}
+
+.modaltask{
+
+	border: none;
+	border-radius: 0;
+	padding: 0;
+	background-color: transparent;
+	box-shadow: none;
+	border-bottom: 2px solid #1e9af2 !important;
+	width: 100%;
+}
+
+.modallabel{
+	font-size: 16px !important;
+    font-weight: 700 !important;
+    color: #1e9af2 !important;
+    text-align: center !important;
+    border-bottom: 1px solid #1e9af2 !important;
+    padding: 20px 16px 11px !important;
+}
+
+.taskmodal{
+	border: none;
+	border-radius: 0px !important;
+	padding: 0;
+	background-color: transparent;
+	box-shadow: none;
+	border-bottom: 2px solid #1e9af2 !important;
+	width: 100%;
+
+
+}
+
 .firstinput{
 	padding-right: 38px !important;
 
@@ -39,7 +81,7 @@
 .mediaaction{
 
 	display: flex;
-	padding: 0px 0px 0px 0px !important;
+	padding: 10px 0px 0px 0px !important;
 }
 
 .doc {
@@ -51,14 +93,21 @@
     outline:solid 2px #0077cc;
 }
 
-
+.inmodal{
+	padding: 5px 16px 0 !important;
+}
 
 
 
 .form-control.docinput {
 	
-    width: 400px;
+	width: 400px;
+	
 
+}
+
+.form-control.titlemodal {
+	height: 100px !important;
 }
 
 #account_edit_form_dob{
@@ -928,14 +977,14 @@ select {
 	padding: 22px 10px;
 	display: flex;
 	align-items: center;
-	justify-content: center;
+	
 }
 .fl2 .content-card h4 img {
 	margin-right: 14px;
 }
 .plus-more {
-	width: 74px;
-	height: 74px;
+	width: 50px;
+	height: 50px;
 	box-shadow: 0 3px 6px 0 rgba(0, 0, 0, 0.16);
 	background-color: #1e9af2;
 	border-radius: 50%;
@@ -1380,7 +1429,12 @@ select {
 	padding: 32px 45px;
 }
 .icon-filter {
-	margin-right: 54px;
+	margin-right: 20px;
+	width: 5%;
+}
+
+.icon-filter img {
+width: 60%;
 }
 .auth_w {
 	display: flex;
@@ -1396,10 +1450,15 @@ select {
 	line-height: 22px;
 	margin-bottom: 8px;
 }
+.author-dt img{
+	display: none;
+}
+
 .filter-card .media-body p {
 	font-size: 16px;
 	line-height: 1.45;
 	text-align: left;
+	
 
 	max-width: 926px;
 	
@@ -1528,8 +1587,9 @@ select {
 }
 .card-search .media {
 	
-	padding: 5px;
+	padding: 15px;
 	border-bottom: solid 2px rgba(112, 112, 112, 0.16);
+	justify-content: space-between;
 }
 .card-search .media .action a {
 	margin-left: 64px;
@@ -1561,9 +1621,11 @@ select {
 	border-radius: 0;
 	padding-left: 0;
 	border: none;
+	
 }
 #add-jobs .modal-body .form-control.b3 {
 	border-bottom: 3px solid #BCE0FD
+
 }
 #add-jobs .modal-body .form-control.b4 {
 	border-bottom: 4px solid #BCE0FD
@@ -1757,7 +1819,7 @@ select {
 	color: #1e9af2;
 }
 .task-bx .dashboard-review {
-	padding: 16px 0 174px;
+	padding: 16px 0 30px;
 	margin-bottom: 0;
 }
 .task-bx .filter-card .btn.btn-primary {

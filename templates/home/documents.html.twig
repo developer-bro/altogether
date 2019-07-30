@@ -9,7 +9,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="sidebar-header text-center">
-                    <a href="/dashboard"><img alt="" src="images/logo.svg"></a>
+                    <a href="/dashboard"><img alt="" src="{{ asset('images/logo.svg') }}"></a>
                 </div>
                 <ul class="list-unstyled components">
                     <li>
@@ -89,14 +89,14 @@
                                 <div class="cards">
                                     <div class="card_header">
                                         <h3><img alt="" src="images/folder.svg">CV</h3>
-                                        <a href="#"><img alt="" src="images/dots-line.svg"></a>
+                                       
                                     </div>
                                     <div class="card_body">
                                         <div class="card-search">
                                             {% for files in uploadedFiles %}
                                                 <div class="media docmedia"><form action="{{ path('updatefile', { 'id' : files.id }) }}" id="myfileform" method="post">
                                                     <div class="mediaaction">
-                                                        <input class="form-control docinput"  type="text" value=" {{ files.name }} " name="filename"  style="border:none;">
+                                                        <input class="form-control docinput" id="docname"  type="text" value=" {{ files.name }} " name="filename"  style="border:none; direction:rtl;">
                                                         <button type="submit" class="search_submit" style="border:none; padding-left:80px; background-color:#ffffff;" ><i class="fas fa-check"></i></button>
 
                                                     </div>
@@ -156,6 +156,8 @@
     });
     
 </script>
+
+
 
 {# <script>
     $(document).ready(function () {

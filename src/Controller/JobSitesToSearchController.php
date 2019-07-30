@@ -20,6 +20,9 @@ use Symfony\Component\EventDispatcher\GenericEvent;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use App\Entity\SavedJobSearches;
+use App\Entity\User;
+use App\Repository\SavedJobSearchesRepository;
 
 
 class JobSitesToSearchController extends AbstractController
@@ -29,9 +32,37 @@ class JobSitesToSearchController extends AbstractController
      *
      * 
      */
-    public function index(): Response
+    public function index(Request $request, SavedJobSearchesRepository $jobsearches): Response
     {
-        return $this->render('home/jobsitestosearch.html.twig');
+        $user = $this->getUser();
+        $savedjobsearches = $jobsearches->findLatest($user);
+        
+
+        if (null == $savedjobsearches ){
+            $jobName ="digital marketing";
+            $location ="nyc";
+            
+        
+        $saved = new SavedJobSearches();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $saved->setUser($user);
+        $saved->setJobName($jobName);
+        $saved->setLocation($location);
+            $entityManager->persist($saved);
+            $entityManager->persist($user);
+            $entityManager->flush();
+
+            $savedjobsearches = $jobsearches->findLatest($user);
+            $savedjobsearch = $savedjobsearches[0];
+            
+
+        }
+        $savedjobsearch = $savedjobsearches[0];
+
+        
+        
+        return $this->render('home/jobsitestosearch.html.twig' , ['search' => $savedjobsearch]);
     }
 
 }

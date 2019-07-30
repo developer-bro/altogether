@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190712064135 extends AbstractMigration
+final class Version20190729190552 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,7 +22,7 @@ final class Version20190712064135 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user ADD is_locked TINYINT(1) DEFAULT NULL');
+        $this->addSql('ALTER TABLE task DROP INDEX UNIQ_527EDB25F7497F79, ADD INDEX IDX_527EDB25F7497F79 (from_name_id)');
     }
 
     public function down(Schema $schema) : void
@@ -30,6 +30,6 @@ final class Version20190712064135 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE user DROP is_locked');
+        $this->addSql('ALTER TABLE task DROP INDEX IDX_527EDB25F7497F79, ADD UNIQUE INDEX UNIQ_527EDB25F7497F79 (from_name_id)');
     }
 }

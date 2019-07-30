@@ -67,38 +67,10 @@ class MyTaskController extends AbstractController
         $alljobscount= count($latestJobs);
 
         
-        $form = $this->createForm(TaskType::class);
-
-        $form->handleRequest($request);
-        if ($form->isSubmitted() && $form->isValid()) {
-        
-
-        $name = $form->get('name')->getData();
-        $fromName = $form->get('fromName')->getData();
-        $toName = $form->get('toName')->getData();
-        $dueDate = $form->get('dueDate')->getData();
-        $notes = $form->get('notes')->getData();
-        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['comapnyName' => $toName, 'User' => $user]);
-
-        $task = new Task();
-        $task->setName($name);
-        $task->setFromName($fromName);
-        $task->setToName($toName);
-        $task->setDueDate($dueDate);
-        $task->setNotes($notes);
-        $task->setTaskStatus("Mark as Complete");
-        $task->setIsComplete(FALSE);
-        $task->setUser($user);
-        $task->setJob($job);
-
-        $entityManager->persist($task);
-            $entityManager->persist($user);
-            $entityManager->flush();
-            return $this->redirectToRoute('mytask');
-    }
+      
 
         return $this->render('home/mytask.html.twig', [
-            'form' => $form->createView(), 'tasks' => $tasks, 'jobs' => $latestJobs, 'alljobscount' => $alljobscount, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
+            'tasks' => $tasks, 'jobs' => $latestJobs, 'alljobscount' => $alljobscount, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
     }
 
     /**
@@ -126,6 +98,94 @@ class MyTaskController extends AbstractController
             
             return $this->redirectToRoute('mytask');
     }
+
+    /**
+     * @Route("/deletetask/{id}", methods={"GET"}, name="deletetask")
+     *
+     * 
+     */
+    public function deleteindex(Request $request, TaskRepository $task, $id): Response
+    {
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $deletetask = $task->deleteTask($user, $id);
+                return $this->redirectToRoute('mytask');
+    }
+
+    /**
+     * @Route("/modaldataedata", methods={"GET", "POST"}, name="modaldata")
+     *
+     * 
+     */
+    public function modaldataindex(Request $request): Response
+    {
+
+        $text = $request->request->get('text');
+        $arr = explode(' - ', $text, 2);
+
+        $first = reset($arr);
+        $last = end($arr);
+        
+        $user = $this->getUser();
+        $entityManager = $this->getDoctrine()->getManager();
+
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['comapnyName' => $first, 'User' => $user]);
+        $title = $job->getTitle();
+
+        
+
+        return new JsonResponse($title);
+    }
+
+     /**
+     * @Route("/modalform", methods={"GET", "POST"}, name="modalform")
+     *
+     * 
+     */
+    public function modalformindex(Request $request): Response
+    {
+
+
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $user = $this->getUser();
+    
+
+    $name  = $request->get('name');
+    $text = $request->get('fromName');
+    $arr = explode(' - ', $text, 2);
+
+        $fromName = reset($arr);
+        $last = end($arr);
+    $toName = $request->get('toName');
+    $dueDate = $request->get('dueDate');
+    $notes = $request->get('notes');
+    $job = $entityManager->getRepository(Jobs::class)->findOneBy(['comapnyName' => $fromName, 'User' => $user]);
+
+    echo "$fromName";
+    echo "$name";
+    echo "$toName";
+    echo "$dueDate";
+    echo "$notes";
+
+    $task = new Task();
+    $task->setName($name);
+    $task->setFromName($fromName);
+    $task->setToName($toName);
+    $task->setDueDate(new \DateTime($dueDate));
+    $task->setNotes($notes);
+    $task->setTaskStatus("Mark as Complete");
+    $task->setIsComplete(FALSE);
+    $task->setUser($user);
+    $task->setJob($job);
+
+    $entityManager->persist($task);
+        $entityManager->persist($user);
+        $entityManager->flush();
+        return $this->redirectToRoute('mytask');
+}
+
 
 
 

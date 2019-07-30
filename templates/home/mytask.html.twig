@@ -1,22 +1,36 @@
 {% extends 'base.html.twig' %}
 {% block body %}
 
-<div class="account-info">
-<div class="wrapper"> 
-  <!-- Sidebar  -->
-  <nav class="sidebar">
-    <button class="btn close-btn sidebarCollapse"><i class="fas fa-times"></i></button>
-    <div class="sidebar-header text-center"> <img src="images/logo.svg" alt=""> </div>
-    <ul class="list-unstyled components">
-      <li><a href="/dashboard">My Dashboard</a></li>
-      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="false">Job search</a>
-        <ul class="collapse list-unstyled " id="pageSubmenu">
-          <li><a href="/jobsitestosearch">Job Sites to Search</a></li>
-          <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
-          <li><a href="/savedsearches">Saved Searches</a></li>
-        </ul>
-      </li>
-      <li>
+    <div class="account-info">
+        <div
+            class="wrapper">
+            <!-- Sidebar  -->
+            <nav class="sidebar">
+                <button class="btn close-btn sidebarCollapse">
+                    <i class="fas fa-times"></i>
+                </button>
+                <div class="sidebar-header text-center">
+                     <a href="/dashboard"><img alt="" src="{{ asset('images/logo.svg') }}"></a>
+                </div>
+                <ul class="list-unstyled components">
+                    <li>
+                        <a href="/dashboard">My Dashboard</a>
+                    </li>
+                    <li>
+                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <ul class="collapse list-unstyled " id="pageSubmenu">
+                            <li>
+                                <a href="/jobsitestosearch">Job Sites to Search</a>
+                            </li>
+                            <li>
+                                <a href="/savedappliedjobs">Saved/Applied Jobs</a>
+                            </li>
+                            <li>
+                                <a href="/savedsearches">Saved Searches</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
                         <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu1">My Documents</a>
                         <ul class="collapse list-unstyled " id="pageSubmenu1">
                             <li>
@@ -25,250 +39,299 @@
                             <li>
                                 <a href="/coverletter">Cover Letter</a>
                             </li>
-                            
+
                         </ul>
                     </li>
-      <li class="active"><a href="/mytask">My Tasks</a></li>
-      <li>
+                    <li class="active">
+                        <a href="/mytask">My Tasks</a>
+                    </li>
+                    <li>
                         <a href="/logout">LogOut</a>
                     </li>
-    </ul>
-  </nav>
-  
-  <!-- Page Content  -->
-  <div class="content">
-    <nav class="dashboard-nav navbar-expand-lg">
-      <div class="container-fluid">
-        <div class="d-flex align-items-center">
-          <button class="btn btn-info sidebarCollapse"><i class="fas fa-bars"></i></button>
-          <ul class="sidetop ml-auto">
-            <li class="active"> <a href="#">HELP</a> </li>
-            <li> <a href="/accountinfo">SETTINGS</a> </li>
-            <li>
-              <div class="avtar"><img src="images/avatar.png" alt=""></div>
-            </li>
-          </ul>
-        </div>
-      </div>
-    </nav>
-    <ul class="links_search">
-      <li class="active"><a href="#">My task</a></li>
-    </ul>
-    <div class="wrapper-account task-bx">
-      <div class="container-fluid">
-        <div class="row">
-          <div class="col-xl-9">
-            <div class="pt-20">
-              <h3 class="caption">Stage</h3>
-              <ul class="dashboard-review">
-                <li>
-                                <div class="c1">
-                                    <div class="counter">
-                                        <a href="{{ path('savedappliedjobs', {'variable': 'all'}) }}">{{ alljobscount }}</a>
-                                    </div>
-                                    <span class="img-dots">
-                                        <img alt="" src="{{ asset('images/dots.svg') }}">
-                                    </span>
-                                </div>
-                                <h3>All Jobs</h3>
-                            </li>
-                            <li>
-                                <div class="c1">
-                                    <div class="counter">
-                                        <a href="{{ path('savedappliedjobs', {'variable': 'saved'}) }}">{{ savedjobscount }}</a>
-                                    </div>
-                                    <span class="img-dots">
-                                        <img alt="" src="{{ asset('images/dots.svg') }}">
-                                    </span>
-                                </div>
-                                <h3>Saved Jobs</h3>
-                            </li>
-                            <li>
-                                <div class="c1">
-                                    <div class="counter">
-                                        <a href="{{ path('savedappliedjobs', {'variable': 'applied'}) }}">{{ appliedjobscount }}</a>
-                                    </div>
-                                    <span class="img-dots">
-                                        <img alt="" src="{{ asset('images/dots.svg') }}">
-                                    </span>
-                                </div>
-                                <h3>Applied</h3>
-                            </li>
-                            <li>
-                                <div class="c1">
-                                    <div class="counter">
-                                        <a href="{{ path('savedappliedjobs', {'variable': 'follow up'}) }}">{{ followupjobscount }}</a>
-                                    </div>
-                                    <span class="img-dots">
-                                        <img alt="" src="{{ asset('images/dots.svg') }}">
-                                    </span>
-                                </div>
-                                <h3>Follow-up</h3>
-                            </li>
-                            <li>
-                                <div class="c1">
-                                    <div class="counter">
-                                        <a href="{{ path('savedappliedjobs', {'variable': 'interview'}) }}">{{ interviewjobscount }}</a>
-                                    </div>
-                                    <span class="img-dots">
-                                        <img alt="" src="{{ asset('images/dots.svg') }}">
-                                    </span>
-                                </div>
-                                <h3>Interviews</h3>
-                            </li>
-                            <li>
-                                <div class="c1">
-                                    <div class="counter">
-                                        <a href="{{ path('savedappliedjobs', {'variable': 'post interview follow up'}) }}">{{ postinterviewjobscount }}</a>
-                                    </div>
-                                    <span class="img-dots">
-                                        <img alt="" src="{{ asset('images/dots.svg') }}">
-                                    </span>
-                                </div>
-                                <h3>Post Interview Follow-up</h3>
-                            </li>
-              </ul>
-              <div class="filter-card">{% for task in tasks %}
-                <div class="media">
-                  <div class="icon-filter">
-                    <input id="checkbox-1" class="checkbox-style" name="checkbox-10"
-                                                type="checkbox" >
-                    <label for="checkbox-1" class="checkbox-style-3-label"> </label>
-                  </div>
-                  
-                  <div class="media-body">
-                    <div class="auth_w">
-                      <div class="author-dt">
-                        <h3>{{ task.name }}</h3>
-                        <ul>
-                          <li><img src="images/pin.svg" alt=""> <span> {{ task.job.location }}</span> </li>
-                          <li><img src="images/factory.svg" alt=""> <span>{{ task.job.title }}</span> </li>
-                        </ul>
-                      </div>
-                      <div class="sav-link"> <span>DUE:</span> {{ task.dueDate|ago }}</div>
-                    </div>
-                    <p><strong>Notes:</strong>{{ task.notes }} </p>
-                    <div class=" ft-cx d-sm-flex justify-content-between align-items-center">
-                      <div class="footer-card"> <a href="#" class="clr-c">NEXT STEP</a> <a href="#">APPLY</a> </div>
-                      <a href="{{ path('completetask', {'id' : task.id }) }}" class="btn btn-primary submitBtn" >{{ task.taskStatus }}</a> </div>
-                  </div>
-                  
-                </div>
-                {% endfor %}
-            
-                </div>
-              </div>
-            </div>
-          
-          <div class="col-xl-3">
-            <div class="right-content">
-            
-              <div class="appl-jb">
-                <h3>Saved/Applied Jobs</h3>
-                <ul>{% for job in jobs %}
-                  <li>
-                    <div class="txt">
-                      <span>{{ job.title }}</sapn>
-                      <span>{{ job.comapnyName }}</span>
-                    </div>
-                    <div>
-                    <a href="#" class="add" data-toggle="modal" data-target="#reminder" data-whatever="{{ job.comapnyName }}"><img
-                                                    src="images/plus.svg" alt=""></a> 
-                                                    </div>
-                                                    </li>
-                                                    {% endfor %}
-                                                    
                 </ul>
-                
-              </div>
+            </nav>
+
+            <!-- Page Content  -->
+            <div class="content">
+                <nav class="dashboard-nav navbar-expand-lg">
+                    <div class="container-fluid">
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-info sidebarCollapse">
+                                <i class="fas fa-bars"></i>
+                            </button>
+                            <ul class="sidetop ml-auto">
+                                <li class="active">
+                                    <a href="#">HELP</a>
+                                </li>
+                                <li>
+                                    <a href="/accountinfo">SETTINGS</a>
+                                </li>
+                                <li>
+                                    <div class="avtar"><img alt="" src="images/avatar.png"></div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+                <ul class="links_search">
+                    <li class="active">
+                        <a href="#">My task</a>
+                    </li>
+                </ul>
+                <div class="wrapper-account task-bx">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col-xl-12">
+                                <div class="pt-20">
+                                    <h3 class="caption">Stage</h3>
+                                    <ul class="dashboard-review">
+                                        <li>
+                                            <div class="c1">
+                                                <div class="counter">
+                                                    <a href="{{ path('savedappliedjobs', {'variable': 'all'}) }}">{{ alljobscount }}</a>
+                                                </div>
+                                                <span class="img-dots">
+                                                    <img alt="" src="{{ asset('images/dots.svg') }}">
+                                                </span>
+                                            </div>
+                                            <h3>All Jobs</h3>
+                                        </li>
+                                        <li>
+                                            <div class="c1">
+                                                <div class="counter">
+                                                    <a href="{{ path('savedappliedjobs', {'variable': 'saved'}) }}">{{ savedjobscount }}</a>
+                                                </div>
+                                                <span class="img-dots">
+                                                    <img alt="" src="{{ asset('images/dots.svg') }}">
+                                                </span>
+                                            </div>
+                                            <h3>Saved Jobs</h3>
+                                        </li>
+                                        <li>
+                                            <div class="c1">
+                                                <div class="counter">
+                                                    <a href="{{ path('savedappliedjobs', {'variable': 'applied'}) }}">{{ appliedjobscount }}</a>
+                                                </div>
+                                                <span class="img-dots">
+                                                    <img alt="" src="{{ asset('images/dots.svg') }}">
+                                                </span>
+                                            </div>
+                                            <h3>Applied</h3>
+                                        </li>
+                                        <li>
+                                            <div class="c1">
+                                                <div class="counter">
+                                                    <a href="{{ path('savedappliedjobs', {'variable': 'follow up'}) }}">{{ followupjobscount }}</a>
+                                                </div>
+                                                <span class="img-dots">
+                                                    <img alt="" src="{{ asset('images/dots.svg') }}">
+                                                </span>
+                                            </div>
+                                            <h3>Follow-up</h3>
+                                        </li>
+                                        <li>
+                                            <div class="c1">
+                                                <div class="counter">
+                                                    <a href="{{ path('savedappliedjobs', {'variable': 'interview'}) }}">{{ interviewjobscount }}</a>
+                                                </div>
+                                                <span class="img-dots">
+                                                    <img alt="" src="{{ asset('images/dots.svg') }}">
+                                                </span>
+                                            </div>
+                                            <h3>Interviews</h3>
+                                        </li>
+                                        <li>
+                                            <div class="c1">
+                                                <div class="counter">
+                                                    <a href="{{ path('savedappliedjobs', {'variable': 'post interview follow up'}) }}">{{ postinterviewjobscount }}</a>
+                                                </div>
+                                                <span class="img-dots">
+                                                    <img alt="" src="{{ asset('images/dots.svg') }}">
+                                                </span>
+                                            </div>
+                                            <h3>Post Interview Follow-up</h3>
+                                        </li>
+                                    </ul>
+
+
+                                    <div align="center" style="padding: 20px 0px 30px 0px;">
+                                        <button class="add btn btn-primary" data-target="#reminder" data-toggle="modal">Add Task</button>
+                                    </div>
+                                    <br>
+                                    <br>
+
+                                    
+                            <div class="card2 card-main">
+                                <div class="card_title">
+                                    <h3>Tasks</h3>
+                                </div>
+                                <div class="content-card row no-gutters" >
+
+                                    <div class="col-4" >
+                                        <h4 style="text-align: center;"><img alt="" src="images/task.svg">
+                                            Task</h4>
+                                    </div>
+
+                                    <div class="col-4" align="center">
+                                        <h4 style="text-align: center;"><img alt="" src="images/task.svg">
+                                            Company</h4>
+                                    </div>
+                    
+                                    <div class="col-4">
+                                        <h4 style="text-align: center;"><img alt="" src="images/deadline.svg">
+                                            Due date</h4>
+                                    </div>
+
+                                </div>
+                                 {% for task in tasks| slice(0,3) %}
+                                <div class="row no-gutters c-shadow">
+                                   
+                                        <div class="col-4">
+                                            <p style="text-align: center;">{{ task.name }}</p>
+
+                                            
+                                            
+                                        </div>
+
+                                        <div class="col-4">
+                                            
+
+                                               <p style="text-align: center;"> {{ task.fromName }}</p>
+                                            
+                                        </div>
+                                        
+                                        <div class="col-4">
+                                            <p style="text-align: center;">
+                                                
+                                                {{ task.dueDate|date('d-m-Y') }}
+                                            </p>
+                                        </div>
+                                        <div align="center">
+                                            </div>
+                                    
+
+                                </div>
+                                {% endfor %}
+                                
+                            
+                        </div>
+                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-          </div>
         </div>
-      </div>
     </div>
-    <!-- Modal -->
-    <div class="modal fade" id="reminder" tabindex="-1" role="dialog" aria-labelledby="reminder"
+</div></div></div></div><!-- Modal --> <div class="modal fade" id="reminder" tabindex="-1" role="dialog" aria-labelledby="reminder"
                 aria-hidden="true">
       <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content">
-        {{ form_start(form) }}
+        <form action="{{ path('modalform') }}" method="post" name="task_form">
           <div class="modal-header">
             <h4> ADD NEW TASK </h4>
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"> <span aria-hidden="true"><img src="images/close2.svg" alt=""></span> </button>
           </div>
           <div class="modal-body">
             <div class="relative status mt-2">
-              <select name="" id="" class="form-control ">
-                <option value="">Task</option>
+              <select name="name" id="" class="form-control ">
+                <option value="Apply">Apply</option>
+                <option value="Thank You Letter">Thank You Letter</option>
+                <option value="Follow-Up">Follow-Up</option>
+                <option value="Interview Prep">Interview Prep</option>
               </select>
               <i class="t-f r-0"><img src="images/select.svg" alt=""></i> </div>
-            <h3>{{ form_row(form.name, {'attr': {'class': 'form-control'}}) }}</h3>
-            <div class="cc-text">
-              {{ form_row(form.fromName, {'attr': {'class': 'form-control'}}) }}
-                                {{ form_row(form.toName, {'attr': {'class': 'form-control'}}) }}
+
+              <div>
+              <h3><label class="" for="task_fromName">Company Name</label></h3>
+
+              </div>
+            
+            <div class="relative status mt-2">
+            
+            <div>
+              <select name="fromName"  class="form-control taskmodal" id="task_fromName" >
+              {% for job in jobs %}
+                <option value="{{ job.comapnyName }} - {{ job.title }}">{{ job.comapnyName }} - {{ job.title }}</option>
+                {% endfor %}
+                
+              </select>
+              <i class="t-f r-0"><img src="images/select.svg" alt=""></i> </div></div>
+
+            <div class="inner_modal inmodal">
+            <h3><label class="" for="task_toName" align="center">Job Title</label></h3>
+              <textarea  cols="20" rows="10" class="form-control titlemodal" name="toName" id="task_toName" placeholder="Select Company Name"></textarea>
             </div>
             <div class="inner_modal">
               <div class="media">
                 <h4>Due Date</h4>
                 <div class="media-body">
                   <div class="input-group">
-                   {{ form_widget(form.dueDate, {'attr': {'class': 'form-control'}}) }}
+                     <input id="datepicker" width="200" name="dueDate"/>
+                    
                   </div>
                 </div>
               </div>
-              {{ form_row(form.notes, {'attr': {'class': 'form-control'}}) }}
+              <textarea name="notes" id="" cols="30" rows="10" class="form-control">Notes</textarea>
             </div>
           </div>
-          {{ form_row(form._token) }}
           <div class="modal-footer">
-               <button class="btn btn-primary">Save
-                            </button>
-                            {{ form_end(form, {'render_rest': false}) }}
+            
+            <button class="btn btn-primary">Save </button>
           </div>
         </div>
-      </div>
-    </div>
-  </div>
-</div>
-<!-- Optional JavaScript --> 
-<!-- jQuery first, then Popper.js, then Bootstrap JS --> 
-<script src="js/jquery-3.2.1.slim.min.js"></script> 
-<script src="js/popper.min.js"></script> 
-<script src="js/bootstrap.min.js"></script> 
-<script src="js/moment.js"></script> 
-<script src="js/timepicker.js"></script> 
-<script type="text/javascript">
-                $(document).ready(function () {
-                    $('.sidebarCollapse').on('click', function () {
-                        $('.sidebar').toggleClass('active');
-                    });
-                });
-                $('.datetimepicker2').datetimepicker({
-                    inline: true,
-                    sideBySide: false
-                });
-            </script>
-                       <script>
-$('#reminder').on('show.bs.modal', function (event) {
-  var button = $(event.relatedTarget) // Button that triggered the modal
-  var id= button.data('whatever') // Extract info from data-* attributes
-  // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
-  // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
-  var modal = $(this)
-  modal.find('.modal-body #task_toName').val(id)
-})
-            </script>
+        </form>
+      </div></div></div></div><!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS --><script src="js/popper.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/moment.js"></script><script src="js/timepicker.js"></script><script>$('select').on('change', function () {
+        var text = $(this).find("option:selected").text();        
 
 
+        
 
-   
+        $.ajax({
+            url: "{{ path('modaldata') }}",
+            type: 'POST',
+            data: {
+                text: text
+            },
+            success: function (res) {
+                console.log(res);
+                $("#task_toName").html(res);
 
-</script>
+
+            }
+        });
+    });</script><script>$(document).ready(function () {
+        var text =("#task_fromName option:selected").text();
+        
+        
+        
+
+        $.ajax({
+            url: "{{ path('modaldata') }}",
+            type: 'POST',
+            data: {
+                text: text
+            },
+            success: function (res) {
+                console.log(res);
+                $("#task_toName").html(res);
+
+
+            }
+        });
+    });</script>
+
+     <script>
+        $('#datepicker').datepicker({
+            uiLibrary: 'bootstrap4',
+            icons: {
+             rightIcon: '<img alt="" src="images/deadline.svg">'
+         }
+        });
     </script>
 
-  
 
+    
 
- 
-</div>
-{% endblock %}
+    </div>{% endblock %}

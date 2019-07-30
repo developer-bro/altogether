@@ -10,7 +10,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="sidebar-header text-center">
-                    <img alt="" src="images/logo.svg">
+                     <a href="/dashboard"><img alt="" src="{{ asset('images/logo.svg') }}"></a>
                 </div>
                 <ul class="list-unstyled components">
                     <li>
@@ -94,17 +94,18 @@
                     <div class="card-search">
                         {% for search in searches %}
                             <div class="media">
-                                <form action="{{ path('updatesearch', { 'id' : search.id }) }}"  method="post">
+                                
 
                                     <div class="mediaaction">
-                                        <input class="form-control docinput" name="searchname" type="text" value=" {{ search.jobName }}, {{ search.location }} " style="border:none;">
+                                        
+                                    <a href="{{ path('searchshow', { 'id' : search.id }) }}"><p> {{ search.jobName }}, {{ search.location }} </p></a>
                                     
-                                    <button class="search_submit" style="border:none; padding-left: 60px;" type="submit"><i class="fas fa-check"></i></button>
                                 </div>
-                            </form>
+                            
                             <div class="action delete">
+                             
 
-                                <a href="{{ path('deletesearch', { 'id' : search.id }) }}"><i class="fas fa-trash-alt"></i></a>
+                <a href="{{ path('deletesearch', { 'id' : search.id }) }}"><i class="fas fa-trash-alt"></i></a>
                             </div>
                         </div>
                     {% endfor %}

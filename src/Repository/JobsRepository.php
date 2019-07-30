@@ -54,6 +54,20 @@ class JobsRepository extends ServiceEntityRepository
         ;
     }
     */
+    public function findfortasks($user)
+    {
+
+        return $this->createQueryBuilder('j')
+        ->select('j.comapnyName')
+        ->where('j.User = :user')
+        ->orderBy('j.id', 'DESC')
+        ->setParameter('user', $user)
+        ->getQuery()
+            ->getResult()
+            ;
+            
+            
+    }
 
     public function findLatest($user)
     {

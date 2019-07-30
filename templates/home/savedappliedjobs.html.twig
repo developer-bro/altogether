@@ -9,7 +9,7 @@
                     <i class="fas fa-times"></i>
                 </button>
                 <div class="sidebar-header text-center">
-                    <img alt="" src="{{ asset('images/logo.svg') }}">
+                     <a href="/dashboard"><img alt="" src="{{ asset('images/logo.svg') }}"></a>
                 </div>
                 <ul class="list-unstyled components">
                     <li>
@@ -67,7 +67,7 @@
                                     <a href="{{ path('accountinfo') }}">SETTINGS</a>
                                 </li>
                                 <li>
-                                   <div class="avtar"><img src="images/avatar.png" alt=""></div>
+                                   <div class="avtar"><img src="{{ asset('images/avatar.png') }}" alt=""></div>
 
                                 </li>
                             </ul>
@@ -100,7 +100,7 @@
                                     <select class="form-control" id="" name="">
                                         <option value="">Saved</option>
                                     </select>
-                                    <i class="t-f r-0"><img alt="" src="images/select.svg"></i>
+                                    <i class="t-f r-0"><img alt="" src="{{ asset('images/select.svg') }}"></i>
                                 </div>
                             </div>
                         </div>
@@ -188,25 +188,18 @@
                     <div class="filter-card">
                         {% for job in jobs %}
                             <div class="media">
-                                {% if job.isSaved %}
-                                    <div class="icon-filter"><img alt="" src="images/check-c.svg"></div>
-                                {% elseif job.isApplied %}
-                                    <div class="icon-filter"><img alt="" src="images/fav2.svg"></div>
-                                {% else %}
-                                    <div class="icon-filter"></div>
-                                {% endif %}
+                            {% if job.isSaved %} <div class="icon-filter"><img alt="" src="{{ asset('images/fav2.svg') }}"></div> {% elseif job.isApplied %}<div class="icon-filter"><img alt="" src="{{ asset('images/check-c.svg') }}"></div> {% else %}<div class="icon-filter noicon"></div>{% endif %}
+                               
 
                                 <div class="media-body">
-                                    <a href="{{ path('joblistingshow', { id: job.id }) }}">
+                                    
                                         <div class="auth_w">
                                             <div class="author-dt">
-                                                <h3>{{ job.title }}</h3>
+                                             <a href="{{ job.uri }}" target="blank">   <h3>{{ job.title }}</h3></a>
+                                                
                                                 <p>{{ job.comapnyName }}</p>
-                                                <ul>
-                                                    <li><img alt="" src="images/pin.svg">
-                                                        <span>
-                                                            {{ job.location }}</span>
-                                                    </li>
+              <ul>
+                <li> <span> {{ job.location }}</span></li>
                                                 </ul>
                                             </div>
 
@@ -247,14 +240,14 @@
                             </div>
                         {% endif %}
 
-                        <p>{{ job.description|truncate(250) }}
-                        </p>
-                    </a>
+                       <a href="{{ path('joblistingshow', { id: job.id }) }}"> <p>{{ job.description|truncate(250) }}
+                        </p></a>
+                    
                     <div class="container">
                         <div class="row">
                             <div class="col-6">
                                 <div class="footer-card">
-                                   {% if job.isSaved %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>{% elseif job.isApplied %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">View on website</a>{% else %}<span></span>{% endif %}
+                                   {% if job.isSaved %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">Apply On Website</a>{% elseif job.isApplied %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">View on website</a>{% else %}<a href="{{ job.uri }}" class="uri btn btn-search" target="_blank">View on website</a>{% endif %}
                                 </div>
                             </div>
                             {# <div class="dropdown">
@@ -274,7 +267,7 @@
                                 <div class="d-flex flex-row bd-highlight mb-3">
                                     <div class="p-3 bd-highlight change-status">
                                         Change status:</div>
-                                    <div class="p-2 bd-highlight">
+                                    <div class="p-1 bd-highlight">
 
 
                                         <div class="relative">
@@ -285,7 +278,9 @@
                                                                                                                                                                                   padding: 0;
                                                                                                                                                                                   background-color: transparent;
                                                                                                                                                                                   box-shadow: none;
-                                                                                                                                                                                  border-bottom: 1px solid #BCE0FD !important;
+                                                                                                                                                                                  border-bottom: 2px solid #1e9af2 !important;
+                                                                                                                                                                                  width: 92%;
+
                                                                                                                                                                               ">
 
                                                 <option value="/appliedaction"></option>
@@ -294,7 +289,7 @@
                                                 <option value="{{ path('interviewaction', { id: job.id }) }}">Interview</option>
                                                 <option value="{{ path('postinterviewaction', { id: job.id }) }}">Post Interview Follow Up</option>
                                             </select>
-                                            <i class="t-f r-0"><img alt="" src="images/select.svg"></i>
+                                            <i class="t-f r-0"><img alt="" src="{{ asset('images/select.svg') }}"></i>
                                         </div>
 
                                     </div>
@@ -333,7 +328,8 @@
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
                         </div>
-                        {{ form_row(form.title, {'attr': {'class': 'form-control b3'}}) }}
+                        {{ form_label(form.comapnyName, 'Title', {'attr': {'class': 'modal-form'}}) }}
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control b3'}}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -342,7 +338,8 @@
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
                         </div>
-                        {{ form_row(form.comapnyName, {'attr': {'class': 'form-control b4'}}) }}
+                        {{ form_label(form.comapnyName, 'Company Name', {'attr': {'class': 'modal-form'}}) }}
+                        {{ form_widget(form.comapnyName, {'attr': {'class': 'form-control b4'}}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -351,7 +348,8 @@
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
                         </div>
-                        {{ form_row(form.location, {'attr': {'class': 'form-control b4'}}) }}
+                        {{ form_label(form.comapnyName, 'Location', {'attr': {'class': 'modal-form'}}) }}
+                        {{ form_widget(form.location, {'attr': {'class': 'form-control b4'}}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -360,7 +358,8 @@
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
                         </div>
-                        {{ form_row(form.description, {'attr': {'class': 'form-control b4'}}) }}
+                        {{ form_label(form.comapnyName, 'Description', {'attr': {'class': 'modal-form'}}) }}
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control b4'}}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -369,7 +368,8 @@
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
                         </div>
-                        {{ form_row(form.uri, {'attr': {'class': 'form-control b7'}}) }}
+                        {{ form_label(form.comapnyName, 'URL', {'attr': {'class': 'modal-form'}}) }}
+                        {{ form_widget(form.uri, {'attr': {'class': 'form-control b7'}}) }}
                     </div>
                 </div>
 
@@ -383,11 +383,8 @@
             </div>
         </div>
     </div>
-</div></div></div></div></div><script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script><script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script><script>$(document).ready(function () {
-    $('.sidebarCollapse').on('click', function () {
-        $('.sidebar').toggleClass('active');
-    });
-});</script><script>$("#submitBtn").click("submit", function (e) {
+</div></div></div></div></div><script crossorigin="anonymous" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script><script crossorigin="anonymous" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+   <script>$("#submitBtn").click("submit", function (e) {
     e.preventDefault();
     var modal = $("#add-jobs");
     modal.find('.loadingmessage').show();

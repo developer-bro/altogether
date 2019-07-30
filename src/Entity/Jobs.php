@@ -374,4 +374,8 @@ class Jobs
 
         return $this;
     }
+
+    public function __toString() {
+        return $this->getComapnyName();
+      }
 }

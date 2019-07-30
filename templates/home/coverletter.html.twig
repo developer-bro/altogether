@@ -90,14 +90,14 @@
                             <div class="cards">
                                 <div class="card_header">
                                     <h3><img alt="" src="images/folder.svg">Cover letter</h3>
-                                    <a href="#"><img alt="" src="images/dots-line.svg"></a>
+                                   
                                 </div>
                                 <div class="card_body">
                                     <div class="card-search">
                                             {% for cvfiles in cvuploadedFiles %}
                                                 <div class="media docmedia"><form action="{{ path('cvupdatefile', { 'id' : cvfiles.id }) }}" id="myfileform" method="post">
                                                     <div class="mediaaction">
-                                                        <input class="form-control docinput"  type="text" value=" {{ cvfiles.name }} " name="filename"  style="border:none;">
+                                                        <input class="form-control docinput"  type="text" value=" {{ cvfiles.name }} " name="filename"  style="border:none; text-align: left;">
                                                         <button type="submit" class="search_submit" style="border:none; padding-left:80px; background-color:#ffffff;" ><i class="fas fa-check"></i></button>
 
                                                     </div>
