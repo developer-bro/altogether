@@ -16,7 +16,7 @@
                         <a href="/dashboard">My Dashboard</a>
                     </li>
                     <li>
-                        <a aria-expanded="true" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <a aria-expanded="true" data-toggle="collapse" href="#pageSubmenu">Job Search</a>
                         <ul class="collapse list-unstyled show" id="pageSubmenu">
                             <li>
                                 <a href="{{ path('jobsitestosearch') }}">Job Sites to Search</a>
@@ -46,7 +46,7 @@
                         <a href="{{ path('mytask') }}">My Tasks</a>
                     </li>
                     <li>
-                        <a href="{{ path('app_logout') }}">LogOut</a>
+                        <a href="{{ path('app_logout') }}">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -195,7 +195,7 @@
                                     
                                         <div class="auth_w">
                                             <div class="author-dt">
-                                             <a href="{{ job.uri }}" target="blank">   <h3>{{ job.title }}</h3></a>
+                                              <a href="{{ path('joblistingshow', { id: job.id }) }}"> <h3>{{ job.title }}</h3>
                                                 
                                                 <p>{{ job.comapnyName }}</p>
               <ul>
@@ -240,7 +240,7 @@
                             </div>
                         {% endif %}
 
-                       <a href="{{ path('joblistingshow', { id: job.id }) }}"> <p>{{ job.description|truncate(250) }}
+                       <p>{{ job.description|truncate(250) }}
                         </p></a>
                     
                     <div class="container">
@@ -283,7 +283,22 @@
 
                                                                                                                                                                               ">
 
-                                                <option value="/appliedaction"></option>
+                                                <option value="" disabled selected>  {% if job.isSaved %}
+                                                
+                                                   Saved
+                                        {% elseif job.isApplied %}
+                                            Applied
+                                    {% elseif job.isInterview %}
+                                        Interview
+                                {% elseif job.isFollowUp %}
+                                   Follow Up
+                                
+                            {% elseif job.isPostInterviewFollowUp %}
+                                Post Interview Folow Up
+                            
+                        {% endif %}
+</option>
+                                                <option value="{{ path('savedaction', { id: job.id }) }}">Save</option>
                                                 <option value="{{ path('appliedaction', { id: job.id }) }}">Apply</option>
                                                 <option value="{{ path('followupaction', { id: job.id }) }}">Follow Up</option>
                                                 <option value="{{ path('interviewaction', { id: job.id }) }}">Interview</option>
@@ -293,6 +308,9 @@
                                         </div>
 
                                     </div>
+                                    
+<a href="{{ path('deletejob', { 'id' : job.id }) }}" align="right" ><i class="fas fa-trash-alt deletejob" style=" padding: 25px;"></i></a>
+      
                                 </div>
 
 
@@ -328,8 +346,12 @@
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
                         </div>
-                        {{ form_label(form.comapnyName, 'Title', {'attr': {'class': 'modal-form'}}) }}
-                        {{ form_widget(form.title, {'attr': {'class': 'form-control b3'}}) }}
+                        <div align="center" class='loadingmessage1' >
+                            
+                        </div>
+                        <br><div class="modallabel">
+                        {{ form_label(form.title, 'Title', {'attr': {'class': 'modal-form '}}) }}</div>
+                        {{ form_widget(form.title, {'attr': {'class': 'form-control savemodal', 'required' : true }}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -337,9 +359,9 @@
                     <div class="col-md-12">
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
-                        </div>
-                        {{ form_label(form.comapnyName, 'Company Name', {'attr': {'class': 'modal-form'}}) }}
-                        {{ form_widget(form.comapnyName, {'attr': {'class': 'form-control b4'}}) }}
+                        </div><div class="modallabel">
+                        {{ form_label(form.comapnyName, 'Company Name', {'attr': {'class': 'modal-form '}}) }}</div>
+                        {{ form_widget(form.comapnyName, {'attr': {'class': 'form-control savemodal', 'required' : true}}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -347,9 +369,9 @@
                     <div class="col-md-12">
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
-                        </div>
-                        {{ form_label(form.comapnyName, 'Location', {'attr': {'class': 'modal-form'}}) }}
-                        {{ form_widget(form.location, {'attr': {'class': 'form-control b4'}}) }}
+                        </div><div class="modallabel">
+                        {{ form_label(form.location, 'Location', {'attr': {'class': 'modal-form '}}) }}</div>
+                        {{ form_widget(form.location, {'attr': {'class': 'form-control savemodal'}}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -357,9 +379,9 @@
                     <div class="col-md-12">
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
-                        </div>
-                        {{ form_label(form.comapnyName, 'Description', {'attr': {'class': 'modal-form'}}) }}
-                        {{ form_widget(form.description, {'attr': {'class': 'form-control b4'}}) }}
+                        </div><div class="modallabel">
+                        {{ form_label(form.description, 'Description', {'attr': {'class': 'modal-form '}}) }}</div>
+                        {{ form_widget(form.description, {'attr': {'class': 'form-control savemodal'}}) }}
                     </div>
                 </div>
                 <div class="form-row">
@@ -367,9 +389,9 @@
                     <div class="col-md-12">
                         <div align="center" class='loadingmessage' style='display:none'>
                             <img src="{{ asset('images/loader.gif') }}"/>
-                        </div>
-                        {{ form_label(form.comapnyName, 'URL', {'attr': {'class': 'modal-form'}}) }}
-                        {{ form_widget(form.uri, {'attr': {'class': 'form-control b7'}}) }}
+                        </div><div class="modallabel">
+                        {{ form_label(form.uri, 'URL', {'attr': {'class': 'modal-form'}}) }}</div>
+                        {{ form_widget(form.uri, {'attr': {'class': 'form-control savemodal', 'required' : true}}) }}
                     </div>
                 </div>
 
@@ -406,8 +428,10 @@
 
         },
         error: function () {
-            modal.find('.loadingmessage').html(" Enter information manually");
+            
+            modal.find('.loadingmessage1').html("<h4 > Not all info may have been uploaded properly. Please review and correct as needed.</h4>");
 
+modal.find('.loadingmessage').hide();
 
         }
     });

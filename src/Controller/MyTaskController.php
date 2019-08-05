@@ -124,8 +124,12 @@ class MyTaskController extends AbstractController
         $text = $request->request->get('text');
         $arr = explode(' - ', $text, 2);
 
-        $first = reset($arr);
+        $first1 = reset($arr);
         $last = end($arr);
+
+        $first = rtrim($first1);
+        
+
         
         $user = $this->getUser();
         $entityManager = $this->getDoctrine()->getManager();
@@ -163,11 +167,7 @@ class MyTaskController extends AbstractController
     $notes = $request->get('notes');
     $job = $entityManager->getRepository(Jobs::class)->findOneBy(['comapnyName' => $fromName, 'User' => $user]);
 
-    echo "$fromName";
-    echo "$name";
-    echo "$toName";
-    echo "$dueDate";
-    echo "$notes";
+    
 
     $task = new Task();
     $task->setName($name);

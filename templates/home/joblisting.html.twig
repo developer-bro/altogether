@@ -8,7 +8,7 @@
     <div class="sidebar-header text-center">  <a href="/dashboard"><img alt="" src="{{ asset('images/logo.svg') }}"></a> </div>
     <ul class="list-unstyled components">
       <li><a href="/dashboard">My Dashboard</a></li>
-      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job search</a>
+      <li> <a href="#pageSubmenu" data-toggle="collapse" aria-expanded="true">Job Search</a>
         <ul class="collapse list-unstyled show" id="pageSubmenu">
           <li> <a href="/jobsitestosearch">Job Sites to Search</a> </li>
           <li><a href="/savedappliedjobs">Saved/Applied Jobs</a></li>
@@ -30,7 +30,7 @@
                     </li>
       <li><a href="/mytask">My Tasks</a></li>
       <li>
-                        <a href="/logout">LogOut</a>
+                        <a href="/logout">Logout</a>
                     </li>
     </ul>
   </nav>
@@ -44,7 +44,7 @@
           <ul class="sidetop ml-auto">
             <li class="active"> <a href="#">HELP</a> </li>
             <li> <a href="/accountinfo">SETTINGS</a> </li>
-            <li><div class="avtar"><img src="images/avatar.png" alt=""></div>
+            <li><div class="avtar"><img src="{{ asset('images/avatar.png') }}" alt=""></div>
                         
                                 </li>
           </ul>
@@ -180,7 +180,23 @@
                                                                                                                                                                                   width: 92%;
                                                                                                                                                                               ">
 
-                                                <option value="/appliedaction"></option>
+                                             
+                                                <option value="" disabled selected>  {% if job.isSaved %}
+                                                
+                                                   Saved
+                                        {% elseif job.isApplied %}
+                                            Applied
+                                    {% elseif job.isInterview %}
+                                        Interview
+                                {% elseif job.isFollowUp %}
+                                   Follow Up
+                                
+                            {% elseif job.isPostInterviewFollowUp %}
+                                Post Interview Folow Up
+                            
+                        {% endif %}
+</option>
+                                                <option value="{{ path('savedaction', { id: job.id }) }}">Save</option>
                                                 <option value="{{ path('appliedaction', { id: job.id }) }}">Apply</option>
                                                 <option value="{{ path('followupaction', { id: job.id }) }}">Follow Up</option>
                                                 <option value="{{ path('interviewaction', { id: job.id }) }}">Interview</option>
@@ -188,6 +204,12 @@
                                             </select>
                                             <i class="t-f r-0"><img alt="" src="{{ asset('images/select.svg') }}"></i>
                                         </div>
+
+                                    </div>
+                                    
+<a href="{{ path('deletejob', { 'id' : job.id }) }}" align="right" ><i class="fas fa-trash-alt deletejob" style=" padding: 25px;"></i></a>
+      
+                                </div>
 
                                     </div>
                                 </div>

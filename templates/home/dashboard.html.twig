@@ -9,15 +9,15 @@
                 <button class="btn close-btn sidebarCollapse">
                     <i class="fas fa-times"></i>
                 </button>
-                <div class="sidebar-header text-center">
-                    <a href="/dashboard"><img alt="" src="{{ asset('images/logo.svg') }}"></a>
+                <div class="sidebar-header text-center" id="step1">
+                    <a href="/dashboard" ><img alt="" src="{{ asset('images/logo.svg') }}"></a>
                 </div>
-                <ul class="list-unstyled components">
+                <ul class="list-unstyled components" id="step4">
                     <li class="active">
                         <a href="dashboard">My Dashboard</a>
                     </li>
                     <li>
-                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu">Job search</a>
+                        <a aria-expanded="false" data-toggle="collapse" href="#pageSubmenu">Job Search</a>
                         <ul class="collapse list-unstyled " id="pageSubmenu">
                             <li>
                                 <a href="/jobsitestosearch">Job Sites to Search</a>
@@ -46,8 +46,8 @@
                     <li>
                         <a href="{{ path('mytask') }}">My Tasks</a>
                     </li>
-                    <li>
-                        <a href="/logout">LogOut</a>
+                    <li id="step7">
+                        <a href="/logout">Logout</a>
                     </li>
                 </ul>
             </nav>
@@ -64,7 +64,7 @@
                                 <li class="active">
                                     <a href="#">HELP</a>
                                 </li>
-                                <li>
+                                <li id="step2">
                                     <a href="/accountinfo">SETTINGS</a>
                                 </li>
                                 <li>
@@ -77,7 +77,7 @@
                 </nav>
                 <div class="over-wrapper">
                     <div class="container-fluid">
-                        <ul class="dashboard-review">
+                        <ul class="dashboard-review" id="step3">
                             <li>
                                 <div class="c1">
                                     <div class="counter">
@@ -152,7 +152,7 @@
                     <div class="container-fluid">
                         <div class="jb-main">
                             <div class=" fl1">
-                                <div class="card-main card1">
+                                <div class="card-main card1" id="step5">
                                     <div class="card_title">
                                         <h3>Saved/Applied Jobs</h3>
                                     </div>
@@ -202,7 +202,7 @@
                             </div>
                         </div>
                         <div class=" fl2">
-                            <div class="card2 card-main">
+                            <div class="card2 card-main" id="step6">
                                 <div class="card_title">
                                     <h3>Tasks</h3>
                                 </div>
@@ -324,6 +324,57 @@
         </div>
     </div>
 
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"> </script>
+<script type="text/javascript">
+
+      $(function startIntro(){
+        var intro = introJs();
+          intro.setOptions({
+            steps: [
+              { 
+                intro: "Hello, Welcome to Altogether"
+              },
+              {
+                element: document.querySelector('#step1'),
+                intro: "This is Altogethr Logo. You can click here to be on dashboard from any page",
+                position: 'right'
+              },
+              {
+                element: document.querySelectorAll('#step2')[0],
+                intro: "Here is your Account settings tab which has your personal information",
+                position: 'right'
+              },
+              {
+                element: '#step3',
+                intro: 'Here You will find count and links to all the jobs with their respective status',
+                position: 'left'
+              },
+              {
+                element: '#step4',
+                intro: "Here in the sidebar, You can navigate different menu links like saved jobs, mydocuments, mytasks etc ",
+                position: 'bottom'
+              },
+              {
+                element: '#step5',
+                intro: 'Here you can view and click on the most recent jobs you add from saved applied jobs page'
+                
+              },
+              {
+                element: '#step6',
+                intro: 'Here are your most recent tasks you add on your my tasks page'
+              },
+              {
+                element: '#step7',
+                intro: 'Logout off the application on clicking here'
+              }
+            ]
+          });
+          intro.start();
+      }
+      );
+      </script>
+      
 </div>
 
 {% endblock %}

@@ -24,6 +24,8 @@ use App\Entity\Jobs;
 use App\Form\JobsSaveType;
 use App\Entity\User;
 use App\Repository\JobsRepository;
+use App\Entity\Task;
+use App\Repository\TaskRepository;
 
 
 
@@ -139,6 +141,43 @@ class SavedAppliedJobsController extends AbstractController
 
         return $this->render('home/joblisting.html.twig', ['job' => $job]);
     }
+
+    /**
+     * @Route("/savedaction/{id}", methods={"GET", "POST"}, name="savedaction")
+     *
+     * 
+     */
+    public function savedaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+        $job->setIsSaved(TRUE);
+        $job->setIsApplied(FALSE);
+        $job->setIsFollowUp(FALSE);
+        $job->setIsInterview(FALSE);
+        $job->setIsPostInterviewFollowUp(FALSE);
+
+        
+        
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('savedappliedjobs');
+
+
+        
+        
+    }
+
 
 
     /**
@@ -281,6 +320,43 @@ class SavedAppliedJobsController extends AbstractController
 
         
         
+    }
+
+     /**
+     * @Route("/deletejob/{id}", methods={"GET"}, name="deletejob")
+     *
+     * 
+     */
+    public function deletejobindex(Request $request, Jobsrepository $job, TaskRepository $task, $id): Response
+    {
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $jobid = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+       
+        $jobTasks = $jobid->getTasks();
+        if( $jobTasks !== null )
+        {
+            
+            foreach ( $jobTasks as $jobTask ){
+
+                $taskid = $jobTask->getId();
+
+                $deletetask = $task->deleteTask($user, $taskid);
+
+                
+                
+            }
+            $deletejob = $job->deleteJob($user, $id);
+            
+                return $this->redirectToRoute('savedappliedjobs');
+            
+        }
+
+        $deletejob = $job->deleteJob($user, $id);
+                return $this->redirectToRoute('savedappliedjobs');
+
+           
     }
 
    

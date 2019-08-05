@@ -164,4 +164,20 @@ class JobsRepository extends ServiceEntityRepository
             
             return $query->execute();
     }
+
+    public function deleteJob($user, $id)
+    {
+
+        $entityManager = $this->getEntityManager();
+        $query = $entityManager->createQuery('
+                	DELETE 
+                	FROM App\Entity\Jobs j
+                	WHERE j.User = :user AND j.id = :id
+            		')
+                ->setParameter('user', $user)
+                ->setParameter('id', $id)
+            ;
+            
+            return $query->execute();
+    }
 }
