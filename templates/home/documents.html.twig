@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}CV{% endblock %}
 {% block body %}
     <div class="account-info">
         <div
@@ -96,7 +97,7 @@
                                             {% for files in uploadedFiles %}
                                                 <div class="media docmedia"><form action="{{ path('updatefile', { 'id' : files.id }) }}" id="myfileform" method="post">
                                                     <div class="mediaaction">
-                                                        <input class="form-control docinput" id="docname"  type="text" value=" {{ files.name }} " name="filename"  style="border:none; direction:rtl;">
+                                                        <input class="form-control docinput" id="docname"  type="text" value=" {{ files.name }} " name="filename"  style="border:none; ">
                                                         <button type="submit" class="search_submit" style="border:none; padding-left:80px; background-color:#ffffff;" ><i class="fas fa-check"></i></button>
 
                                                     </div>

@@ -199,7 +199,7 @@ class SavedAppliedJobsController extends AbstractController
         $job->setIsInterview(FALSE);
         $job->setIsPostInterviewFollowUp(FALSE);
 
-        $job->setDateApplied(new \DateTime());
+        
         
 
 
@@ -234,7 +234,7 @@ class SavedAppliedJobsController extends AbstractController
         $job->setIsFollowUp(TRUE);
         $job->setIsInterview(FALSE);
         $job->setIsPostInterviewFollowUp(FALSE);
-        $job->setDateInitialFollowUp(new \DateTime());
+        
 
       
 
@@ -268,7 +268,7 @@ class SavedAppliedJobsController extends AbstractController
         $job->setIsFollowUp(FALSE);
         $job->setIsInterview(TRUE);
         $job->setIsPostInterviewFollowUp(FALSE);
-        $job->setDateInterview(new \DateTime());
+        
 
        
 
@@ -305,7 +305,7 @@ class SavedAppliedJobsController extends AbstractController
         $job->setIsInterview(FALSE);
         $job->setIsPostInterviewFollowUp(TRUE);
 
-        $job->setDateFollowUp(new \DateTime());
+       
 
 
 
@@ -357,6 +357,174 @@ class SavedAppliedJobsController extends AbstractController
                 return $this->redirectToRoute('savedappliedjobs');
 
            
+    }
+
+    /**
+     * @Route("/saveddateaction/{id}", methods={"GET", "POST"}, name="saveddateaction")
+     *
+     * 
+     */
+    public function saveddateaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+        $date = $request->get('date');
+    
+
+        $job->setDateSaved(new \DateTime($date));
+        
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('savedappliedjobs');
+
+
+        
+        
+    }
+
+
+    /**
+     * @Route("/applieddateaction/{id}", methods={"GET", "POST"}, name="applieddateaction")
+     *
+     * 
+     */
+    public function applieddateaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+        $date = $request->get('date');
+    
+
+        $job->setDateApplied(new \DateTime($date));
+        
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('savedappliedjobs');
+
+
+        
+        
+    }
+
+
+    /**
+     * @Route("/followupdateaction/{id}", methods={"GET", "POST"}, name="followupdateaction")
+     *
+     * 
+     */
+    public function followupdateaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+        $date = $request->get('date');
+    
+
+        
+        $job->setDateInitialFollowUp(new \DateTime($date));
+        
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('savedappliedjobs');
+
+
+        
+        
+    }
+
+    /**
+     * @Route("/interviewdateaction/{id}", methods={"GET", "POST"}, name="interviewdateaction")
+     *
+     * 
+     */
+    public function interviewdateaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+        $date = $request->get('date');
+    
+
+        $job->setDateInterview(new \DateTime($date));
+        
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('savedappliedjobs');
+
+
+        
+        
+    }
+
+    /**
+     * @Route("/postinterviewdateaction/{id}", methods={"GET", "POST"}, name="postinterviewdateaction")
+     *
+     * 
+     */
+    public function postinterviewdateaction(Request $request, JobsRepository $jobs, $id): Response
+    {
+
+        $user = $this->getUser();
+
+        $entityManager = $this->getDoctrine()->getManager();
+        $job = $entityManager->getRepository(Jobs::class)->findOneBy(['id' => $id, 'User' => $user]);
+
+        $date = $request->get('date');
+    
+
+        $job->setDateFollowUp(new \DateTime($date));
+        
+
+
+
+        
+        $entityManager->persist($job);
+        $entityManager->persist($user);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('savedappliedjobs');
+
+
+        
+        
     }
 
    

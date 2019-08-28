@@ -27,6 +27,16 @@ class Upload
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateAdded;
+
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateModified;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -52,6 +62,30 @@ class Upload
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDateAdded(): ?\DateTimeInterface
+    {
+        return $this->dateAdded;
+    }
+
+    public function setDateAdded(?\DateTimeInterface $dateAdded): self
+    {
+        $this->dateAdded = $dateAdded;
+
+        return $this;
+    }
+
+    public function getDateModified(): ?\DateTimeInterface
+    {
+        return $this->dateModified;
+    }
+
+    public function setDateModified(?\DateTimeInterface $dateModified): self
+    {
+        $this->dateModified = $dateModified;
 
         return $this;
     }

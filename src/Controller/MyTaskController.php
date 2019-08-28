@@ -156,7 +156,19 @@ class MyTaskController extends AbstractController
         $user = $this->getUser();
     
 
-    $name  = $request->get('name');
+        $name  = $request->get('name');
+    if ($name == "Custom"){
+
+        $customtext = $request->get('customtext');
+        $setname = $customtext;
+
+    }
+    else
+    {
+
+        $setname  = $request->get('name');
+
+    }
     $text = $request->get('fromName');
     $arr = explode(' - ', $text, 2);
 
@@ -170,7 +182,7 @@ class MyTaskController extends AbstractController
     
 
     $task = new Task();
-    $task->setName($name);
+    $task->setName($setname);
     $task->setFromName($fromName);
     $task->setToName($toName);
     $task->setDueDate(new \DateTime($dueDate));

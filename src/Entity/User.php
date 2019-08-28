@@ -115,6 +115,46 @@ class User implements UserInterface
      */
     private $cVuploads;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $phone;
+
+    /**
+     * @ORM\Column(type="integer", nullable=true)
+     */
+    private $phone_type;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $street1;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $street2;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $city;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $state;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $zip;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $country;
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -481,6 +521,102 @@ class User implements UserInterface
                 $cVupload->setUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPhone(): ?string
+    {
+        return $this->phone;
+    }
+
+    public function setPhone(?string $phone): self
+    {
+        $this->phone = $phone;
+
+        return $this;
+    }
+
+    public function getPhoneType(): ?int
+    {
+        return $this->phone_type;
+    }
+
+    public function setPhoneType(?int $phone_type): self
+    {
+        $this->phone_type = $phone_type;
+
+        return $this;
+    }
+
+    public function getStreet1(): ?string
+    {
+        return $this->street1;
+    }
+
+    public function setStreet1(?string $street1): self
+    {
+        $this->street1 = $street1;
+
+        return $this;
+    }
+
+    public function getStreet2(): ?string
+    {
+        return $this->street2;
+    }
+
+    public function setStreet2(?string $street2): self
+    {
+        $this->street2 = $street2;
+
+        return $this;
+    }
+
+    public function getCity(): ?string
+    {
+        return $this->city;
+    }
+
+    public function setCity(?string $city): self
+    {
+        $this->city = $city;
+
+        return $this;
+    }
+
+    public function getState(): ?string
+    {
+        return $this->state;
+    }
+
+    public function setState(?string $state): self
+    {
+        $this->state = $state;
+
+        return $this;
+    }
+
+    public function getZip(): ?string
+    {
+        return $this->zip;
+    }
+
+    public function setZip(?string $zip): self
+    {
+        $this->zip = $zip;
+
+        return $this;
+    }
+
+    public function getCountry(): ?string
+    {
+        return $this->country;
+    }
+
+    public function setCountry(?string $country): self
+    {
+        $this->country = $country;
 
         return $this;
     }

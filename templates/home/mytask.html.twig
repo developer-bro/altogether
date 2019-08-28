@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}My Task{% endblock %}
 {% block body %}
 
     <div class="account-info">
@@ -155,7 +156,7 @@
 
 
                                     <div align="center" style="padding: 20px 0px 30px 0px;">
-                                        <button class="add btn btn-primary" data-target="#reminder" data-toggle="modal">Add Task</button>
+                                        <button class="add btn btn-primary" id="addbut" data-target="#reminder" data-toggle="modal">Add Task</button>
                                     </div>
                                     <br>
                                     <br>
@@ -256,17 +257,26 @@
         </div>
         <div class="modal-body">
             <div class="relative status mt-2">
-                <select class="form-control " id="" name="name">
-                <option value="" disabled selected>Select your option</option>
+                <select class="form-control " id="taskfirst" name="name">
+                <option value="" disabled selected>Select your task</option>
                     <option value="Apply">Apply</option>
                     <option value="Thank You Letter">Thank You Letter</option>
                     <option value="Follow-Up">Follow-Up</option>
                     <option value="Interview Prep">Interview Prep</option>
+                    <option value="Custom">Custom</option>
                 </select>
                 <i class="t-f r-0"><img alt="" src="images/select.svg"></i>
             </div>
 
-            <div>
+            <div class="inner_modal inmodal">
+                <h3 class="class-h3">
+
+            <input type="text"  name="customtext" id="customtext" class="form-control" placeholder="Custom Name"  required >
+
+    </h3>
+    </div>
+
+            <div >
                 <h3 class="class-h3">
                     <label class="" for="task_fromName">Job</label>
                 </h3>
@@ -304,7 +314,7 @@
                         </div>
                     </div>
                 </div>
-                <textarea class="form-control" cols="30" id="" name="notes" rows="10">Notes</textarea>
+                <textarea class="form-control" cols="30" id="" name="notes" rows="10" placeholder="Notes"></textarea>
             </div>
         </div>
         <div class="modal-footer">
@@ -313,7 +323,7 @@
             </button>
         </div>
     </div>
-</form></div></div></div></div><!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS --><script src="js/popper.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/moment.js"></script><script src="js/timepicker.js"></script><script>$('select').on('change', function () {
+</form></div></div></div></div><!-- Optional JavaScript --><!-- jQuery first, then Popper.js, then Bootstrap JS --><script src="js/popper.min.js"></script><script src="js/bootstrap.min.js"></script><script src="js/moment.js"></script><script src="js/timepicker.js"></script><script>$('#task_fromName').on('change', function () {
     var text1 = $(this).find("option:selected").text();
 
     
@@ -377,5 +387,29 @@ $('option').each(function () {
   }
 });
 </script> #}
+
+
+<script>$("#addbut").click("submit", function (e) {
+$("#customtext").hide();
+$("#customtext").prop('disabled', true);
+});
+</script>
+
+<script>$('#taskfirst').on('change', function () {
+    var customtext = $(this).find("option:selected").text();
+    console.log(customtext);
+    if ( customtext == "Custom" )
+    {
+
+        $("#customtext").show();
+        $("#customtext").prop('disabled', false);
+
+    }
+    else {
+        $("#customtext").hide();
+        $("#customtext").prop('disabled', true);
+    }
+    });
+</script>
 
 </div>{% endblock %}

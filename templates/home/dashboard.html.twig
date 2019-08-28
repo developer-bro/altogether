@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Dashboard{% endblock %}
 {% block body %}
 
     <div>
@@ -9,10 +10,10 @@
                 <button class="btn close-btn sidebarCollapse">
                     <i class="fas fa-times"></i>
                 </button>
-                <div class="sidebar-header text-center" id="step1">
+                <div class="sidebar-header text-center" data-step="1" data-intro="{{ walkthroughinfo.second }}">
                     <a href="/dashboard" ><img alt="" src="{{ asset('images/logo.svg') }}"></a>
                 </div>
-                <ul class="list-unstyled components" id="step4">
+                <ul class="list-unstyled components" data-step="5" data-intro="{{ walkthroughinfo.fifth }}">
                     <li class="active">
                         <a href="dashboard">My Dashboard</a>
                     </li>
@@ -46,9 +47,14 @@
                     <li>
                         <a href="{{ path('mytask') }}">My Tasks</a>
                     </li>
-                    <li id="step7">
+                    <li data-step="8" data-intro="{{ walkthroughinfo.eighth }}">
                         <a href="/logout">Logout</a>
                     </li>
+
+                    <li>
+
+                    <a  href="javascript:void(0);" onclick="javascript:introJs().start();">Show me how</a>
+</li>
                 </ul>
             </nav>
 
@@ -64,7 +70,7 @@
                                 <li class="active">
                                     <a href="#">HELP</a>
                                 </li>
-                                <li id="step2">
+                                <li data-step="3" data-intro="{{ walkthroughinfo.third }}">
                                     <a href="/accountinfo">SETTINGS</a>
                                 </li>
                                 <li>
@@ -77,7 +83,7 @@
                 </nav>
                 <div class="over-wrapper">
                     <div class="container-fluid">
-                        <ul class="dashboard-review" id="step3">
+                        <ul class="dashboard-review" data-step="4" data-intro="{{ walkthroughinfo.fourth }}">
                             <li>
                                 <div class="c1">
                                     <div class="counter">
@@ -152,7 +158,7 @@
                     <div class="container-fluid">
                         <div class="jb-main">
                             <div class=" fl1">
-                                <div class="card-main card1" id="step5">
+                                <div class="card-main card1" data-step="6" data-intro="{{ walkthroughinfo.sixth }}">
                                     <div class="card_title">
                                         <h3>Saved/Applied Jobs</h3>
                                     </div>
@@ -202,7 +208,7 @@
                             </div>
                         </div>
                         <div class=" fl2">
-                            <div class="card2 card-main" id="step6">
+                            <div class="card2 card-main" data-step="7" data-intro="{{ walkthroughinfo.seventh }}">
                                 <div class="card_title">
                                     <h3>Tasks</h3>
                                 </div>
@@ -326,7 +332,7 @@
 
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/intro.js/2.9.3/intro.js"> </script>
-<script type="text/javascript">
+{# <script type="text/javascript">
 
       $(function startIntro(){
         var intro = introJs();
@@ -374,7 +380,7 @@
       }
       );
       </script>
-      
+       #}
 </div>
 
 {% endblock %}

@@ -32,6 +32,11 @@ class SavedJobSearches
      */
     private $user;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateAdded;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -69,6 +74,18 @@ class SavedJobSearches
     public function setUser(?User $user): self
     {
         $this->user = $user;
+
+        return $this;
+    }
+
+    public function getDateAdded(): ?\DateTimeInterface
+    {
+        return $this->dateAdded;
+    }
+
+    public function setDateAdded(?\DateTimeInterface $dateAdded): self
+    {
+        $this->dateAdded = $dateAdded;
 
         return $this;
     }

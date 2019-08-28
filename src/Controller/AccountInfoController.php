@@ -25,6 +25,8 @@ use App\Form\AccountEditFormType;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\Walkthrough;
+use App\Repository\WalkthroughRepository;
 
 
 class AccountInfoController extends AbstractController
@@ -43,8 +45,10 @@ class AccountInfoController extends AbstractController
      *
      * 
      */
-    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer): Response
+    public function index(Request $request, UserPasswordEncoderInterface $passwordEncoder, \Swift_Mailer $mailer, WalkthroughRepository $walkthrough): Response
     {
+        $walkthroughinfos = $walkthrough->findsettingsinfo();
+        $walkthroughinfo = $walkthroughinfos[0];
         $em = $this->getDoctrine()->getManager();
         $user = $this->getUser();
         $mail = $user->getEmail();
@@ -107,7 +111,7 @@ return $this->redirectToRoute('confirmemail');
         }
 
         return $this->render('home/accountinfo.html.twig', [
-            'Form' => $form->createView(),
+            'Form' => $form->createView(), 'walkthroughinfo' => $walkthroughinfo
         ]);
 
     }

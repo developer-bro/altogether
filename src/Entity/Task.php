@@ -69,6 +69,11 @@ class Task
      */
     private $fromName;
 
+    /**
+     * @ORM\Column(type="date", nullable=true)
+     */
+    private $dateAdded;
+
    
 
     
@@ -200,6 +205,18 @@ class Task
     public function setFromName(?string $fromName): self
     {
         $this->fromName = $fromName;
+
+        return $this;
+    }
+
+    public function getDateAdded(): ?\DateTimeInterface
+    {
+        return $this->dateAdded;
+    }
+
+    public function setDateAdded(?\DateTimeInterface $dateAdded): self
+    {
+        $this->dateAdded = $dateAdded;
 
         return $this;
     }

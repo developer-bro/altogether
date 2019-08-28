@@ -21,6 +21,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 Use Symfony\Component\HttpFoundation\JsonResponse;
+use App\Entity\SitesToParse;
+use App\Repository\SitesToParseRepository;
 
 
 
@@ -31,7 +33,7 @@ class ScrapeDataController extends AbstractController
      *
      * 
      */
-    public function index(Request $request): Response
+    public function index(Request $request, SitesToParseRepository $sites): Response
     {
 
         $email = $request->request->get('email');
@@ -52,19 +54,8 @@ if (preg_match("/linkedin/", $email))
         $uri = $email;
 }
 	
-elseif(preg_match("/monster/", $email))
-{
-	
-        $title = $crawler->filter('.heading h1')->text();
-        $description = $crawler->filter('#JobDescription')->text(); 
-        $company = $crawler->filter('.subtitle')->text(); 
-        
-        $location = $crawler->filter('.subtitle')->text();  
-       
-        
-        $uri = $email;
-}
-else
+
+if(preg_match("/indeed/", $email))
 {
 
     $title = $crawler->filter('#vjs-jobtitle')->text();
@@ -76,6 +67,33 @@ else
     
     $uri = $email;
 }
+
+if(!preg_match("/linkedin/", $email) && !preg_match("/indeed/", $email) )
+{
+    $values = parse_url($email);
+
+    $host = explode('.',$values['host']);
+    $website = $host[1];
+
+    $entityManager = $this->getDoctrine()->getManager();
+    $site = $entityManager->getRepository(SitesToParse::class)->findOneBy(['siteName' => $website]);
+    $titleClass = $site->getTitleClass();
+    
+    $companyClass = $site->getCompanyClass();
+    $locationClass = $site->getLocationClass();
+    $descriptionClass = $site->getDescriptionClass();
+
+    $title = $crawler->filter("{$titleClass}")->text();
+    $description = $crawler->filter("{$descriptionClass}")->text(); 
+    $company = $crawler->filter("{$companyClass}")->text(); 
+    
+    $location = $crawler->filter("{$locationClass}")->text();  
+   
+    
+    $uri = $email;
+}
+
+
 
         
        

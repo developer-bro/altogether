@@ -1,4 +1,5 @@
 {% extends 'base.html.twig' %}
+{% block title %}Saved Applied Jobs{% endblock %}
 {% block body %}
     <div class="saved-jobs">
         <div
@@ -97,8 +98,14 @@
                             </div>
                             <div class="col-xl-2">
                                 <div class="relative">
-                                    <select class="form-control" id="" name="">
-                                        <option value="">Saved</option>
+                                    <select class="form-control" id="" name="" onchange="location = this.value;">
+                                    <option value="">Select</option>
+                                    
+                                        <option value="{{ path('savedappliedjobs', {'variable': 'saved'}) }}">Saved</option>
+                                         <option value="{{ path('savedappliedjobs', {'variable': 'applied'}) }}">Applied</option>
+                                                <option value="{{ path('savedappliedjobs', {'variable': 'follow up'}) }}">Follow Up</option>
+                                                <option value="{{ path('savedappliedjobs', {'variable': 'interview'}) }}">Interviews</option>
+                                                <option value="{{ path('savedappliedjobs', {'variable': 'post interview follow up'}) }}">Post Interview Follow Up</option>
                                     </select>
                                     <i class="t-f r-0"><img alt="" src="{{ asset('images/select.svg') }}"></i>
                                 </div>
@@ -188,7 +195,7 @@
                     <div class="filter-card">
                         {% for job in jobs %}
                             <div class="media">
-                            {% if job.isSaved %} <div class="icon-filter"><img alt="" src="{{ asset('images/fav2.svg') }}"></div> {% elseif job.isApplied %}<div class="icon-filter"><img alt="" src="{{ asset('images/check-c.svg') }}"></div> {% else %}<div class="icon-filter noicon"></div>{% endif %}
+                            {% if job.isSaved %} <div class="icon-filter"><img alt="" src="{{ asset('images/fav2.svg') }}"></div> {% elseif job.isApplied %}<div class="icon-filter"><img alt="" src="{{ asset('images/check-c.svg') }}"></div> {% else %}<div class="icon-filter"><img alt="" src="{{ asset('images/check-c.svg') }}"></div> {% endif %}
                                
 
                                 <div class="media-body">
@@ -308,6 +315,8 @@
                                         </div>
 
                                     </div>
+
+                           
                                     
 <a href="{{ path('deletejob', { 'id' : job.id }) }}" align="right" ><i class="fas fa-trash-alt deletejob" style=" padding: 25px;"></i></a>
       
@@ -410,6 +419,13 @@
     e.preventDefault();
     var modal = $("#add-jobs");
     modal.find('.loadingmessage').show();
+    modal.find('.loadingmessage1').hide();
+    
+    modal.find('#jobs_save_title').html("");
+            modal.find('#jobs_save_comapnyName').html("");
+            modal.find('#jobs_save_location').html("");
+            modal.find('#jobs_save_description').html("");
+            modal.find('#jobs_save_uri').html("");
     var email = $("#emailId").val();
     $.ajax({
         url: "{{ path('scrapedataindex') }}",
@@ -437,4 +453,7 @@ modal.find('.loadingmessage').hide();
     });
 });</script>{# setTimeout(function(){
            location.reload(true);
-        }, 2000); #}{% endblock %}
+        }, 2000); #}
+        
+       
+        {% endblock %}

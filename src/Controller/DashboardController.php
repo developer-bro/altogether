@@ -25,7 +25,8 @@ use App\Entity\User;
 use App\Entity\Jobs;
 use App\Repository\TaskRepository;
 use App\Entity\Task;
-
+use App\Entity\Walkthrough;
+use App\Repository\WalkthroughRepository;
 
 class DashboardController extends AbstractController
 {
@@ -34,7 +35,7 @@ class DashboardController extends AbstractController
      *
      * 
      */
-    public function index(Request $request, JobsRepository $jobs, TaskRepository $tasks): Response
+    public function index(Request $request, JobsRepository $jobs, TaskRepository $tasks, WalkthroughRepository $walkthrough): Response
     {
 
         $user = $this->getUser();
@@ -51,7 +52,9 @@ class DashboardController extends AbstractController
         $interviewjobscount= count($interviewjobs);
         $postinterviewjobscount= count($postinterviewjobs);
         $alljobscount= count($latestJobs);
-        return $this->render('home/dashboard.html.twig', ['jobs' => $latestJobs, 'tasks' => $latestTasks, 'alljobscount' => $alljobscount, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount]);
+        $walkthroughinfos = $walkthrough->findInfo();
+        $walkthroughinfo = $walkthroughinfos[0];
+        return $this->render('home/dashboard.html.twig', ['jobs' => $latestJobs, 'tasks' => $latestTasks, 'alljobscount' => $alljobscount, 'savedjobscount' => $savedjobscount, 'appliedjobscount' => $appliedjobscount, 'followupjobscount' => $followupjobscount, 'interviewjobscount' => $interviewjobscount, 'postinterviewjobscount' => $postinterviewjobscount, 'walkthroughinfo' => $walkthroughinfo]);
     }
 
 }
