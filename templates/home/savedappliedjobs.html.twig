@@ -96,20 +96,7 @@
                             <div class="col-xl-8">
                                 <input class="form-control" id="emailId" placeholder="www.linkedin.com/job/merrilllynch/010" type="text">
                             </div>
-                            <div class="col-xl-2">
-                                <div class="relative">
-                                    <select class="form-control" id="" name="" onchange="location = this.value;">
-                                    <option value="">Select</option>
-                                    
-                                        <option value="{{ path('savedappliedjobs', {'variable': 'saved'}) }}">Saved</option>
-                                         <option value="{{ path('savedappliedjobs', {'variable': 'applied'}) }}">Applied</option>
-                                                <option value="{{ path('savedappliedjobs', {'variable': 'follow up'}) }}">Follow Up</option>
-                                                <option value="{{ path('savedappliedjobs', {'variable': 'interview'}) }}">Interviews</option>
-                                                <option value="{{ path('savedappliedjobs', {'variable': 'post interview follow up'}) }}">Post Interview Follow Up</option>
-                                    </select>
-                                    <i class="t-f r-0"><img alt="" src="{{ asset('images/select.svg') }}"></i>
-                                </div>
-                            </div>
+                            
                         </div>
                         <div class="text-center">
                             <button class="btn btn-search" data-target="#add-jobs" data-toggle="modal" id="submitBtn">Add Job

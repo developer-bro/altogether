@@ -10,7 +10,7 @@ use Doctrine\Migrations\AbstractMigration;
 /**
  * Auto-generated Migration: Please modify to your needs!
  */
-final class Version20190729190300 extends AbstractMigration
+final class Version20190906111437 extends AbstractMigration
 {
     public function getDescription() : string
     {
@@ -22,9 +22,7 @@ final class Version20190729190300 extends AbstractMigration
         // this up() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE task ADD from_name_id INT DEFAULT NULL, DROP from_name');
-        $this->addSql('ALTER TABLE task ADD CONSTRAINT FK_527EDB25F7497F79 FOREIGN KEY (from_name_id) REFERENCES jobs (id)');
-        $this->addSql('CREATE UNIQUE INDEX UNIQ_527EDB25F7497F79 ON task (from_name_id)');
+        $this->addSql('ALTER TABLE user ADD someid VARCHAR(255) DEFAULT NULL');
     }
 
     public function down(Schema $schema) : void
@@ -32,8 +30,6 @@ final class Version20190729190300 extends AbstractMigration
         // this down() migration is auto-generated, please modify it to your needs
         $this->abortIf($this->connection->getDatabasePlatform()->getName() !== 'mysql', 'Migration can only be executed safely on \'mysql\'.');
 
-        $this->addSql('ALTER TABLE task DROP FOREIGN KEY FK_527EDB25F7497F79');
-        $this->addSql('DROP INDEX UNIQ_527EDB25F7497F79 ON task');
-        $this->addSql('ALTER TABLE task ADD from_name VARCHAR(255) NOT NULL COLLATE utf8mb4_unicode_ci, DROP from_name_id');
+        $this->addSql('ALTER TABLE user DROP someid');
     }
 }

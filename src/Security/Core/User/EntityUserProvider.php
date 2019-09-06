@@ -34,6 +34,11 @@ public function __construct(ManagerRegistry $registry, $class, array $properties
             throw new \RuntimeException(sprintf("No property defined for entity for resource owner '%s'.", $resourceOwnerName));
         }
 
+        $data = $response->getData();
+        var_dump(
+            $response->getRealName()
+        );
+
         $username = $response->getUsername();
         if (null === $user = $this->findUser(array($this->properties[$resourceOwnerName] => $username))) {
             throw new UsernameNotFoundException(sprintf("User '%s' not found.", $username));

@@ -155,6 +155,18 @@ class User implements UserInterface
      */
     private $country;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $linkedinId;
+
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $someid;
+
+   
+
     public function __construct()
     {
         $this->jobs = new ArrayCollection();
@@ -620,6 +632,32 @@ class User implements UserInterface
 
         return $this;
     }
+
+    public function getLinkedinId(): ?string
+    {
+        return $this->linkedinId;
+    }
+
+    public function setLinkedinId(?string $linkedinId): self
+    {
+        $this->linkedinId = $linkedinId;
+
+        return $this;
+    }
+
+    public function getSomeid(): ?string
+    {
+        return $this->someid;
+    }
+
+    public function setSomeid(?string $someid): self
+    {
+        $this->someid = $someid;
+
+        return $this;
+    }
+
+    
 
    
 

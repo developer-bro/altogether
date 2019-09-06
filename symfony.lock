@@ -114,24 +114,29 @@
     "guzzlehttp/psr7": {
         "version": "1.5.2"
     },
-    "hwi/oauth-bundle": {
-        "version": "0.6",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "0.6",
-            "ref": "20cacc9b2da49d96ea55c8a8dd31324c5be88bc9"
-        },
-        "files": [
-            "config/packages/hwi_oauth.yaml",
-            "config/routes/hwi_oauth_routing.yaml"
-        ]
-    },
     "jdorn/sql-formatter": {
         "version": "v1.2.17"
     },
     "knplabs/knp-time-bundle": {
         "version": "v1.9.1"
+    },
+    "knpuniversity/oauth2-client-bundle": {
+        "version": "1.20",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "master",
+            "version": "1.20",
+            "ref": "80acc9223a205cbf5d9828fd616c82a374d281dd"
+        },
+        "files": [
+            "config/packages/knpu_oauth2_client.yaml"
+        ]
+    },
+    "league/oauth2-client": {
+        "version": "2.4.1"
+    },
+    "league/oauth2-linkedin": {
+        "version": "5.1.0"
     },
     "league/uri": {
         "version": "5.3.0"
@@ -175,32 +180,11 @@
     "payum/payum-bundle": {
         "version": "2.3.3"
     },
-    "php-http/client-common": {
-        "version": "1.9.1"
-    },
-    "php-http/discovery": {
-        "version": "1.6.1"
-    },
     "php-http/guzzle6-adapter": {
         "version": "v2.0.1"
     },
     "php-http/httplug": {
         "version": "v2.0.0"
-    },
-    "php-http/httplug-bundle": {
-        "version": "1.6",
-        "recipe": {
-            "repo": "github.com/symfony/recipes-contrib",
-            "branch": "master",
-            "version": "1.6",
-            "ref": "4655962c64e2de96c418caf576c57215711c7877"
-        },
-        "files": [
-            "config/packages/httplug.yaml"
-        ]
-    },
-    "php-http/logger-plugin": {
-        "version": "1.1.0"
     },
     "php-http/message": {
         "version": "1.7.2"
@@ -210,9 +194,6 @@
     },
     "php-http/promise": {
         "version": "v1.0.0"
-    },
-    "php-http/stopwatch-plugin": {
-        "version": "1.2.0"
     },
     "phpdocumentor/reflection-common": {
         "version": "1.0.1"
